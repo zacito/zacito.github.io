@@ -1,26 +1,29 @@
-<!--12/18/22 -->
+<!--12/20/22 -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex" />
 <title>Sporta</title>
+<style> @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@800&display=swap'); </style>
 <style type="text/css">
-a{margin-right:5px;}
+a{color:darkblue;margin-right:5px;}
+h1{font-family:'Unbounded',cursive;margin:0;}
 p{margin:0;}
-.box p{font-weight:bold;}
-#red{background:red;}
-#orange{background:orange;}
-#yellow{background:yellow;}
-#green{background:green;}
-#blue{background:blue;}
-#indigo{background:indigo;}
-#violet{background:violet;}
-#blue{background:blue;}
-#lightred{background:lightred;}
-#black{background:black;}
-#gray{background:gray;}
-#darkgray{background:darkgray;}
+.box{margin-bottom:2px;}
+.box p:first-child{font-weight:bold;}
+.content{margin-bottom:50px;}
+#red{background:#B71C1C;color:#B71C1C;}
+#orange{background:#E65100;color:#E65100;}
+#yellow{background:#FFFF00;color:#FFFF00;}
+#green{background:#1B5E20;color:#1B5E20;}
+#blue{background:#2962FF;color:#2962FF;}
+#indigo{background:#1A237E;color:#1A237E;}
+#violet{background:#6200EA;color:#6200EA;}
+#orangered{background:#DD2C00;color:#DD2C00;}
+#black{background:black;color:black;}
+#gray{background:#BDBDBD;color:#BDBDBD;}
+#darkgray{background:#616161;color:#616161;}
 </style>
 
 </head>
@@ -41,7 +44,7 @@ tennis - darkgray
 -->
 
 <div class="header1">
-<a href="#">SPORTA</a>
+<h1>////SPORTA</h1>
 </div>
 <hr>
 <hr>
@@ -49,7 +52,11 @@ tennis - darkgray
 <!--world juniors championship-->
 <p>World Juniors Championship</p>
 <a href="https://www.iihf.com/en/events/2023/wm20">Home</a>
+<a href="https://www.tsn.ca/world-juniors/scores">Scores</a>
+<a href="https://www.tsn.ca/world-juniors/standings">Standings</a>
 <a href="https://www.iihf.com/en/events/2023/wm20/teams">Teams</a>
+<a href="https://www.tsn.ca/world-juniors">TSN</a>
+<a href="https://en.wikipedia.org/wiki/2023_World_Junior_Ice_Hockey_Championships">Wiki</a>
 </div>
 
 <hr>
@@ -58,10 +65,19 @@ tennis - darkgray
 
 <!--news-->
 <div class="box">
-<a href="https://www.espn.com/">ESPN</a>
-<a href="https://www.nbcsports.com/">NBC</a>
 <a href="https://www.cbssports.com/">CBS</a>
+<a href="https://www.espn.com/">ESPN</a>
+<a href="https://www.foxsports.com/">Fox</a>
+<a href="https://www.nbcsports.com/">NBC</a>
+<a href="https://www.si.com/">SI</a>
 <a href="https://sports.yahoo.com/">Yahoo</a>
+</div>
+
+<div class="box">
+<a href="https://www.bbc.com/sport">BBC</a>
+<a href="https://www.cbc.ca/sports">CBC</a>
+<a href="https://www.sportsnet.ca/">Sportsnet</a>
+<a href="https://www.tsn.ca/">TSN</a>
 </div>
 
 <div class="box">
@@ -69,16 +85,43 @@ tennis - darkgray
 <a href="https://www.goal.com/en-us">Goal</a>
 <a href="https://www.collegehockeynews.com/">College Hockey News</a>
 <a href="https://deadspin.com/">Deadspin</a>
+<a href="https://www.spotrac.com/">Spotrac</a>
 </div>
 
+<div class="box">
+<a href="https://www.baseball-reference.com/leagues/majors/2022.shtml">Baseball</a>
+<a href="https://www.sports-reference.com/cbb/seasons/2023.html">College Basketball</a>
+<a href="https://www.sports-reference.com/cfb/years/2022.html">College Football</a>
+<a href="https://www.basketball-reference.com/leagues/NBA_2023.html">Pro Basketball</a>
+<a href="https://www.pro-football-reference.com/years/2022/">Pro Football</a>
+</a>
 <hr>
+
+<!--soccer-->
+<div class="box">
+<p>
+<span id="gray">_</span>
+Soccer</p>
+<a href="https://www.espn.com/soccer/">ESPN</a>
+<a href="https://www.espn.com/soccer/scoreboard">Scores</a>
+<a href="https://www.espn.com/soccer/schedule">Schedule</a>
+<a href="https://www.espn.com/soccer/competitions">Leagues+</a>
+<a href="https://www.espn.com/soccer/table/_/league/eng.1">Tables</a>
+<a href="https://www.espn.com/soccer/team/_/id/660/united-states">USMNT</a>
+<a href="https://www.espn.com/soccer/team/_/id/2765/united-states">USWNT</a>
+<a href="">English Carabao Cup</a>
+<a href="">Spanish Copa del Rey</a>
+<a href="">English FA Cup</a>
+<a href="">UEFA Champions League</a>
+<a href="">UEFA Europa League</a>
+</div>
 
 <!--cfb-->
 <div class="box">
 <p>
 <span id="blue">_</span>
-College Football 
-<span class="subtitle">(August - January)</span></p>
+College Football (NCAAF)</p>
+<p>Aug Sep Oct Nov Dec Jan</p>
 <a href="https://www.espn.com/college-football/">ESPN</a>
 <a href="https://www.espn.com/college-football/scoreboard">Scores</a>
 <a href="https://www.espn.com/college-football/schedule">Schedule</a>
@@ -88,13 +131,15 @@ College Football
 <a href="https://www.espn.com/college-football/rankings">Rankings</a>
 <a href="https://en.wikipedia.org/wiki/2021_College_Football_All-America_Team">All American</a>
 <a href="https://en.wikipedia.org/wiki/2022_NCAA_Division_I_FBS_football_season">Wiki</a>
+<a href="https://www.espn.com/college-football/story/_/page/cfpbowls2022/college-football-bowl-schedule-2022-2023-dates-s-matchups-every-game">Bowl Games</a>
 </div>
 
 <!--nfl-->
 <div class="box">
 <p>
 <span id="blue">_</span>
-National Football League (NFL) <span class="subtitle">(August - February)</span></p>
+National Football League (NFL)
+<p>Aug Sep Oct Nov Dec Jan Feb</p>
 <a href="https://www.espn.com/nfl/">ESPN</a>
 <a href="https://www.espn.com/nfl/scoreboard">Scores</a>
 <a href="https://www.espn.com/nfl/standings">Standings</a>
@@ -103,25 +148,29 @@ National Football League (NFL) <span class="subtitle">(August - February)</span>
 <a href="https://www.espn.com/nfl/story/_/id/29098001/2020-nfl-depth-charts-all-32-teams">Depth Charts</a>
 <a href="https://en.wikipedia.org/wiki/2021_All-Pro_Team">All Pro</a>
 <a href="https://en.wikipedia.org/wiki/2022_NFL_season">Wiki</a>
+<a href="https://www.spotrac.com/nfl/rankings/">Salary</a>
 </div>
 
 <!--nhl-->
 <div class="box">
 <p>
 <span id="violet">_</span>
-National Hockey League (NHL) <span class="subtitle">(September - June)</span></p>
+National Hockey League (NHL)</p>
+<p>Sep Oct Nov Dec Jan Feb Mar Apr May Jun</p>
 <a href="https://www.espn.com/nhl/">ESPN</a>
 <a href="https://www.espn.com/nhl/scoreboard">Scores</a>
 <a href="https://www.espn.com/nhl/standings">Standings</a>
 <a href="https://www.espn.com/nhl/stats">Stats</a>
 <a href="https://en.wikipedia.org/wiki/2022%E2%80%9323_NHL_season">Wiki</a>
+<a href="https://www.capfriendly.com/">Salary</a>
 </div>
 
 <!--nba-->
 <div class="box">
 <p>
 <span id="orange">_</span>
-National Basketball Association (NBA) <span class="subtitle">(September - June)</span></p>
+National Basketball Association (NBA) 
+<p>Sep Oct Nov Dec Jan Feb Mar Apr May Jun</p>
 <a href="https://www.espn.com/nba/">ESPN</a>
 <a href="https://www.espn.com/nba/scoreboard">Scores</a>
 <a href="https://www.espn.com/nba/standings">Standings</a>
@@ -129,19 +178,30 @@ National Basketball Association (NBA) <span class="subtitle">(September - June)<
 <a href="https://en.wikipedia.org/wiki/2022%E2%80%9323_NBA_season">Wiki</a>
 </div>
 
+<!-- nba g league-->
+<div class="box">
+<p>
+<span id="orange">_</span>
+NBA G League</p>
+<a href="https://gleague.nba.com/">Home</a>
+<a href="https://www.espn.com/nba-g-league/">ESPN</a>
+<a href="https://www.espn.com/nba-g-league/scoreboard">Scores</a>
+<a href="https://www.espn.com/nba-g-league/standings">Standings</a>
+</div>
 <!--ncaam-->
 <div class="box">
 <p>
 <span id="orange">_</span>
-NCAA M Basketball</p>
+NCAA Men's Basketball (NCAAM)</p>
 <a href="https://www.espn.com/mens-college-basketball/">ESPN</a>
+<a href="https://www.espn.com/espn/feature/story/_/page/bracketology/ncaa-bracketology-projecting-2023-march-madness-men-field">Bracketology</a>
 </div>
 
 <!--ncaaw-->
 <div class="box">
 <p>
 <span id="orange">_</span>
-NCAA W Basketball</p>
+NCAA Women's Basketball (NCAAW)</p>
 <a href="https://www.espn.com/womens-college-basketball/">ESPN</a>
 </div>
 
@@ -149,7 +209,8 @@ NCAA W Basketball</p>
 <div class="box">
 <p>
 <span id="indigo">_</span>
-Golf <span class="subtitle">(September - August)</span></p>
+Golf
+<p>Sep Oct Nov Dec Jan Feb Mar Apr May Jun Jul Aug</p>
 <a href="https://www.espn.com/golf/">ESPN</a>
 <a href="https://www.espn.com/golf/leaderboard">Leaderboard</a>
 <a href="https://www.espn.com/golf/schedule">Schedule</a>
@@ -164,6 +225,16 @@ Golf <span class="subtitle">(September - August)</span></p>
 <span id="black">_</span>
 NASCAR</p>
 <a href="https://www.espn.com/racing/nascar/">ESPN</a>
+</div>
+
+<!--ama supercross championship-->
+<div class="box">
+<p>
+<span id="black">_</span>
+AMA Supercross</p>
+<a href="https://www.supercrosslive.com/">Home</a>
+<a href="https://www.supercrosslive.com/ama-supercross-historical-results">Results</a>
+<a href="https://www.supercrosslive.com/championship-standings">Standings</a>
 </div>
 
 <!--boxing-->
@@ -194,7 +265,7 @@ Tennis</p>
 <!--mma-->
 <div class="box">
 <p>
-<span id="lightred">_</span>
+<span id="orangered">_</span>
 MMA</p>
 <a href="https://www.espn.com/mma/">ESPN</a>
 <a href="https://www.ufc.com/">UFC</a>
@@ -208,25 +279,12 @@ F1</p>
 <a href="https://www.espn.com/f1/">ESPN</a>
 </div>
 
-<!--soccer-->
-<div class="box">
-<p>
-<span id="gray">_</span>
-Soccer</p>
-<a href="https://www.espn.com/soccer/">ESPN</a>
-<a href="https://www.espn.com/soccer/scoreboard">Scores</a>
-<a href="https://www.espn.com/soccer/schedule">Schedule</a>
-<a href="https://www.espn.com/soccer/competitions">Leagues+</a>
-<a href="https://www.espn.com/soccer/table/_/league/eng.1">Tables</a>
-<a href="https://www.espn.com/soccer/team/_/id/660/united-states">USMNT</a>
-<a href="https://www.espn.com/soccer/team/_/id/2765/united-states">USWNT</a>
-</div>
-
 <!--premierleague-->
 <div class="box">
 <p>
 <span id="gray">_</span>
-Premier League <span class="subtitle">(August - May)</span></p>
+Premier League
+<p>Aug Sep Oct Nov Dec Jan Feb Mar Apr May</p>
 <a href="https://www.espn.com/soccer/league/_/name/eng.1">ESPN</a>
 <a href="https://www.espn.com/soccer/scoreboard?league=eng.1">Scores</a>
 <a href="https://www.espn.com/soccer/table/_/league/eng.1">Table</a>
@@ -239,7 +297,8 @@ Premier League <span class="subtitle">(August - May)</span></p>
 <div class="box">
 <p>
 <span id="gray">_</span>
-Bundesliga <span class="subtitle">(August - May)</span></p>
+Bundesliga 
+<p>Aug Sep Oct Nov Dec Jan Feb Mar Apr May</p>
 <a href="http://www.espn.com/soccer/league/_/name/ger.1">ESPN</a>
 <a href="https://www.espn.com/soccer/scoreboard/_/league/ger.1/">Scores</a>
 <a href="https://www.espn.com/soccer/standings/_/league/ger.1/season/2022">Table</a>
@@ -252,7 +311,8 @@ Bundesliga <span class="subtitle">(August - May)</span></p>
 <div class="box">
 <p>
 <span id="gray">_</span>
-Ligue 1 <span class="subtitle">(August - June)</span></p>
+Ligue 1 
+<p>Aug Sep Oct Nov Dec Jan Feb Mar Apr May Jun</p>
 <a href="http://www.espn.com/soccer/league/_/name/fra.1">ESPN</a>
 <a href="https://www.espn.com/soccer/scoreboard/_/league/fra.1">Scores</a>
 <a href="https://www.espn.com/soccer/standings/_/league/fra.1/season/2022">Table</a>
@@ -265,7 +325,8 @@ Ligue 1 <span class="subtitle">(August - June)</span></p>
 <div class="box">
 <p>
 <span id="gray">_</span>
-Eredivisie <span class="subtitle">(August - May)</span></p>
+Eredivisie 
+<p>Aug Sep Oct Nov Dec Jan Feb Mar Apr May</p>
 <a href="http://www.espn.com/soccer/league/_/name/ned.1">ESPN</a>
 <a href="https://www.espn.com/soccer/scoreboard/_/league/ned.1">Scores</a>
 <a href="https://www.espn.com/soccer/standings/_/league/ned.1/season/2022">Table</a>
@@ -279,7 +340,8 @@ Eredivisie <span class="subtitle">(August - May)</span></p>
 <div class="box">
 <p>
 <span id="gray">_</span>
-Liga MX <span class="subtitle">(August - May)</span></p>
+Liga MX 
+<p>Aug Sep Oct Nov Dec Jan Feb Mar Apr May</p>
 <a href="http://www.espn.com/soccer/league/_/name/mex.1">ESPN</a>
 <a href="https://www.espn.com/soccer/scoreboard/_/league/mex.1">Scores</a>
 <a href="https://www.espn.com/soccer/standings/_/league/mex.1/season/2022">Table</a>
@@ -292,7 +354,8 @@ Liga MX <span class="subtitle">(August - May)</span></p>
 <div class="box">
 <p>
 <span id="gray">_</span>
-La Liga <span class="subtitle">(August - June)</span></p>
+La Liga</p>
+<p>Aug Sep Oct Nov Dec Jan Feb Mar Apr May Jun</p>
 <a href="http://www.espn.com/soccer/league/_/name/esp.1">ESPN</a>
 <a href="https://www.espn.com/soccer/scoreboard/_/league/esp.1">Scores</a>
 <a href="https://www.espn.com/soccer/standings/_/league/esp.1/season/2022">Table</a>
@@ -305,7 +368,8 @@ La Liga <span class="subtitle">(August - June)</span></p>
 <div class="box">
 <p>
 <span id="gray">_</span>
-Serie A <span class="subtitle">(August - June)</span></p>
+Serie A </p>
+<p>Aug Sep Oct Nov Dec Jan Feb Mar Apr May Jun</p>
 <a href="http://www.espn.com/soccer/league/_/name/ita.1">ESPN</a>
 <a href="https://www.espn.com/soccer/scoreboard/_/league/ita.1">Scores</a>
 <a href="https://www.espn.com/soccer/standings/_/league/ita.1/season/2022">Table</a>
@@ -318,7 +382,8 @@ Serie A <span class="subtitle">(August - June)</span></p>
 <div class="box">
 <p>
 <span id="gray">_</span>
-English Football League Championship (EFL) <span class="subtitle">(July - May)</span></p>
+English League Championship (ELC/EFL) </p>
+<p> Jul Aug Sep Oct Nov Dec Jan Feb Mar Apr May Jun</p>
 <a href="http://www.espn.com/soccer/league/_/name/eng.2">ESPN</a>
 <a href="https://www.espn.com/soccer/scoreboard/_/league/eng.2">Scores</a>
 <a href="https://www.espn.com/soccer/standings/_/league/eng.2/season/2022">Table</a>
@@ -327,11 +392,14 @@ English Football League Championship (EFL) <span class="subtitle">(July - May)</
 <a href="https://en.wikipedia.org/wiki/2022%E2%80%9323_EFL_Championship">Wiki</a>
 </div>
 
+<hr>
+
 <!--mlb-->
 <div class="box">
 <p>
 <span id="red">_</span>
-Major League Baseball (MLB) <span class="subtitle">(April - November)</span></p>
+Major League Baseball (MLB) </p>
+<p>Apr May Jun Jul Aug Sep Oct Nov</p>
 <a href="https://www.espn.com/mlb/">ESPN</a>
 <a href="https://www.espn.com/mlb/scoreboard">Scores</a>
 <a href="https://www.espn.com/mlb/standings">Standings</a>
@@ -343,7 +411,8 @@ Major League Baseball (MLB) <span class="subtitle">(April - November)</span></p>
 <div class="box">
 <p>
 <span id="gray">_</span>
-Major League Soccer (MLS) <span class="subtitle">(February - November)</span></p>
+Major League Soccer (MLS) </p>
+<p>Feb Mar Apr May Jun Jul Aug Sep Oct Nov</p>
 <a href="https://www.espn.com/soccer/league/_/name/usa.1">ESPN</a>
 <a href="https://https://www.espn.com/soccer/scoreboard/_/league/usa.1/date/20220626">Scores</a>
 <a href="https://www.espn.com/soccer/table/_/league/usa.1">Standings</a>
@@ -355,7 +424,8 @@ Major League Soccer (MLS) <span class="subtitle">(February - November)</span></p
 <div class="box">
 <p>
 <span id="gray">_</span>
-United Soccer League (USL) <span class="subtitle">(March - October)</span></p>
+United Soccer League (USL) </p>
+<p>Mar Apr May Jun Jul Aug Sep Oct</p>
 <a href="http://www.espn.com/soccer/league/_/name/usa.usl.1">ESPN</a>
 <a href="https://www.espn.com/soccer/scoreboard/_/league/usa.usl.1">Scores</a>
 <a href="https://www.espn.com/soccer/standings/_/league/usa.usl.1/season/2022">Table</a>
