@@ -1,5 +1,5 @@
 a{color:white;outline:0;text-decoration:none;}
-body{background:black;color:white;font-family:sans-serif;font-size:15px;}
+body{background:black;color:white;font-family:sans-serif;font-size:15px;margin:11px;}
 div{display:flex;}
 div a{padding:10px;}
 nav a{border-bottom:1px solid gray;display:block;padding:15px;}
