@@ -1,4 +1,4 @@
-<!--12/231/22 -->
+<!--1/1/23 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +7,20 @@
 <title>Palebanker</title>
 <style> @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@800&display=swap'); </style>
 <style type="text/css">
-a{color:darkblue;margin-right:5px;}
+a{color:darkblue;margin-right:5px;text-decoration:none;}
 h1{font-family:'Unbounded',cursive;margin:0;}
+hr{border:none;border-bottom:.5px solid lightgray;}
 p{margin:0;}
-.box{margin-bottom:2px;}
+.box{border:solid;margin-bottom:2px;width:100%;}
+.box div{float:left;width:50%;}
 .box p:first-child{font-weight:bold;}
-.content{margin-bottom:50px;}
+.content{display:flex;margin-bottom:50px;}
+.header{border:solid;display:flex;justify-content:center;}
+.header p{font-size:22px;}
+.left{border:solid;width:30%;}
+.mainheader{border-bottom:2px solid;}
+.middle{border:solid;width:30%;}
+.right{border:solid;width:30%;}
 #red{background:#B71C1C;color:#B71C1C;}
 #orange{background:#E65100;color:#E65100;}
 #yellow{background:#FFFF00;color:#FFFF00;}
@@ -24,54 +32,94 @@ p{margin:0;}
 #black{background:black;color:black;}
 #gray{background:#BDBDBD;color:#BDBDBD;}
 #darkgray{background:#616161;color:#616161;}
+ul li{list-style-type:none;}
 
 @media (min-width:700px){
-body{margin:11px 300px;}
+body{margin:11px 100px;}
 }
 </style>
 
 </head>
 <body>
 
-<div class="header1">
-<h1>palebanker</h1>
+<div class="header">
+<p>Palebanker</p>
 </div>
-<hr>
-<hr>
-<div class="leadbox">
+<div class="mainheader"></div>
+
+<div class="header">
 <a href="https://www.google.com/finance/quote/.DJI:INDEXDJX">dow jones</a>
 <a href="https://www.google.com/finance/quote/.INX:INDEXSP">s&p 500</a>
 <a href="https://www.google.com/finance/quote/.IXIC:INDEXNASDAQ">nasdaq</a>
 <a href="https://coinmarketcap.com/">coinmarketcap</a>
 </div>
 
-<hr>
-
-<div class="content">
-
-<!--news-->
-<div class="box">
-<a href="https://www.bloomberg.com/">bloomberg</a>
+<div class="header">
+<a href="https://www.bloomberg.com/">bloomberg</a> 
+<a href="https://www.bloomberg.com/live">tv</a> 
+<a href="https://www.bloomberg.com/audio">radio</a>
 <a href="https://www.cnbc.com/">cnbc</a>
 <a href="https://www.google.com/finance/">google finance</a>
 <a href="https://finance.yahoo.com/">yahoo finance</a>
+<a href="https://www.marketwatch.com/">Marketwatch</a>
+</div>
+
+<div class="header">
+<a href="https://www.ft.com/">Financial Times</a>
+<a href="https://www.wsj.com/">The Wall Street Journal</a>
+
 </div>
 
 <div class="box">
 <a href="https://www.investopedia.com/">investopedia</a>
 <a href="https://www.fool.com/">motley fool</a>
 <a href="https://www.morningstar.com/">morningstar</a>
-
 </div>
 
+
+<div class="box">
+<a href="https://www.bls.gov/">U.S. Bureau of Labor Statistics</a>
+<a href="https://www.bea.gov/">U.S. Bureau of Economic Analysis</a>
+</div>
+
+</div>
+<div class="content">
+
+<div class="left">
+</div>
+
+<div class="middle">
+<div class="box">
+<p>dow jones
+<a href="https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average">wiki</a>
+</p>
 <div>
+<ul>
+<li>3M<li>American Express<li>Amgen<li>Apple<li>Boeing<li>Caterpillar<li>Chevron<li>Cisco<li>Coca-Cola<li>Dow<li>Goldman Sachs<li>Home Depot<li>Honeywell<li>IBM<li>Intel
+</ul>
+</div>
+<div>
+<ul><li>Johnson & Johnson<li>JPMorgan Chase<li>McDonald's<li>Merck<li>Microsoft<li>Nike<li>Procter & Gamble<li>Salesforce<li>Travelers<li>UnitedHealth<li>Verizon<li>Visa<li>Walgreens Boots Alliance<li>Walmart<li>Walt Disney
+</ul>
+</div>
 </div>
 
 
+<div class="box">
+<p>Standard and Poor's 500 (s&p 500)
+<a href="https://en.wikipedia.org/wiki/S%26P_500">wiki</a>
+<a href="https://en.wikipedia.org/wiki/List_of_S%26P_500_companies">list</a>
+</p>
+</div>
+
+
+</div>
+
+<div class="right">
+</div>
+
+<hr>
 
 </div><!--content-->
-
-
-
 </body>
 </html>
