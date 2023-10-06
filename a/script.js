@@ -1,4 +1,3 @@
-<script>
   (function() {
   'use strict';
   function getDate() {
@@ -29,4 +28,3 @@
   }
   getDate();
 }());
-</script>
