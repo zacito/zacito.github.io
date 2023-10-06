@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script type="text/javascript" src="script.js"></script>
 <title>a</title>
 <style type="text/css">
 a{color:white;display:block;margin:0;padding:10px;text-decoration:none;}
@@ -11,73 +12,10 @@ div a{padding:10px 0 10px 10px;text-align:left;width:100%;}
 p{color:white;}
 </style>
 <meta name="robots" content="noindex" />
-<script>
-  <script>
-  (function() {
-  'use strict';
-  function getDate() {
-    var date = new Date();
-    var weekday = date.getDay();
-    var month = date.getMonth();
-    var day = date.getDate();
-    var year = date.getFullYear();
-    var hour = date.getHours();
-    var minutes = date.getMinutes();
-    var seconds = date.getSeconds();
-    if (hour < 10) hour = "0" + hour;
-    if (minutes < 10) minutes = "0" + minutes;
-    if (seconds < 10) seconds = "0" + seconds;
-    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var monthColors = ["#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF"]
-    var ampm = " PM ";
-    if (hour < 12) ampm = " AM ";
-    if (hour > 12) hour -= 12;
-    var showDate = weekdayNames[weekday] + ", " + monthNames[month] + " " + day + ", " + year;
-    var showTime = hour + ":" + minutes + ":" + seconds + ampm;
-    var color = monthColors[month];
-    document.getElementById('date').innerHTML = showDate;
-    document.getElementById('time').innerHTML = showTime;
-    document.bgColor = color;
-    requestAnimationFrame(getDate);
-  }
-  getDate();
-}());
-</script>
+
 </head>
 <body>
-  <script>
-  (function() {
-  'use strict';
-  function getDate() {
-    var date = new Date();
-    var weekday = date.getDay();
-    var month = date.getMonth();
-    var day = date.getDate();
-    var year = date.getFullYear();
-    var hour = date.getHours();
-    var minutes = date.getMinutes();
-    var seconds = date.getSeconds();
-    if (hour < 10) hour = "0" + hour;
-    if (minutes < 10) minutes = "0" + minutes;
-    if (seconds < 10) seconds = "0" + seconds;
-    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var monthColors = ["#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF"]
-    var ampm = " PM ";
-    if (hour < 12) ampm = " AM ";
-    if (hour > 12) hour -= 12;
-    var showDate = weekdayNames[weekday] + ", " + monthNames[month] + " " + day + ", " + year;
-    var showTime = hour + ":" + minutes + ":" + seconds + ampm;
-    var color = monthColors[month];
-    document.getElementById('date').innerHTML = showDate;
-    document.getElementById('time').innerHTML = showTime;
-    document.bgColor = color;
-    requestAnimationFrame(getDate);
-  }
-  getDate();
-}());
-</script>
+ 
 <!--
 <a href="https://.com"></a>
 <a href=""></a>
