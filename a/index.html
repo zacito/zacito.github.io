@@ -5,11 +5,43 @@
 <title>a</title>
 <style type="text/css">
 a{color:white;display:block;margin:0;padding:10px;text-decoration:none;}
-body{background:black;color:white;overflow:none;}
+body{background:black;color:white;font-family:arial;overflow:none;}
 div{display:flex;overflow:none;}
-div a{padding:0;width:100%;}
+div a{padding:10px 0 10px 10px;text-align:left;width:100%;}
 p{color:white;}
 </style>
+<script>
+  (function() {
+  'use strict';
+  function getDate() {
+    var date = new Date();
+    var weekday = date.getDay();
+    var month = date.getMonth();
+    var day = date.getDate();
+    var year = date.getFullYear();
+    var hour = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+    if (hour < 10) hour = "0" + hour;
+    if (minutes < 10) minutes = "0" + minutes;
+    if (seconds < 10) seconds = "0" + seconds;
+    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var monthColors = ["#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF", "#FFF"]
+    var ampm = " PM ";
+    if (hour < 12) ampm = " AM ";
+    if (hour > 12) hour -= 12;
+    var showDate = weekdayNames[weekday] + ", " + monthNames[month] + " " + day + ", " + year;
+    var showTime = hour + ":" + minutes + ":" + seconds + ampm;
+    var color = monthColors[month];
+    document.getElementById('date').innerHTML = showDate;
+    document.getElementById('time').innerHTML = showTime;
+    document.bgColor = color;
+    requestAnimationFrame(getDate);
+  }
+  getDate();
+}());
+</script>
 <meta name="robots" content="noindex" />
 </head>
 <body>
@@ -21,6 +53,10 @@ p{color:white;}
 <a href=""></a>
 <a href=""></a>
 -->
+<div>
+<div id="date"></div>|
+<div id="time"></div>
+</div>
 <a href="https://somafm.com/player/#/all-stations">SomaFM</a>
 <a href="https://yahoo.com">Yahoo</a>
 <a href="https://cnn.com">CNN</a>
@@ -64,6 +100,22 @@ p{color:white;}
 </div>
 <a href="https://wwe.com">WWE</a>
 <a href="https://wrestlingnews.co/">Wrestling News</a>
-<a href="https://https://www.wrestlezone.com/news.com">Wrestle Zone</a>
+<a href="https://https://www.wrestlezone.com/">Wrestle Zone</a>
+<a href="https://www.reddit.com/r/SquaredCircle/">r/squared circle</a>
+<a href="https://www.metacritic.com/news/tv-premiere-dates/">TV Premier Dates</a>
+<a href="https://www.metacritic.com/browse/albums/release-date/coming-soon/date">Upcoming Album Releases</a>
+<div>
+<a href="https://www.ebay.com/">Ebay</a>
+<a href="https://goldin.co/">Goldin</a>
+<a href="https://myslabs.com/">MySlabs</a>
+<a href="https://www.comc.com/">COMC</a>
+<a href="https://www.pristineauction.com/">Pristine Auction</a>
+<!--
+<a href=""></a>
+<a href=""></a>
+<a href=""></a>
+<a href=""></a>
+-->
+</div>
 </body>
 </html>
