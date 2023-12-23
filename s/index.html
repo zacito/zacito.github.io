@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="robots" content="noindex" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sports Page</title>
+<title>Sports</title>
 <style type="text/css">
 a{color:darkblue;text-decoration:none;margin:0px 10px 0px 0px;}
-body{font-family:arial;font-size:15px;margin:0px;padding:11px;}
+body{font-family:arial;font-size:15px;line-height:1.2;margin:0px;padding:11px;}
+footer{color:gray;font-size:13px;margin:30px 0px;text-align:center;}
 h1{font-size:27px;margin:0px;padding:0px;}
 h2{font-size:25px;margin:0px;padding:0px;}
 h3{font-size:23px;margin:0px;padding:0px;}
@@ -15,7 +17,8 @@ h6{font-size:17px;margin:0px;padding:0px;}
 p{margin:0px;padding:0px;}
 pre{font-family:arial;font-size:15px;}
 </style>
-<meta name="robots" content="noindex" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/FeedEk.min.js"></script>
 </head>
 <body>
 <!--
@@ -39,45 +42,58 @@ December
 -->
 <hr>
 <!--scores-->
+<div id="divRss3"></div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/FeedEk.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+			$('#divRss3').FeedEk({
+				FeedUrl: 'https://sports.yahoo.com/general/news/rss/', MaxCount: 10, ShowDesc: false, ShowPubDate:false
+			});
+
+    });
+
+</script>
+
+<hr>
 <p>
 <a href="https://www.ncaa.com/sports/football/fbs">NCAAF</a>
 <a href="https://www.nfl.com/">NFL</a>
 <a href="https://www.nhl.com/">NHL</a>
 <a href="https://www.nba.com/">NBA</a>
-<a href="https://www.premierleague.com/">Premier League</a>
-<a href="https://www.laliga.com/en-US">La Liga</a>
-<a href="https://www.iihf.com/en/events/2024/wm20">World Juniors</a>
-<!--
-<a href="https://www.ncaa.com/scoreboard/football/fbs/2023/13/top-25">CFB</a>
-<a href="https://www.nfl.com/scores/">NFL</a>
-<a href="https://www.nhl.com/scores">NHL</a>
-<a href="https://www.nba.com/schedule">NBA</a>
--->
 </p>
 <p>
+<a href="https://www.premierleague.com/">Premier League</a>
+<a href="https://www.bundesliga.com/en/bundesliga">Bundesliga</a>
+<a href="https://www.laliga.com/en-GB">La Liga</a>
+<a href="https://www.ligue1.com/">Ligue 1</a>
+<a href="https://www.legaseriea.it/en">Serie A</a>
+</p>
+<p>
+<a href="https://www.iihf.com/en/events/2024/wm20">World Juniors</a>
 <a href="https://www.ufc.com/">UFC</a>
 <a hrer="https://www.pgatour.com/">PGA</a>
 <a href="https://www.wwe.com/">WWE</a>
 </p>
 <hr>
 
-<h2>Minnesota</h2>
+<h5>Minnesota</h5>
 <p>
-<a href="https://www.mlb.com/twins">Twins</a>
+<a href="https://gophersports.com/">Gophers</a>
+<a href="https://msumavericks.com/index.aspx">Mavericks</a>
 <a href="https://www.vikings.com/">Vikings</a>
 <a href="https://www.nhl.com/wild">Wild</a>
 <a href="https://www.nba.com/timberwolves">Wolves</a>
 </p>
-
 <p>
+<a href="https://www.mlb.com/twins">Twins</a>
 <a href="https://www.mnufc.com/">United</a>
 <a href="https://lynx.wnba.com/">Lynx</a>
-<a href="https://gophersports.com/">Gophers</a>
-<a href="https://msumavericks.com/index.aspx">Mavericks</a>
 </p>
 
-<h2>News</h2>
+<h5>News</h5>
 <p>
 <a href="https://www.foxsports.com/">Fox</a>
 <a href="https://www.nbcsports.com/">NBC</a>
@@ -98,9 +114,6 @@ December
 <p>
 <a href="https://www.espn.com/soccer/">ESPN Soccer</a>
 <a href="https://www.goal.com/en-us">Goal</a>
-</p>
-	
-<p>
 <a href="https://www.collegehockeynews.com/">CHN</a>
 <a href="https://collegehockeyinc.com/articles.php">College Hockey Inc</a>
 <a href="https://www.uscho.com/">USCHO</a>
@@ -118,49 +131,24 @@ December
 <a href="https://www.cbssports.com/watch/live?ftag=SHQ-03-10aaa2a">CBS Sports</a>
 </p>
 
+<p>
+<a href="https://www.sportslogos.net/">Sports Logos</a>
+<a href="https://www.icethetics.com/">Icethetics</a>
+<a href="https://uni-watch.com/">Uni Watch</a>
+</p>
+
 <!--sports-->
-<h2>Football</h2>
-<p>
-<a href="https://www.nfl.com/">NFL</a>
-<a href="https://www.nfl.com/scores/">Scores</a>
-<a href="https://www.nfl.com/standings/">Standings</a>
-<a href="https://www.nfl.com/stats/player-stats/">Stats</a>
-<a href="https://www.fantasypros.com/nfl/depth-charts.php">Depth Charts</a>
-<a href="https://en.m.wikipedia.org/wiki/2023_NFL_season">Wiki</a>
-<a href="https://www.pro-football-reference.com">Reference</a>
-</p>
-<p>
-<a href="https://www.footballdb.com/index.html">The Football Database</a>
-</p>
-<p>
-<a href="https://www.ncaa.com/sports/football/fbs">College</a>
-<a href="https://www.cbssports.com/college-football/scoreboard/top25/">Scores</a>
-<a href="https://www.sports-reference.com/cfb/">Reference</a>
-</p>
-
-<h2>Hockey</h2>
-<p>
-<a href="https://www.nhl.com/">NHL</a>
-<a href="https://www.nhl.com/scores">Scores</a>
-<a href="https://www.nhl.com/standings/2022/wildcard">Standings</a>
-<a href="https://www.nhl.com/stats/">Stats</a>
-<a href="https://en.m.wikipedia.org/wiki/2023%E2%80%9324_NHL_season">Wiki</a>
-<a href="https://www.hockey-reference.com/">Reference</a>
-</p>
-<p>
-<a href="https://www.ncaa.com/sports/icehockey-men/d1">College/a>
-<a href="https://www.ncaa.com/scoreboard/icehockey-men/d1">Scores</a>
-<a href="https://www.ncaa.com/rankings/icehockey-men/d1/uschocom">Rankings</a>
-<a href="https://www.ncaa.com/stats/icehockey-men/d1">Stats</a>
-</p>
-
-<h2>Basketball</h2>
+<h5>Basketball</h5>
 <p>
 <a href="https://www.nba.com/">NBA</a>
+<a href="https://gleague.nba.com/">G League</a>
+<a href="https://www.wnba.com/">WNBA</a>
+</p>
+<p>
 <a href="https://www.nba.com/schedule">Scores</a>
 <a href="https://www.nba.com/standings">Standings</a>
 <a href="https://www.nba.com/stats">Stats</a>
-<a href="https://www.basketball-reference.com/">Basketball</a>
+<a href="https://www.basketball-reference.com/">Reference</a>
 <a href="https://en.m.wikipedia.org/wiki/2023%E2%80%9324_NBA_season">Wiki</a>
 </p>
 <p>
@@ -171,7 +159,50 @@ December
 <a href="https://www.sports-reference.com/cbb/">College Basketball</a>
 </p>
 
-<h2>Racing</h2>
+<h5>Football</h5>
+<p>
+<a href="https://www.nfl.com/">NFL</a>
+<a href="https://www.nfl.com/scores/">Scores</a>
+<a href="https://www.nfl.com/standings/">Standings</a>
+<a href="https://www.nfl.com/stats/player-stats/">Stats</a>
+<a href="https://www.fantasypros.com/nfl/depth-charts.php">Depth Charts</a>
+</p>
+<p>
+<a href="https://en.m.wikipedia.org/wiki/2023_NFL_season">Wiki</a>
+<a href="https://www.pro-football-reference.com">Reference</a>
+<a href="https://www.footballdb.com/index.html">The Football Database</a>
+</p>
+<p>
+<a href="https://www.ncaa.com/sports/football/fbs">College</a>
+<a href="https://www.cbssports.com/college-football/scoreboard/top25/">Scores</a>
+<a href="https://www.sports-reference.com/cfb/">Reference</a>
+</p>
+
+<h5>Hockey</h5>
+<p>
+<a href="https://www.nhl.com/">NHL</a>
+<a href="https://www.nhl.com/scores">Scores</a>
+<a href="https://www.nhl.com/standings/2022/wildcard">Standings</a>
+<a href="https://www.nhl.com/stats/">Stats</a>
+<a href="https://en.m.wikipedia.org/wiki/2023%E2%80%9324_NHL_season">Wiki</a>
+<a href="https://www.hockey-reference.com/">Reference</a>
+</p>
+<p>
+<a href="https://chl.ca/lhjmq/en/">QMJHL</a>
+<a href="https://chl.ca/whl/">WHL</a>
+<a href="https://chl.ca/ohl/">OHL</a>
+<a href="https://theahl.com/">AHL</a>
+<a href="https://echl.com/">ECHL</a>
+<a href="https://www.iihf.com/en/events/2024/wm20">World Juniors</a>	
+</p>
+<p>
+<a href="https://www.ncaa.com/sports/icehockey-men/d1">College</a>
+<a href="https://www.ncaa.com/scoreboard/icehockey-men/d1">Scores</a>
+<a href="https://www.ncaa.com/rankings/icehockey-men/d1/uschocom">Rankings</a>
+<a href="https://www.ncaa.com/stats/icehockey-men/d1">Stats</a>
+</p>
+
+<h5>Racing</h5>
 <p>
 <a href="https://www.formula1.com/">F1</a>
 <a href="https://www.formula1.com/en/racing/2023.html">Schedule</a>
@@ -181,6 +212,7 @@ December
 </p>
 <p>
 <a href="https://www.indycar.com/">Indycar</a>
+<a href="https://www.fiaformulae.com/en">Formua E</a>
 </p>
 <p>
 <a href="https://www.nascar.com/">NASCAR</a>
@@ -196,7 +228,7 @@ December
 <a href="https://racer.com/category/f1/">Racer</a>
 </p>
 
-<h2>Baseball</h2>
+<h5>Baseball</h5>
 <p>
 <p>Teams:30 Games:162</p>
 <a href="https://www.mlb.com/">MLB</a>
@@ -206,7 +238,6 @@ December
 <a href="https://www.mlb.com/prospects">Prospects</a>
 <a href="https://www.baseball-reference.com/">Reference</a>
 </p>
-
 <p>
 <a href="https://www.ncaa.com/sports/baseball/d1">Baseball</a>
 <a href="https://www.ncaa.com/scoreboard/baseball/d1">Scores</a>
@@ -214,12 +245,18 @@ December
 <a href="https://www.ncaa.com/stats/baseball/d1">Stats</a>
 </p>
 
-<h2>Soccer</h2>
+<h5>Soccer</h5>
 <p>
 <a href="https://www.premierleague.com/">Premier League</a>
 <a href="https://www.premierleague.com/results">Scores</a>
 <a href="https://www.premierleague.com/tables">Standings</a>
 <a href="https://www.premierleague.com/stats">Stats</a>
+</p>
+<p>
+<a href="https://www.bundesliga.com/en/bundesliga">Bundesliga</a>
+<a href="https://www.laliga.com/en-GB">La Liga</a>
+<a href="https://www.ligue1.com/">Ligue 1</a>
+<a href="https://www.legaseriea.it/en">Serie A</a>
 </p>
 <p>
 <a href="https://www.mlssoccer.com/">MLS</a>
@@ -229,23 +266,28 @@ December
 <a href="https://en.m.wikipedia.org/wiki/2023_Major_League_Soccer_season">Wiki</a>
 </p>
 
-<h2>MMA</h2>
+<h5>MMA</h5>
 <p>
 <a href="https://www.ufc.com/">UFC</a>
 <a href="https://www.pflmma.com/">PFL</a>
 </p>
-<!--
-<h2>Golf</h2>
-<h2>Tennis</h2>
+
+<h5>Golf</h5>
+<p>
+<a hrer="https://www.pgatour.com/">PGA</a>
+</p>
+
 <h2>Wrestling</h2>
+<p>
+<a href="https://www.wwe.com/">WWE</a>
+</p>
+
+<!--
+<h2>Tennis</h2>
+
 <h2>Boxing</h2>
 <h2>Olympics</h2>
 -->
-<p>
-<a href="https://www.sportslogos.net/">Sports Logos</a>
-<a href="https://www.icethetics.com/">Icethetics</a>
-<a href="https://uni-watch.com/">Uni Watch</a>
-</p>
 <pre id="2024">
 2024
 January
@@ -284,5 +326,16 @@ July
 August
 31: WWE Bash In Berlin
 </pre>
+
+<footer>
+Sports. 2023. 
+</footer>
+<script>
+/*! FeedEk jQuery RSS/ATOM Feed Plugin v3.1.1
+* https://jquery-plugins.net/FeedEk/FeedEk.html  https://github.com/enginkizil/FeedEk
+* Author : Engin KIZIL */
+!function (r) { r.fn.FeedEk = function (t) { var a, i = r.extend({ MaxCount: 5, ShowDesc: !0, ShowPubDate: !0, DescCharacterLimit: 0, TitleLinkTarget: "_blank", DateFormat: "", DateFormatLang: "en" }, t), e = r(this).attr("id"), n = ""; r("#" + e).empty(), null != i.FeedUrl && (r("#" + e).append('<img src="loader.gif" />'), r.ajax({ url: "https://feed.jquery-plugins.net/load?url=" + encodeURIComponent(i.FeedUrl) + "&maxCount=" + i.MaxCount + "&dateCulture=" + i.DateFormatLang + "&dateFormat=" + i.DateFormat, dataType: "json", success: function (t) { r("#" + e).empty(), null != t.data && (r.each(t.data, function (t, e) { n += '<li><div class="itemTitle"><a href="' + e.link + '" target="' + i.TitleLinkTarget + '" >' + e.title + "</a></div>", i.ShowPubDate && (a = new Date(e.publishDate), n += '<div class="itemDate">', 0 < r.trim(i.DateFormat).length ? n += e.publishDateFormatted : n += a.toLocaleDateString(), n += "</div>"), i.ShowDesc && (n += '<div class="itemContent">', 0 < i.DescCharacterLimit && e.description.length > i.DescCharacterLimit ? n += e.description.substring(0, i.DescCharacterLimit) + "..." : n += e.description, n += "</div>") }), r("#" + e).append('<ul class="feedEkList">' + n + "</ul>")) } })) } }(jQuery);
+
+</script>
 </body>
 </html>
