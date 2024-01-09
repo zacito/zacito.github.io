@@ -1,3 +1,15 @@
+<!--
+baseball:mlb,ncaa
+basketball:nba,g-league,ncaa,wnba
+boxing
+football:nfl,ncaa
+golf:pga
+hockey:nhl,ahl,echl,qmjhl,whl,ohl
+mma:ufc,pfl
+racing:f1,nascar,indycar
+tennis:atp,wta
+wrestling:wwe
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +19,9 @@
 <style type="text/css">
 a{color:darkblue;text-decoration:none;margin:0px 10px 0px 0px;}
 body{font-family:arial;font-size:15px;line-height:1.2;margin:0px;padding:11px;}
-div{border:1px solid lightgray;display:flex;}
-div a{padding:5px;width:100%;}
+div{display:flex;}
+div a{border:1px solid lightgray;padding:5px;width:100%;}
+div a:hover{background:gold;}
 footer{color:gray;font-size:13px;margin:30px 0px;text-align:center;}
 h1{font-size:27px;margin:0px;padding:0px;}
 h2{font-size:25px;margin:0px;padding:0px;}
@@ -24,40 +37,18 @@ ul{margin:0 0 0 20px;padding:0;}
 <script type="text/javascript" src="js/FeedEk.min.js"></script>
 </head>
 <body>
-<!--
-<div class="box">
-<div></div>
-</div>
--->
+
 <h1>Sports</h1>
 <div>1823</div>
+
+<!--rss-->
 <!--
-<hr>
-<h2>Calendar</h2>
-<pre>
-2023
-November
-December
-09: WWE NXT Deadline
-26: World Juniors Begins
-</pre>
-<a href="#2024">2024</a>
--->
-<hr>
-<!--scores-->
 <div id="divRss3"></div>
+-->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/FeedEk.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-			$('#divRss3').FeedEk({
-				FeedUrl: 'https://sports.yahoo.com/general/news/rss/', MaxCount: 10, ShowDesc: false, ShowPubDate:false
-			});
-    });
-</script>
-
-<hr>
+<div>
+<a href="https://www.espn.com/nfl/story/_/id/39229238/nfl-playoff-schedule-2024-afc-nfc-tv-dates-locations">NFL Playoffs</a>
+</div>
 <div>
 <a href="https://www.espn.com/college-football/">NCAAF</a>
 <a href="https://www.espn.com/nfl/">NFL</a>
@@ -112,15 +103,15 @@ December
 </div>
 	
 <div>
-<a href="https://www.espn.com/soccer/">ESPN Soccer</a>
+<a href="https://www.espn.com/soccer/">ESPNFC</a>
 <a href="https://www.goal.com/en-us">Goal</a>
 <a href="https://www.collegehockeynews.com/">CHN</a>
-<a href="https://collegehockeyinc.com/articles.php">College Hockey Inc</a>
+<a href="https://collegehockeyinc.com/articles.php">CHI</a>
 <a href="https://www.uscho.com/">USCHO</a>
 </div>
 	
 <div>
-<a href="https://bleacherreport.com/">Bleacher Report</a>
+<a href="https://bleacherreport.com/">B/R</a>
 <a href="https://deadspin.com/">Deadspin</a>
 <a href="https://www.sbnation.com/">SB Nation</a>
 </div>
@@ -141,30 +132,33 @@ December
 <h5>Basketball</h5>
 <div>
 <a href="https://www.espn.com/nba/">NBA</a>
-<a href="https://www.espn.com/nba-g-league/">G League</a>
-<a href="https://www.espn.com/wnba/">WNBA</a>
-</div>
-<div>
 <a href="https://www.espn.com/nba/scoreboard">Scores</a>
 <a href="https://www.espn.com/nba/standings">Standings</a>
-<a href="https://www.nba.com/stats">Stats</a>
+<a href="https://www.espn.com/nba/stats">Stats</a>
+</div>
+<div>
 <a href="https://www.basketball-reference.com/">Reference</a>
 <a href="https://en.m.wikipedia.org/wiki/2023%E2%80%9324_NBA_season">Wiki</a>
 </div>
 <div>
-<a href="https://www.ncaa.com/sports/basketball-men/d1">College</a>
-<a href="https://www.ncaa.com/scoreboard/basketball-men/d1">Scores</a>
-<a href="https://www.ncaa.com/standings/basketball-men/d1">Standings</a>
-<a href="https://www.ncaa.com/stats/basketball-men/d1">Stats</a>
-<a href="https://www.sports-reference.com/cbb/">College Basketball</a>
+<a href="https://www.espn.com/nba-g-league/">G League</a>
+<a href="https://www.espn.com/wnba/">WNBA</a>
+</div>
+<div>
+<a href="https://www.espn.com/mens-college-basketball/">College</a>
+<a href="https://www.espn.com/mens-college-basketball/scoreboard">Scores</a>
+<a href="https://www.espn.com/mens-college-basketball/standings">Standings</a>
+<a href="https://www.espn.com/mens-college-basketball/stats">Stats</a>
+<a href="https://www.espn.com/mens-college-basketball/rankings">Rankings</a>
+<a href="https://www.sports-reference.com/cbb/">Referecnce</a>
 </div>
 
 <h5>Football</h5>
 <div>
-<a href="https://www.nfl.com/">NFL</a>
-<a href="https://www.nfl.com/scores/">Scores</a>
-<a href="https://www.nfl.com/standings/">Standings</a>
-<a href="https://www.nfl.com/stats/player-stats/">Stats</a>
+<a href="https://www.espn.com/nfl/">NFL</a>
+<a href="https://www.espn.com/nfl/scoreboard">Scores</a>
+<a href="https://www.espn.com/nfl/standings">Standings</a>
+<a href="https://www.espn.com/nfl/stats">Stats</a>
 <a href="https://www.fantasypros.com/nfl/depth-charts.php">Depth Charts</a>
 </div>
 <div>
@@ -174,16 +168,20 @@ December
 </div>
 <div>
 <a href="https://www.ncaa.com/sports/football/fbs">College</a>
-<a href="https://www.cbssports.com/college-football/scoreboard/top25/">Scores</a>
+<a href="https://www.espn.com/college-football/story/_/page/cfpbowls2023/college-football-bowl-schedule-2023-2024-dates-matchups-every-game">Bowl Games</a>
+<a href="https://www.espn.com/college-football/scoreboard">Scores</a>
+<a href="https://www.espn.com/college-football/standings">Standings</a>
+<a href="https://www.espn.com/college-football/stats">Stats</a>
+<a href="https://www.espn.com/college-football/rankings">Rankings</a>
 <a href="https://www.sports-reference.com/cfb/">Reference</a>
 </div>
 
 <h5>Hockey</h5>
 <div>
-<a href="https://www.nhl.com/">NHL</a>
-<a href="https://www.nhl.com/scores">Scores</a>
-<a href="https://www.nhl.com/standings/2022/wildcard">Standings</a>
-<a href="https://www.nhl.com/stats/">Stats</a>
+<a href="https://www.espn.com/nhl/">NHL</a>
+<a href="https://www.espn.com/nhl/scoreboard">Scores</a>
+<a href="https://www.espn.com/nhl/standings">Standings</a>
+<a href="https://www.espn.com/nhl/stats">Stats</a>
 <a href="https://en.m.wikipedia.org/wiki/2023%E2%80%9324_NHL_season">Wiki</a>
 <a href="https://www.hockey-reference.com/">Reference</a>
 </div>
@@ -231,10 +229,10 @@ December
 <h5>Baseball</h5>
 <div>
 <div>Teams:30 Games:162</div>
-<a href="https://www.mlb.com/">MLB</a>
-<a href="https://www.mlb.com/scores">Scores</a>
-<a href="https://www.mlb.com/standings/spring-training">Standings</a>
-<a href="https://www.mlb.com/stats/">Stats</a>
+<a href="https://www.espn.com/mlb/">MLB</a>
+<a href="https://www.espn.com/mlb/scoreboard">Scores</a>
+<a href="https://www.espn.com/mlb/standings">Standings</a>
+<a href="https://www.espn.com/mlb/stats">Stats</a>
 <a href="https://www.mlb.com/prospects">Prospects</a>
 <a href="https://www.baseball-reference.com/">Reference</a>
 </div>
@@ -246,6 +244,7 @@ December
 </div>
 
 <h5>Soccer</h5>
+
 <div>
 <a href="https://www.premierleague.com/">Premier League</a>
 <a href="https://www.premierleague.com/results">Scores</a>
@@ -303,6 +302,7 @@ December
 <a href="https://en.wikipedia.org/wiki/Olympic_Games">Wiki</a>
 </div>
 
+<!--Calendar
 <pre id="2024">
 2024
 January
@@ -341,10 +341,12 @@ July
 August
 31: WWE Bash In Berlin
 </pre>
+-->
 
 <footer>
 Sports. 2023. 
 </footer>
+
 <script>
 /*! FeedEk jQuery RSS/ATOM Feed Plugin v3.1.1
 * https://jquery-plugins.net/FeedEk/FeedEk.html  https://github.com/enginkizil/FeedEk
@@ -352,5 +354,15 @@ Sports. 2023.
 !function (r) { r.fn.FeedEk = function (t) { var a, i = r.extend({ MaxCount: 5, ShowDesc: !0, ShowPubDate: !0, DescCharacterLimit: 0, TitleLinkTarget: "_blank", DateFormat: "", DateFormatLang: "en" }, t), e = r(this).attr("id"), n = ""; r("#" + e).empty(), null != i.FeedUrl && (r("#" + e).append('<img src="loader.gif" />'), r.ajax({ url: "https://feed.jquery-plugins.net/load?url=" + encodeURIComponent(i.FeedUrl) + "&maxCount=" + i.MaxCount + "&dateCulture=" + i.DateFormatLang + "&dateFormat=" + i.DateFormat, dataType: "json", success: function (t) { r("#" + e).empty(), null != t.data && (r.each(t.data, function (t, e) { n += '<li><div class="itemTitle"><a href="' + e.link + '" target="' + i.TitleLinkTarget + '" >' + e.title + "</a></div>", i.ShowPubDate && (a = new Date(e.publishDate), n += '<div class="itemDate">', 0 < r.trim(i.DateFormat).length ? n += e.publishDateFormatted : n += a.toLocaleDateString(), n += "</div>"), i.ShowDesc && (n += '<div class="itemContent">', 0 < i.DescCharacterLimit && e.description.length > i.DescCharacterLimit ? n += e.description.substring(0, i.DescCharacterLimit) + "..." : n += e.description, n += "</div>") }), r("#" + e).append('<ul class="feedEkList">' + n + "</ul>")) } })) } }(jQuery);
 
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/FeedEk.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+			$('#divRss3').FeedEk({
+				FeedUrl: 'https://sports.yahoo.com/general/news/rss/', MaxCount: 10, ShowDesc: false, ShowPubDate:false
+			});
+    });
+</script>
+
 </body>
 </html>
