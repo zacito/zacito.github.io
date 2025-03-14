@@ -1,4 +1,4 @@
-/* grvl 1 */
+/* grvl 2 20250313*/
 /*
 https://unicode-table.com/en/#003E
 https://materialui.co/colors/
@@ -18,4 +18,7 @@ h5{font-size: 17px;margin: 5px 0 0 8px;}
 header{}
 nav{}
 p{}
-.linkpage{}
+.linkboxes a{background:#171717;color:white;display:block;margin:2px;padding:5px;text-decoration:none;width:100%;}
+.linkboxes{background:black;font-family:sans-serif;line-height:2;margin:11px;padding:0;}
+.linkboxes div{display:flex;}
+.linkboxes p{color:white;margin:2px;}
