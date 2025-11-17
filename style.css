@@ -1,7 +1,186 @@
-a{color:white;outline:0;text-decoration:none;}
-body{background:black;color:white;font-family:sans-serif;font-size:15px;margin:11px;}
-div{display:flex;}
-div a{padding:10px;}
-nav a{border-bottom:1px solid gray;display:block;padding:15px;}
-p{color:white;}
-pre{color:white;}
+/* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Uses the font linked in the HTML */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f9;
+}
+
+/* Reusable Container for Width Control */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Header & Navigation */
+header {
+    background: #1e3a8a; /* Dark Blue - Professional */
+    color: #ffffff;
+    padding: 1em 0;
+    border-bottom: 5px solid #f97316; /* Orange Accent */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1.logo {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    padding: 0 15px;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #f97316;
+}
+
+/* Hero Section */
+.hero-section {
+    background: #ffffff;
+    text-align: center;
+    padding: 80px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.hero-section h2 {
+    font-size: 2.5em;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    background: #f97316;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: #c2410c;
+}
+
+/* Services Section */
+.services-section {
+    padding: 60px 0;
+    text-align: center;
+    background: #e0f2fe; /* Light Blue background */
+}
+
+.services-section h3 {
+    color: #1e3a8a;
+    margin-bottom: 40px;
+}
+
+.service-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.service-grid article {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 280px;
+}
+
+.service-grid h4 {
+    color: #f97316;
+    margin-bottom: 10px;
+}
+
+/* About & Contact Sections */
+.about-section, .contact-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.contact-section {
+    background: #ffffff;
+}
+
+.about-section h3, .contact-section h3 {
+    color: #1e3a8a;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.contact-section form {
+    max-width: 500px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-section input, .contact-section textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Footer */
+footer {
+    background: #1e3a8a;
+    color: #ccc;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #f97316;
+    text-decoration: none;
+}
+
+/* Basic Media Query for better mobile display */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    header nav ul {
+        margin-top: 10px;
+    }
+    .service-grid article {
+        min-width: 100%;
+    }
+}
