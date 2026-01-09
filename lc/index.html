@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspiration Colectiva | Custom Stickers, Magnets & Temporary Tattoos</title>
+    <meta name="description" content="Get high-quality custom stickers, magnets, and temporary tattoos from Inspiration Colectiva. Perfect for branding, events, and personal expression.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+    :root {
+    --primary: #2d3436;
+    --accent: #6c5ce7;
+    --light: #f9f9f9;
+}
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    color: var(--primary);
+    line-height: 1.6;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo { font-weight: bold; font-size: 1.5rem; color: var(--accent); }
+
+nav ul { list-style: none; display: flex; gap: 20px; }
+
+nav a { text-decoration: none; color: var(--primary); font-weight: 500; }
+
+.hero {
+    text-align: center;
+    padding: 100px 10%;
+    background: var(--light);
+}
+
+.hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+
+.hero-btn {
+    background: var(--accent);
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 50px 10%;
+}
+
+.card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Inspiration Colectiva</div>
+            <ul>
+                <li><a href="#stickers">Stickers</a></li>
+                <li><a href="#magnets">Magnets</a></li>
+                <li><a href="#tattoos">Tattoos</a></li>
+                <li><a href="#contact" class="cta-button">Order Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Turn Your Ideas into Physical Art.</h1>
+            <p>Custom stickers, magnets, and temporary tattoos crafted for creators and brands.</p>
+            <a href="#contact" class="hero-btn">Start Your Project</a>
+        </section>
+
+        <section id="services" class="features">
+            <div class="card">
+                <h3>Custom Stickers</h3>
+                <p>Vinyl, die-cut, and weather-resistant stickers that last.</p>
+            </div>
+            <div class="card">
+                <h3>Durable Magnets</h3>
+                <p>Perfect for vehicles, fridges, and promotional giveaways.</p>
+            </div>
+            <div class="card">
+                <h3>Temporary Tattoos</h3>
+                <p>Safe, vibrant, and fun for events or brand launches.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Inspiration Colectiva. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
