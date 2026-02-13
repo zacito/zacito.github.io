@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZD9DR8ZX5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LZD9DR8ZX5');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kato Eats | Mankato Restaurant Guide</title>
+    <style>
+        /* Minimalist "Kato Eats" Aesthetic */
+        body { 
+            background: #000; 
+            color: #fff; 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+        .container { 
+            width: 100%; 
+            max-width: 600px; 
+            border-left: 1px solid #fff; 
+            border-right: 1px solid #fff; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+        }
+
+        .header { 
+            text-align: center; 
+            padding: 60px 20px; 
+            border-bottom: 2px solid #fff; 
+            font-size: 28px; 
+            font-weight: bold;
+            letter-spacing: 4px; 
+            text-transform: uppercase; 
+        }
+
+        .menu-item { 
+            padding: 25px 20px; 
+            border-bottom: 1px solid #fff; 
+            font-size: 20px; 
+            cursor: pointer; 
+            transition: all 0.2s;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-item:hover { 
+            background: #1a1a1a; 
+        }
+
+        .details-content { 
+            padding: 40px 30px; 
+            font-size: 18px; 
+            line-height: 1.6; 
+            flex-grow: 1;
+        }
+
+        .details-content h2 {
+            font-size: 32px;
+            margin-top: 0;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+        }
+
+        .info-label {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .info-value {
+            margin-bottom: 25px;
+            word-wrap: break-word;
+        }
+
+        .info-value a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .nav-footer {
+            margin-top: auto;
+        }
+
+        .back-btn {
+            color: #888 !important;
+            border-top: 1px solid #fff;
+        }
+
+        .hidden { display: none; }
+
+        /* Mobile specific tweaks */
+        @media (max-width: 600px) {
+            .container { border: none; }
+            .header { padding: 40px 10px; font-size: 22px; }
+            .menu-item { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header" id="header-title">WHERE TO EAT?</div>
+    
+    <div id="screen-categories">
+        <div class="menu-item" onclick="showRestaurants('Restaurants')">Restaurants <span>→</span></div>
+        <div class="menu-item" onclick="showRestaurants('Fast Food')">Fast Food <span>→</span></div>
+        <div class="menu-item" onclick="showRestaurants('Drive Thru')">Drive Thru <span>→</span></div>
+        <div class="menu-item" onclick="showRestaurants('Buffets')">Buffets <span>→</span></div>
+    </div>
+
+    <div id="screen-list" class="hidden">
+        <div id="list-content"></div>
+        <div class="nav-footer">
+            <div class="menu-item back-btn" onclick="toggleScreen('screen-categories')">← BACK TO CATEGORIES</div>
+        </div>
+    </div>
+
+    <div id="screen-details" class="hidden">
+        <div id="detail-content" class="details-content"></div>
+        <div class="nav-footer">
+            <div class="menu-item back-btn" id="btn-back-to-list">← BACK TO LIST</div>
+            <div class="menu-item back-btn" onclick="toggleScreen('screen-categories')" style="border-top: none;">⌂ HOME</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const restaurantData = [
+        { name: "Nolabelle Kitchen + Bar", category: "Restaurants", address: "520 S Front St #500, Mankato", website: "nolabellekitchen.com", phone: "507-720-0841" },
+        { name: "Swiss and Madison", category: "Restaurants", address: "920 Madison Ave, Mankato", website: "swissandmadison.com", phone: "507-222-2222" },
+        { name: "Pub 500", category: "Restaurants", address: "500 S Front St, Mankato", website: "pub500.com", phone: "507-625-6500" },
+        { name: "Boulder Tap House", category: "Restaurants", address: "291 St Andrews Dr, Mankato", website: "bouldertaphouse.com", phone: "507-344-1643" },
+        { name: "Olde Brick House", category: "Restaurants", address: "1521 Tullamore St, Mankato", website: "oldebrickhousepub.com", phone: "507-385-3466" },
+        { name: "Pappageorge", category: "Restaurants", address: "1028 N Riverfront Dr, Mankato", website: "pappageorge.net", phone: "507-387-8974" },
+        { name: "Olive Garden", category: "Restaurants", address: "1880 Adams St, Mankato", website: "olivegarden.com", phone: "507-345-7585" },
+        { name: "India Palace", category: "Restaurants", address: "1511 Madison Ave, Mankato", website: "indiapalacemankato.com", phone: "507-344-1424" },
+        { name: "Five Guys", category: "Fast Food", address: "1920 Adams St, Mankato", website: "fiveguys.com", phone: "507-769-0827" },
+        { name: "Noodles & Company", category: "Fast Food", address: "1600 Warren St, Mankato", website: "noodles.com", phone: "507-299-1882" },
+        { name: "Slim Chickens", category: "Fast Food", address: "1700 Madison Ave, Mankato", website: "slimchickens.com", phone: "507-720-0585" },
+        { name: "Jersey Mike's Subs", category: "Fast Food", address: "1924 Adams St, Mankato", website: "jerseymikes.com", phone: "507-779-7000" },
+        { name: "Culver's", category: "Drive Thru", address: "1856 Madison Ave, Mankato", website: "culvers.com", phone: "507-344-1554" },
+        { name: "Taco Bell", category: "Drive Thru", address: "145 St Andrews Dr, Mankato", website: "tacobell.com", phone: "507-225-0316" },
+        { name: "McDonald's", category: "Drive Thru", address: "1411 Madison Ave, Mankato", website: "mcdonalds.com", phone: "507-388-1545" },
+        { name: "Popeyes", category: "Drive Thru", address: "1811 Premier Dr, Mankato", website: "popeyes.com", phone: "507-720-6582" },
+        { name: "China Buffet", category: "Buffets", address: "1770 E Madison Ave, Mankato", website: "chinabuffetmankato.com", phone: "507-385-0858" },
+        { name: "Panda Buffet", category: "Buffets", address: "1850 Adams St, Mankato", website: "riverhillsmall.com", phone: "507-594-9055" },
+        { name: "Pizza Ranch", category: "Buffets", address: "1551 Tullamore St, Mankato", website: "pizzaranch.com", phone: "507-386-7077" }
+    ];
+
+    let currentCategory = "";
+
+    function showRestaurants(category) {
+        currentCategory = category;
+        document.getElementById('header-title').innerText = category;
+        const listContent = document.getElementById('list-content');
+        listContent.innerHTML = ''; 
+        
+        const filtered = restaurantData.filter(r => r.category === category);
+        
+        filtered.forEach(res => {
+            const div = document.createElement('div');
+            div.className = 'menu-item';
+            div.innerHTML = `${res.name} <span>→</span>`;
+            div.onclick = () => showInfo(res);
+            listContent.appendChild(div);
+        });
+
+        toggleScreen('screen-list');
+    }
+
+    function showInfo(res) {
+        document.getElementById('header-title').innerText = "INFO";
+        const detailContent = document.getElementById('detail-content');
+        
+        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(res.name + ' ' + res.address)}`;
+
+        detailContent.innerHTML = `
+            <h2>${res.name}</h2>
+            <span class="info-label">ADDRESS</span>
+            <div class="info-value">${res.address}</div>
+            
+            <span class="info-label">WEBSITE</span>
+            <div class="info-value"><a href="https://${res.website}" target="_blank">${res.website}</a></div>
+            
+            <span class="info-label">PHONE</span>
+            <div class="info-value">${res.phone}</div>
+
+            <div style="margin-top: 40px;">
+                <a href="${mapUrl}" target="_blank" style="display: block; text-align: center; border: 1px solid white; padding: 15px; color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 2px;">Open in Maps</a>
+            </div>
+        `;
+        
+        document.getElementById('btn-back-to-list').onclick = () => showRestaurants(currentCategory);
+        toggleScreen('screen-details');
+    }
+
+    function toggleScreen(screenId) {
+        if (screenId === 'screen-categories') {
+            document.getElementById('header-title').innerText = "WHERE TO EAT?";
+        }
+        document.getElementById('screen-categories').classList.add('hidden');
+        document.getElementById('screen-list').classList.add('hidden');
+        document.getElementById('screen-details').classList.add('hidden');
+        document.getElementById(screenId).classList.remove('hidden');
+        window.scrollTo(0, 0);
+    }
+</script>
+
+</body>
+</html>
+
