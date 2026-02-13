@@ -11,8 +11,9 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kato Eats | Mankato Restaurant Guide</title>
+    <title>Kato Life | Where should we eat?</title>
     <style>
+        /* Minimalist "Kato Life" Aesthetic */
         body { 
             background: #000; 
             color: #fff; 
@@ -35,24 +36,36 @@
 
         .header { 
             text-align: center; 
-            padding: 60px 20px; 
+            padding: 50px 20px 30px 20px; 
             border-bottom: 2px solid #fff; 
-            font-size: 28px; 
-            font-weight: bold;
-            letter-spacing: 4px; 
-            text-transform: uppercase; 
+        }
+
+        .brand-name {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .catchphrase {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #888;
         }
 
         .menu-item { 
             padding: 25px 20px; 
             border-bottom: 1px solid #fff; 
-            font-size: 20px; 
+            font-size: 19px; 
             cursor: pointer; 
             transition: all 0.2s;
             text-transform: uppercase;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            letter-spacing: 1px;
         }
 
         .menu-item:hover { background: #1a1a1a; }
@@ -69,29 +82,43 @@
             margin-top: 0;
             border-bottom: 1px solid #444;
             padding-bottom: 10px;
+            text-transform: uppercase;
         }
 
-        .info-label { color: #888; font-size: 14px; margin-bottom: 5px; display: block; }
+        .info-label { color: #888; font-size: 13px; margin-bottom: 5px; display: block; letter-spacing: 1px; }
         .info-value { margin-bottom: 25px; word-wrap: break-word; }
         .info-value a { color: #fff; text-decoration: underline; }
 
         .nav-footer { margin-top: auto; }
         .back-btn { color: #888 !important; border-top: 1px solid #fff; }
-        .random-accent { color: #00ff00; } /* Subtle green for the random option */
+        .random-accent { color: #00ff00; font-weight: bold; }
+
+        .footer-legal {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 10px;
+            color: #444;
+            letter-spacing: 1px;
+            line-height: 1.8;
+            border-top: 1px solid #111;
+        }
 
         .hidden { display: none; }
 
         @media (max-width: 600px) {
             .container { border: none; }
-            .header { padding: 40px 10px; font-size: 22px; }
-            .menu-item { font-size: 18px; }
+            .brand-name { font-size: 28px; }
+            .menu-item { font-size: 17px; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header" id="header-title">WHERE TO EAT?</div>
+    <div class="header">
+        <div class="brand-name">Kato Life</div>
+        <div class="catchphrase" id="sub-header">Where should we eat?</div>
+    </div>
     
     <div id="screen-categories">
         <div class="menu-item random-accent" onclick="showRandom()">🎲 Surprise Me! <span>→</span></div>
@@ -104,7 +131,7 @@
     <div id="screen-list" class="hidden">
         <div id="list-content"></div>
         <div class="nav-footer">
-            <div class="menu-item back-btn" onclick="toggleScreen('screen-categories')">← BACK TO CATEGORIES</div>
+            <div class="menu-item back-btn" onclick="toggleScreen('screen-categories')">← BACK TO HOME</div>
         </div>
     </div>
 
@@ -116,9 +143,24 @@
             <div class="menu-item back-btn" onclick="toggleScreen('screen-categories')" style="border-top: none;">⌂ HOME</div>
         </div>
     </div>
+
+    <div class="footer-legal">
+        LAST UPDATED: <span id="update-timestamp">LOADING...</span><br>
+        &copy; 2026 KATO LIFE. ALL RIGHTS RESERVED.<br>
+        UNAUTHORIZED COPYING OR REBRANDING IS PROHIBITED.
+    </div>
 </div>
 
 <script>
+    // Timestamp Logic - Automatically sets to the last time the file was loaded/saved
+    document.getElementById('update-timestamp').innerText = new Date().toLocaleString('en-US', { 
+        month: 'long', 
+        day: 'numeric', 
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit'
+    });
+
     const restaurantData = [
         { name: "Nolabelle Kitchen + Bar", category: "Restaurants", address: "520 S Front St #500, Mankato", website: "nolabellekitchen.com", phone: "507-720-0841" },
         { name: "Swiss and Madison", category: "Restaurants", address: "920 Madison Ave, Mankato", website: "swissandmadison.com", phone: "507-222-2222" },
@@ -154,7 +196,7 @@
     function showRestaurants(category) {
         isRandomMode = false;
         currentCategory = category;
-        document.getElementById('header-title').innerText = category;
+        document.getElementById('sub-header').innerText = category;
         const listContent = document.getElementById('list-content');
         listContent.innerHTML = ''; 
         
@@ -172,7 +214,7 @@
     }
 
     function showInfo(res) {
-        document.getElementById('header-title').innerText = "INFO";
+        document.getElementById('sub-header').innerText = "Restaurant Info";
         const detailContent = document.getElementById('detail-content');
         
         detailContent.innerHTML = `
@@ -190,7 +232,6 @@
             <div class="info-value">${res.phone}</div>
         `;
         
-        // Logical UI: If we came from a category, show "Back to List". If we came from Random, hide it.
         const backToListBtn = document.getElementById('btn-back-to-list');
         const tryAgainBtn = document.getElementById('btn-try-again');
 
@@ -208,7 +249,7 @@
 
     function toggleScreen(screenId) {
         if (screenId === 'screen-categories') {
-            document.getElementById('header-title').innerText = "WHERE TO EAT?";
+            document.getElementById('sub-header').innerText = "Where should we eat?";
         }
         document.getElementById('screen-categories').classList.add('hidden');
         document.getElementById('screen-list').classList.add('hidden');
