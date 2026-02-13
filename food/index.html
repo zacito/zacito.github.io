@@ -13,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kato Eats | Mankato Restaurant Guide</title>
     <style>
-        /* Minimalist "Kato Eats" Aesthetic */
         body { 
             background: #000; 
             color: #fff; 
@@ -56,9 +55,7 @@
             align-items: center;
         }
 
-        .menu-item:hover { 
-            background: #1a1a1a; 
-        }
+        .menu-item:hover { background: #1a1a1a; }
 
         .details-content { 
             padding: 40px 30px; 
@@ -74,35 +71,16 @@
             padding-bottom: 10px;
         }
 
-        .info-label {
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 5px;
-            display: block;
-        }
+        .info-label { color: #888; font-size: 14px; margin-bottom: 5px; display: block; }
+        .info-value { margin-bottom: 25px; word-wrap: break-word; }
+        .info-value a { color: #fff; text-decoration: underline; }
 
-        .info-value {
-            margin-bottom: 25px;
-            word-wrap: break-word;
-        }
-
-        .info-value a {
-            color: #fff;
-            text-decoration: underline;
-        }
-
-        .nav-footer {
-            margin-top: auto;
-        }
-
-        .back-btn {
-            color: #888 !important;
-            border-top: 1px solid #fff;
-        }
+        .nav-footer { margin-top: auto; }
+        .back-btn { color: #888 !important; border-top: 1px solid #fff; }
+        .random-accent { color: #00ff00; } /* Subtle green for the random option */
 
         .hidden { display: none; }
 
-        /* Mobile specific tweaks */
         @media (max-width: 600px) {
             .container { border: none; }
             .header { padding: 40px 10px; font-size: 22px; }
@@ -116,6 +94,7 @@
     <div class="header" id="header-title">WHERE TO EAT?</div>
     
     <div id="screen-categories">
+        <div class="menu-item random-accent" onclick="showRandom()">🎲 Surprise Me! <span>→</span></div>
         <div class="menu-item" onclick="showRestaurants('Restaurants')">Restaurants <span>→</span></div>
         <div class="menu-item" onclick="showRestaurants('Fast Food')">Fast Food <span>→</span></div>
         <div class="menu-item" onclick="showRestaurants('Drive Thru')">Drive Thru <span>→</span></div>
@@ -132,6 +111,7 @@
     <div id="screen-details" class="hidden">
         <div id="detail-content" class="details-content"></div>
         <div class="nav-footer">
+            <div class="menu-item" id="btn-try-again" style="color: #00ff00; border-top: 1px solid #fff;" onclick="showRandom()">🎲 TRY AGAIN</div>
             <div class="menu-item back-btn" id="btn-back-to-list">← BACK TO LIST</div>
             <div class="menu-item back-btn" onclick="toggleScreen('screen-categories')" style="border-top: none;">⌂ HOME</div>
         </div>
@@ -162,8 +142,17 @@
     ];
 
     let currentCategory = "";
+    let isRandomMode = false;
+
+    function showRandom() {
+        isRandomMode = true;
+        const randomIndex = Math.floor(Math.random() * restaurantData.length);
+        const randomPlace = restaurantData[randomIndex];
+        showInfo(randomPlace);
+    }
 
     function showRestaurants(category) {
+        isRandomMode = false;
         currentCategory = category;
         document.getElementById('header-title').innerText = category;
         const listContent = document.getElementById('list-content');
@@ -186,10 +175,11 @@
         document.getElementById('header-title').innerText = "INFO";
         const detailContent = document.getElementById('detail-content');
         
-        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(res.name + ' ' + res.address)}`;
-
         detailContent.innerHTML = `
             <h2>${res.name}</h2>
+            <span class="info-label">CATEGORY</span>
+            <div class="info-value">${res.category}</div>
+
             <span class="info-label">ADDRESS</span>
             <div class="info-value">${res.address}</div>
             
@@ -198,13 +188,21 @@
             
             <span class="info-label">PHONE</span>
             <div class="info-value">${res.phone}</div>
-
-            <div style="margin-top: 40px;">
-                <a href="${mapUrl}" target="_blank" style="display: block; text-align: center; border: 1px solid white; padding: 15px; color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 2px;">Open in Maps</a>
-            </div>
         `;
         
-        document.getElementById('btn-back-to-list').onclick = () => showRestaurants(currentCategory);
+        // Logical UI: If we came from a category, show "Back to List". If we came from Random, hide it.
+        const backToListBtn = document.getElementById('btn-back-to-list');
+        const tryAgainBtn = document.getElementById('btn-try-again');
+
+        if (isRandomMode) {
+            backToListBtn.classList.add('hidden');
+            tryAgainBtn.classList.remove('hidden');
+        } else {
+            backToListBtn.classList.remove('hidden');
+            tryAgainBtn.classList.add('hidden');
+            backToListBtn.onclick = () => showRestaurants(currentCategory);
+        }
+        
         toggleScreen('screen-details');
     }
 
@@ -222,4 +220,3 @@
 
 </body>
 </html>
-
