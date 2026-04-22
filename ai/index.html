@@ -1,1 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ecosystem | 2026 Directory</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --text-primary: #f5f5f5;
+            --text-secondary: #94a3b8;
+            --accent-color: #6366f1;
+            --border-color: #2e2e2e;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, #64748b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .category-section h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            padding-left: 4px;
+            border-left: 2px solid var(--accent-color);
+        }
+
+        .links-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .link-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 18px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .link-card:hover {
+            border-color: #4f46e5;
+            background: #252525;
+            transform: scale(1.01);
+        }
+
+        .info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .arrow {
+            opacity: 0.3;
+            transition: var(--transition);
+        }
+
+        .link-card:hover .arrow {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+
+        footer {
+            margin-top: 80px;
+            color: #475569;
+            font-size: 0.85rem;
+        }
+
+        .bg-blur {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-blur"></div>
+
+    <header>
+        <h1>AI Hub</h1>
+        <p>Your portal to the most influential AI tools of 2026.</p>
+    </header>
+
+    <div class="container">
+        <section class="category-section">
+            <h2>General & Research</h2>
+            <div class="links-grid">
+                <a href="https://chatgpt.com" class="link-card" target="_blank">
+                    <div class="info"><h3>ChatGPT</h3><p>All-purpose assistant & reasoning model.</p></div>
+                    <div class="arrow">→</div>
+                </a>
+                <a href="https://claude.ai" class="link-card" target="_blank">
+                    <div class="info"><h3>Claude</h3><p>Thoughtful writing & large-scale document analysis.</p></div>
+                    <div class="arrow">→</div>
+                </a>
+                <a href="https://perplexity.ai" class="link-card" target="_blank">
+                    <div class="info"><h3>Perplexity</h3><p>Fact-checked AI search & real-time discovery.</p></div>
+                    <div class="arrow">→</div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <h2>Images & Design</h2>
+            <div class="links-grid">
+                <a href="https://midjourney.com" class="link-card" target="_blank">
+                    <div class="info"><h3>Midjourney</h3><p>Professional-grade artistic generation.</p></div>
+                    <div class="arrow">→</div>
+                </a>
+                <a href="https://adobe.com/firefly" class="link-card" target="_blank">
+                    <div class="info"><h3>Adobe Firefly</h3><p>Enterprise-ready creative generation.</p></div>
+                    <div class="arrow">→</div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <h2>Video & Motion</h2>
+            <div class="links-grid">
+                <a href="https://runwayml.com" class="link-card" target="_blank">
+                    <div class="info"><h3>Runway Gen-3</h3><p>Cinematic world building & video creation.</p></div>
+                    <div class="arrow">→</div>
+                </a>
+                <a href="https://synthesia.io" class="link-card" target="_blank">
+                    <div class="info"><h3>Synthesia</h3><p>Avatar-led corporate & training videos.</p></div>
+                    <div class="arrow">→</div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <h2>Voice & Audio</h2>
+            <div class="links-grid">
+                <a href="https://elevenlabs.io" class="link-card" target="_blank">
+                    <div class="info"><h3>ElevenLabs</h3><p>Ultra-realistic TTS & voice cloning.</p></div>
+                    <div class="arrow">→</div>
+                </a>
+                <a href="https://vapi.ai" class="link-card" target="_blank">
+                    <div class="info"><h3>Vapi</h3><p>Real-time conversational voice agents.</p></div>
+                    <div class="arrow">→</div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <h2>Automation & Agents</h2>
+            <div class="links-grid">
+                <a href="https://zapier.com" class="link-card" target="_blank">
+                    <div class="info"><h3>Zapier Central</h3><p>AI-driven workflow orchestration.</p></div>
+                    <div class="arrow">→</div>
+                </a>
+                <a href="https://make.com" class="link-card" target="_blank">
+                    <div class="info"><h3>Make.com</h3><p>Visual building for complex AI agents.</p></div>
+                    <div class="arrow">→</div>
+                </a>
+                <a href="https://lindy.ai" class="link-card" target="_blank">
+                    <div class="info"><h3>Lindy</h3><p>Autonomous AI employees for business tasks.</p></div>
+                    <div class="arrow">→</div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 AI Directory • Minimalist Ecosystem
+    </footer>
+</body>
+</html>
 
