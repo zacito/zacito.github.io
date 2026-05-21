@@ -35,7 +35,7 @@
         header {
             text-align: center;
             max-width: 600px;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         header h1 {
@@ -142,9 +142,11 @@
         <p>Your portal to the most influential AI tools of 2026.</p>
     </header>
 
-    <div class="container">
+    <div class="container" id="dynamic-links-container">
+        <!-- Dynamic links will load here -->
+    </div>
 
-        <!-- RESTORED ORIGINAL CONTENT -->
+    <div class="container">
 
         <section class="category-section">
             <h2>General & Research</h2>
@@ -230,15 +232,14 @@
         &copy; 2026 AI Directory • Minimalist Ecosystem
     </footer>
 
-    <!-- Dynamic links loader -->
     <script>
     async function loadExtraLinks() {
         try {
-            const res = await fetch("links.json");
+            const res = await fetch("links.json?cache=" + Date.now());
             if (!res.ok) return;
 
             const items = await res.json();
-            const container = document.querySelector(".container");
+            const container = document.getElementById("dynamic-links-container");
 
             items.forEach(item => {
                 const section = document.createElement("section");
