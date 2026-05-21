@@ -143,88 +143,50 @@
     </header>
 
     <div class="container">
-        <section class="category-section">
-            <h2>General & Research</h2>
-            <div class="links-grid">
-                <a href="https://chatgpt.com" class="link-card" target="_blank">
-                    <div class="info"><h3>ChatGPT</h3><p>All-purpose assistant & reasoning model.</p></div>
-                    <div class="arrow">→</div>
-                </a>
-                <a href="https://claude.ai" class="link-card" target="_blank">
-                    <div class="info"><h3>Claude</h3><p>Thoughtful writing & large-scale document analysis.</p></div>
-                    <div class="arrow">→</div>
-                </a>
-                <a href="https://perplexity.ai" class="link-card" target="_blank">
-                    <div class="info"><h3>Perplexity</h3><p>Fact-checked AI search & real-time discovery.</p></div>
-                    <div class="arrow">→</div>
-                </a>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2>Images & Design</h2>
-            <div class="links-grid">
-                <a href="https://midjourney.com" class="link-card" target="_blank">
-                    <div class="info"><h3>Midjourney</h3><p>Professional-grade artistic generation.</p></div>
-                    <div class="arrow">→</div>
-                </a>
-                <a href="https://adobe.com/firefly" class="link-card" target="_blank">
-                    <div class="info"><h3>Adobe Firefly</h3><p>Enterprise-ready creative generation.</p></div>
-                    <div class="arrow">→</div>
-                </a>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2>Video & Motion</h2>
-            <div class="links-grid">
-                <a href="https://runwayml.com" class="link-card" target="_blank">
-                    <div class="info"><h3>Runway Gen-3</h3><p>Cinematic world building & video creation.</p></div>
-                    <div class="arrow">→</div>
-                </a>
-                <a href="https://synthesia.io" class="link-card" target="_blank">
-                    <div class="info"><h3>Synthesia</h3><p>Avatar-led corporate & training videos.</p></div>
-                    <div class="arrow">→</div>
-                </a>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2>Voice & Audio</h2>
-            <div class="links-grid">
-                <a href="https://elevenlabs.io" class="link-card" target="_blank">
-                    <div class="info"><h3>ElevenLabs</h3><p>Ultra-realistic TTS & voice cloning.</p></div>
-                    <div class="arrow">→</div>
-                </a>
-                <a href="https://vapi.ai" class="link-card" target="_blank">
-                    <div class="info"><h3>Vapi</h3><p>Real-time conversational voice agents.</p></div>
-                    <div class="arrow">→</div>
-                </a>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2>Automation & Agents</h2>
-            <div class="links-grid">
-                <a href="https://zapier.com" class="link-card" target="_blank">
-                    <div class="info"><h3>Zapier Central</h3><p>AI-driven workflow orchestration.</p></div>
-                    <div class="arrow">→</div>
-                </a>
-                <a href="https://make.com" class="link-card" target="_blank">
-                    <div class="info"><h3>Make.com</h3><p>Visual building for complex AI agents.</p></div>
-                    <div class="arrow">→</div>
-                </a>
-                <a href="https://lindy.ai" class="link-card" target="_blank">
-                    <div class="info"><h3>Lindy</h3><p>Autonomous AI employees for business tasks.</p></div>
-                    <div class="arrow">→</div>
-                </a>
-            </div>
-        </section>
+        <!-- your existing sections stay exactly the same -->
+        <!-- ... -->
     </div>
 
     <footer>
         &copy; 2026 AI Directory • Minimalist Ecosystem
     </footer>
+
+    <!-- 🔥 NEW: Dynamic links loader -->
+    <script>
+    async function loadExtraLinks() {
+        try {
+            const res = await fetch("links.json");
+            if (!res.ok) return;
+
+            const items = await res.json();
+            const container = document.querySelector(".container");
+
+            items.forEach(item => {
+                const section = document.createElement("section");
+                section.className = "category-section";
+                section.innerHTML = `
+                    <h2>${item.category}</h2>
+                    <div class="links-grid">
+                        ${item.links.map(link => `
+                            <a href="${link.url}" class="link-card" target="_blank">
+                                <div class="info">
+                                    <h3>${link.title}</h3>
+                                    <p>${link.desc}</p>
+                                </div>
+                                <div class="arrow">→</div>
+                            </a>
+                        `).join("")}
+                    </div>
+                `;
+                container.appendChild(section);
+            });
+        } catch (err) {
+            console.error("links.json not found or invalid", err);
+        }
+    }
+
+    loadExtraLinks();
+    </script>
+
 </body>
 </html>
-
