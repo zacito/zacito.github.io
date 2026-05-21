@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Ecosystem | 2026 Directory</title>
+
     <style>
         :root {
-            --bg-color: #0d0d0d;
-            --card-bg: #1a1a1a;
-            --text-primary: #f5f5f5;
-            --text-secondary: #94a3b8;
-            --accent-color: #6366f1;
-            --border-color: #2e2e2e;
-            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-color: #ffffff;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent-color: #3b82f6;
+            --border-color: #e2e8f0;
+            --shadow: 0 2px 6px rgba(0,0,0,0.08);
+            --transition: all 0.2s ease;
         }
 
         * {
@@ -28,28 +30,46 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 60px 20px;
+            padding: 40px 16px;
             min-height: 100vh;
         }
 
         header {
             text-align: center;
             max-width: 600px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 2.4rem;
             font-weight: 800;
-            background: linear-gradient(to right, #fff, #64748b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
+            color: #0f172a;
+            margin-bottom: 6px;
         }
 
         header p {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1rem;
+        }
+
+        /* Material Edit Button */
+        .edit-btn {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 8px 14px;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            color: #334155;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .edit-btn:hover {
+            background: #e2e8f0;
+            border-color: #3b82f6;
+            transform: translateY(-1px);
         }
 
         .container {
@@ -57,95 +77,88 @@
             max-width: 700px;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 28px;
         }
 
         .category-section h2 {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             color: var(--accent-color);
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             padding-left: 4px;
-            border-left: 2px solid var(--accent-color);
+            border-left: 3px solid var(--accent-color);
         }
 
         .links-grid {
             display: grid;
-            gap: 12px;
+            gap: 10px;
         }
 
         .link-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 18px 24px;
+            padding: 14px 18px;
             border-radius: 12px;
             text-decoration: none;
             color: inherit;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: var(--shadow);
             transition: var(--transition);
         }
 
         .link-card:hover {
-            border-color: #4f46e5;
-            background: #252525;
-            transform: scale(1.01);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+            border-color: var(--accent-color);
         }
 
         .info h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .info p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
         }
 
         .arrow {
-            opacity: 0.3;
+            opacity: 0.4;
             transition: var(--transition);
         }
 
         .link-card:hover .arrow {
             opacity: 1;
-            transform: translateX(4px);
+            transform: translateX(3px);
         }
 
         footer {
-            margin-top: 80px;
-            color: #475569;
-            font-size: 0.85rem;
-        }
-
-        .bg-blur {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
-            z-index: -1;
-            pointer-events: none;
+            margin-top: 40px;
+            color: #94a3b8;
+            font-size: 0.8rem;
         }
     </style>
 </head>
+
 <body>
-    <div class="bg-blur"></div>
 
     <header>
         <h1>AI Hub</h1>
         <p>Your portal to the most influential AI tools of 2026.</p>
+
+        <a class="edit-btn" href="https://github.com/YOUR-USERNAME/YOUR-REPO/edit/main/links.json" target="_blank">
+            Edit Links on GitHub
+        </a>
     </header>
 
-    <div class="container" id="dynamic-links-container">
-        <!-- Dynamic links will load here -->
-    </div>
+    <!-- Dynamic links appear here -->
+    <div class="container" id="dynamic-links-container"></div>
 
+    <!-- Static sections -->
     <div class="container">
 
         <section class="category-section">
