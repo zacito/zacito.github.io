@@ -1,0 +1,12 @@
+[
+  {
+    "category": "Articles",
+    "links": [
+      {
+        "title": "My New Article",
+        "desc": "Quick summary of what it’s about.",
+        "url": "https://example.com/article"
+      }
+    ]
+  }
+]
