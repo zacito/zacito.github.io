@@ -142,6 +142,43 @@
         <p>Your portal to the most influential AI tools of 2026.</p>
     </header>
 
+    <!-- Dynamic links loader -->
+    <script>
+    async function loadExtraLinks() {
+        try {
+            const res = await fetch("links.json");
+            if (!res.ok) return;
+
+            const items = await res.json();
+            const container = document.querySelector(".container");
+
+            items.forEach(item => {
+                const section = document.createElement("section");
+                section.className = "category-section";
+                section.innerHTML = `
+                    <h2>${item.category}</h2>
+                    <div class="links-grid">
+                        ${item.links.map(link => `
+                            <a href="${link.url}" class="link-card" target="_blank">
+                                <div class="info">
+                                    <h3>${link.title}</h3>
+                                    <p>${link.desc}</p>
+                                </div>
+                                <div class="arrow">→</div>
+                            </a>
+                        `).join("")}
+                    </div>
+                `;
+                container.appendChild(section);
+            });
+        } catch (err) {
+            console.error("links.json not found or invalid", err);
+        }
+    }
+
+    loadExtraLinks();
+    </script>
+
     <div class="container">
 
         <!-- RESTORED ORIGINAL CONTENT -->
@@ -229,43 +266,6 @@
     <footer>
         &copy; 2026 AI Directory • Minimalist Ecosystem
     </footer>
-
-    <!-- Dynamic links loader -->
-    <script>
-    async function loadExtraLinks() {
-        try {
-            const res = await fetch("links.json");
-            if (!res.ok) return;
-
-            const items = await res.json();
-            const container = document.querySelector(".container");
-
-            items.forEach(item => {
-                const section = document.createElement("section");
-                section.className = "category-section";
-                section.innerHTML = `
-                    <h2>${item.category}</h2>
-                    <div class="links-grid">
-                        ${item.links.map(link => `
-                            <a href="${link.url}" class="link-card" target="_blank">
-                                <div class="info">
-                                    <h3>${link.title}</h3>
-                                    <p>${link.desc}</p>
-                                </div>
-                                <div class="arrow">→</div>
-                            </a>
-                        `).join("")}
-                    </div>
-                `;
-                container.appendChild(section);
-            });
-        } catch (err) {
-            console.error("links.json not found or invalid", err);
-        }
-    }
-
-    loadExtraLinks();
-    </script>
 
 </body>
 </html>
