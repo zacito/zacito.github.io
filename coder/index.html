@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Code Editor</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+    }
+
+    .editor-side {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      min-width: 0;
+      border-right: 1px solid #ccc;
+    }
+
+    .panel {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      background: white;
+    }
+
+    .panel:first-child {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 40px;
+      padding: 0 12px;
+      border-bottom: 1px solid #ddd;
+      background: #fafafa;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    textarea {
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      resize: none;
+      border: 0;
+      outline: 0;
+      padding: 14px;
+      font-family: Consolas, Monaco, "Courier New", monospace;
+      font-size: 14px;
+      line-height: 1.5;
+      background: #fff;
+      color: #222;
+      tab-size: 2;
+    }
+
+    .preview-side {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      background: white;
+    }
+
+    .preview-header {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      border-bottom: 1px solid #ddd;
+      background: #fafafa;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    iframe {
+      flex: 1;
+      width: 100%;
+      border: 0;
+      background: white;
+    }
+
+    @media (max-width: 800px) {
+      body {
+        overflow: auto;
+      }
+
+      .app {
+        grid-template-columns: 1fr;
+        grid-template-rows: 600px 600px;
+        height: auto;
+      }
+
+      .editor-side {
+        border-right: 0;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <div class="editor-side">
+
+      <section class="panel">
+        <div class="panel-header">
+          <span>HTML</span>
+        </div>
+
+        <textarea id="htmlEditor" spellcheck="false"><div class="card">
+  <h1>Hello World</h1>
+  <p>Edit the HTML or CSS to see the preview update.</p>
+  <button>Click Me</button>
+</div></textarea>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <span>CSS</span>
+        </div>
+
+        <textarea id="cssEditor" spellcheck="false">body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background: #f4f4f4;
+}
+
+.card {
+  max-width: 400px;
+  padding: 30px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+button {
+  padding: 10px 16px;
+  border: 0;
+  background: #222;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}</textarea>
+      </section>
+
+    </div>
+
+    <div class="preview-side">
+
+      <div class="preview-header">
+        Preview
+      </div>
+
+      <iframe
+        id="preview"
+        title="Live Preview"
+        sandbox="allow-scripts"
+      ></iframe>
+
+    </div>
+
+  </div>
+
+  <script>
+    const htmlEditor = document.getElementById("htmlEditor");
+    const cssEditor = document.getElementById("cssEditor");
+    const preview = document.getElementById("preview");
+
+    let updateTimer;
+
+    function updatePreview() {
+      const html = htmlEditor.value;
+      const css = cssEditor.value;
+
+      const documentContent = `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <style>
+              ${css}
+            </style>
+          </head>
+
+          <body>
+            ${html}
+          </body>
+        </html>
+      `;
+
+      preview.srcdoc = documentContent;
+    }
+
+    function scheduleUpdate() {
+      clearTimeout(updateTimer);
+
+      updateTimer = setTimeout(() => {
+        updatePreview();
+      }, 150);
+    }
+
+    htmlEditor.addEventListener("input", scheduleUpdate);
+    cssEditor.addEventListener("input", scheduleUpdate);
+
+    // Allow Tab key inside editors
+    function enableTab(textarea) {
+      textarea.addEventListener("keydown", function(event) {
+        if (event.key === "Tab") {
+          event.preventDefault();
+
+          const start = this.selectionStart;
+          const end = this.selectionEnd;
+
+          this.value =
+            this.value.substring(0, start) +
+            "  " +
+            this.value.substring(end);
+
+          this.selectionStart =
+            this.selectionEnd =
+            start + 2;
+
+          scheduleUpdate();
+        }
+      });
+    }
+
+    enableTab(htmlEditor);
+    enableTab(cssEditor);
+
+    updatePreview();
+  </script>
+
+</body>
+</html>
