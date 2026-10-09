@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>coder</title>
+  <title>Coder · Zacito</title>
 
   <style>
     * {
@@ -16,25 +16,54 @@
       width: 100%;
       height: 100%;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f5f5f5;
-      color: #222;
+      background: #ffffff;
+      color: #202428;
     }
 
     body {
       overflow: hidden;
     }
 
+    .brandbar {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      border-bottom: 1px solid #dfe2e4;
+      background: #ffffff;
+    }
+
+    .brandbar .brand {
+      color: #202428;
+      font-size: 1.15rem;
+      font-weight: 750;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+    }
+
+    .brandbar .home {
+      color: #6d7378;
+      font-size: .85rem;
+      text-decoration: none;
+    }
+
+    .brandbar .home:hover {
+      color: #202428;
+      text-decoration: underline;
+    }
+
     .app {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      height: 100vh;
+      height: calc(100vh - 45px);
     }
 
     .editor-side {
       display: grid;
       grid-template-rows: 1fr 1fr;
       min-width: 0;
-      border-right: 1px solid #ccc;
+      border-right: 1px solid #dfe2e4;
     }
 
     .panel {
@@ -45,7 +74,7 @@
     }
 
     .panel:first-child {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #dfe2e4;
     }
 
     .panel-header {
@@ -54,8 +83,8 @@
       justify-content: space-between;
       height: 40px;
       padding: 0 12px;
-      border-bottom: 1px solid #ddd;
-      background: #fafafa;
+      border-bottom: 1px solid #dfe2e4;
+      background: #f5f6f7;
       font-size: 13px;
       font-weight: 600;
     }
@@ -72,7 +101,7 @@
       font-size: 14px;
       line-height: 1.5;
       background: #fff;
-      color: #222;
+      color: #202428;
       tab-size: 2;
     }
 
@@ -88,8 +117,8 @@
       display: flex;
       align-items: center;
       padding: 0 12px;
-      border-bottom: 1px solid #ddd;
-      background: #fafafa;
+      border-bottom: 1px solid #dfe2e4;
+      background: #f5f6f7;
       font-size: 13px;
       font-weight: 600;
     }
@@ -114,13 +143,18 @@
 
       .editor-side {
         border-right: 0;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #dfe2e4;
       }
     }
   </style>
 </head>
 
 <body>
+
+  <header class="brandbar">
+    <a class="brand" href="/">Zacito</a>
+    <a class="home" href="/">← Home</a>
+  </header>
 
   <div class="app">
 
