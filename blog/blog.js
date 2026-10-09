@@ -37,6 +37,13 @@
     }
   }
 
+  const linkify = text => escapeHtml(text).replace(/https?:\/\/[^\s<]+/g, url => {
+    const m = url.match(/^(.*?)[.,;:!?)\]]+$/);
+    const clean = m ? m[1] : url;
+    const trail = m ? url.slice(clean.length) : "";
+    return `<a href="${clean}" target="_blank" rel="noopener">${clean}</a>${trail}`;
+  });
+
   function renderList() {
     document.title = "Blog · Zacito";
     if (!blogAvailable) {
@@ -53,7 +60,7 @@
         <a class="blog-item" href="#/post/${encodeURIComponent(post.slug)}">
           <h2>${escapeHtml(post.title)}</h2>
           <span class="blog-date">${escapeHtml(formatDate(post.date))}</span>
-          ${post.excerpt ? `<p class="excerpt">${escapeHtml(post.excerpt)}</p>` : ""}
+          ${post.excerpt ? `<p class="excerpt">${linkify(post.excerpt)}</p>` : ""}
         </a>`).join("")}</div>` : `<p class="empty">No posts yet.</p>`}`;
   }
 
@@ -73,7 +80,7 @@
       <article>
         <h1>${escapeHtml(post.title)}</h1>
         <p class="post-date">${escapeHtml(formatDate(post.date))}</p>
-        <div class="post-body">${(post.body || []).map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join("")}</div>
+        <div class="post-body">${(post.body || []).map(paragraph => `<p>${linkify(paragraph)}</p>`).join("")}</div>
       </article>`;
   }
 
