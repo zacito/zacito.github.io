@@ -3,43 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fall Shows</title>
+<meta name="description" content="Zacito's fall TV show tracker.">
+<title>Fall Shows · Zacito</title>
+<link rel="stylesheet" href="/styles.css">
 <style>
-  body { font-family: sans-serif; background: #fff; color: #000; max-width: 600px; margin: 0 auto; padding: 16px; }
-  h1 { font-size: 1.4em; margin-top: 0; margin-bottom: 12px; }
-  .section { border: 1px solid #000; margin-bottom: 16px; }
-  .section-head { display: flex; align-items: center; gap: 6px; padding: 8px; background: #f5f5f5; border-bottom: 1px solid #000; }
-  .section-head h2 { flex: 1; font-size: 1.1em; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
-  ul { list-style: none; padding: 0; margin: 0; }
-  li { padding: 8px; border-bottom: 1px solid #ddd; background: #fff; }
-  li:last-child { border-bottom: none; }
-  .row { display: flex; align-items: center; gap: 6px; }
-  .link { flex: 1; color: #000; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
-  .status { color: #666; font-size: 0.85em; white-space: nowrap; }
-  .meta { color: #888; font-size: 0.8em; margin-top: 2px; }
+.shows-section { border: 1px solid #dfe2e4; border-radius: 3px; margin-bottom: 16px; }
+.shows-head { padding: 12px 14px; background: #f5f6f7; border-bottom: 1px solid #dfe2e4; }
+.shows-head h2 { margin: 0; font-size: 1.05rem; letter-spacing: .06em; text-transform: uppercase; }
+.shows-list { list-style: none; padding: 0; margin: 0; }
+.shows-list li { padding: 14px; border-bottom: 1px solid #dfe2e4; }
+.shows-list li:last-child { border-bottom: none; }
+.show-row { display: flex; align-items: center; gap: 8px; }
+.show-link { flex: 1; font-weight: 700; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.show-link:hover { color: #185e87; text-decoration: underline; }
+.show-status { color: #6d7378; font-size: .85rem; white-space: nowrap; }
+.show-meta { color: #6d7378; font-size: .8em; margin-top: 2px; }
 </style>
 </head>
 <body>
-<h1>Fall Shows</h1>
-<div class="section">
-  <div class="section-head"><h2>Her Shows</h2></div>
-  <ul>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/the-floor">The Floor</a><span class="status">In season</span></div><div class="meta">S6 · FOX · on Hulu · next ep Wed Sep 30 · Wednesdays 8/7c</div></li>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/greys-anatomy-bfd6ba83-5fff-46f8-abae-76f1796c1c8e">Grey&#x27;s Anatomy</a><span class="status">Premieres Thu Oct 15</span></div><div class="meta">S23 · ABC · on Hulu · Thursdays 10/9c</div></li>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/9-1-1-b3519825-4053-4065-b3a6-e93125fb7d54">9-1-1</a><span class="status">Premieres Thu Oct 15</span></div><div class="meta">S10 · ABC · on Hulu · Thursdays 8/7c</div></li>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/9-1-1-nashville-cabb865a-8f10-4e11-8c35-d07d2aae6082">9-1-1: Nashville</a><span class="status">Premieres Thu Oct 15</span></div><div class="meta">S1 · ABC · on Hulu · Thursdays 9/8c</div></li>
-    <li><div class="row"><a class="link" href="https://www.peacocktv.com/watch-online/tv/chicago-med/8533169522880832112">Chicago Med</a><span class="status">Premieres Wed Oct 7</span></div><div class="meta">S12 · NBC · on Peacock · Wednesdays 8/7c</div></li>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/the-rookie">The Rookie</a><span class="status">Between seasons</span></div><div class="meta">S8 · ABC · on Hulu · Mondays 10/9c (S8 pattern)</div></li>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/c8ad01c5-adcd-4b0e-a045-76b4acccd814">Celebrity Weakest Link</a><span class="status">In season</span></div><div class="meta">S2 · FOX · on Hulu · next ep Mon Sep 28 · Mondays 9/8c</div></li>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/special-forces-worlds-toughest-test">Special Forces: World&#x27;s Toughest Test</a><span class="status">In season</span></div><div class="meta">S5 · FOX · on Hulu · next ep Thu Oct 1 · Thursdays 9/8c</div></li>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/83bba4b7-9576-4a5a-90d2-4614c62a62b7">Next Level Chef</a><span class="status">Between seasons</span></div><div class="meta">S6 · FOX · on Hulu · Thursdays 8/7c (S5 pattern)</div></li>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/celebrity-jeopardy-ce464d96-db0d-48fb-81d3-a9779c2774ec">Celebrity Jeopardy</a><span class="status">Between seasons</span></div><div class="meta">S5 · ABC · on Hulu · Fridays 8/7c (S4 pattern)</div></li>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/beat-shazam">Beat Shazam</a><span class="status">Between seasons</span></div><div class="meta">S8 · FOX · on Hulu · Tuesdays 9/8c</div></li>
-    <li><div class="row"><a class="link" href="https://www.peacocktv.com/watch-online/tv/american-ninja-warrior/6412175794569200112">American Ninja Warrior</a><span class="status">Between seasons</span></div><div class="meta">S18 · NBC · on Peacock · Mondays 8/7c</div></li>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/celebrity-family-feud-9917518d-1925-4fce-badd-893340cc7c66">Celebrity Family Feud</a><span class="status">Between seasons</span></div><div class="meta">S12 · ABC · on Hulu · Thursdays 8/7c</div></li>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/the-quiz-with-balls-654b9726-93e4-436a-9d15-b13636f090e7">The Quiz with Balls</a><span class="status">Between seasons</span></div><div class="meta">S3 · FOX · on Hulu · Mondays 9/8c (S3 pattern)</div></li>
-    <li><div class="row"><a class="link" href="https://www.hulu.com/series/masterchef">MasterChef</a><span class="status">Between seasons</span></div><div class="meta">S17 · FOX · on Hulu · Wednesdays 8/7c (S16 pattern)</div></li>
-  </ul>
-</div>
+<header class="site-header slim">
+  <a class="brand" href="/" aria-label="Zacito home">Zacito</a>
+</header>
+
+<main>
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">← Home</a></nav>
+  <h1>Fall Shows</h1>
+
+  <div class="shows-section">
+    <div class="shows-head"><h2>Her Shows</h2></div>
+    <ul class="shows-list">
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/the-floor" target="_blank" rel="noopener">The Floor</a><span class="show-status">In season</span></div><div class="show-meta">S6 · FOX · on Hulu · next ep Wed Sep 30 · Wednesdays 8/7c</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/greys-anatomy-bfd6ba83-5fff-46f8-abae-76f1796c1c8e" target="_blank" rel="noopener">Grey&#x27;s Anatomy</a><span class="show-status">Premieres Thu Oct 15</span></div><div class="show-meta">S23 · ABC · on Hulu · Thursdays 10/9c</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/9-1-1-b3519825-4053-4065-b3a6-e93125fb7d54" target="_blank" rel="noopener">9-1-1</a><span class="show-status">Premieres Thu Oct 15</span></div><div class="show-meta">S10 · ABC · on Hulu · Thursdays 8/7c</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/9-1-1-nashville-cabb865a-8f10-4e11-8c35-d07d2aae6082" target="_blank" rel="noopener">9-1-1: Nashville</a><span class="show-status">Premieres Thu Oct 15</span></div><div class="show-meta">S1 · ABC · on Hulu · Thursdays 9/8c</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.peacocktv.com/watch-online/tv/chicago-med/8533169522880832112" target="_blank" rel="noopener">Chicago Med</a><span class="show-status">Premieres Wed Oct 7</span></div><div class="show-meta">S12 · NBC · on Peacock · Wednesdays 8/7c</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/the-rookie" target="_blank" rel="noopener">The Rookie</a><span class="show-status">Between seasons</span></div><div class="show-meta">S8 · ABC · on Hulu · Mondays 10/9c (S8 pattern)</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/c8ad01c5-adcd-4b0e-a045-76b4acccd814" target="_blank" rel="noopener">Celebrity Weakest Link</a><span class="show-status">In season</span></div><div class="show-meta">S2 · FOX · on Hulu · next ep Mon Sep 28 · Mondays 9/8c</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/special-forces-worlds-toughest-test" target="_blank" rel="noopener">Special Forces: World&#x27;s Toughest Test</a><span class="show-status">Between seasons</span></div><div class="show-meta">S5 · FOX · on Hulu · next ep Thu Oct 1 · Thursdays 9/8c</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/83bba4b7-9576-4a5a-90d2-4614c62a62b7" target="_blank" rel="noopener">Next Level Chef</a><span class="show-status">Between seasons</span></div><div class="show-meta">S6 · FOX · on Hulu · Thursdays 8/7c (S5 pattern)</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/celebrity-jeopardy-ce464d96-db0d-48fb-81d3-a9779c2774ec" target="_blank" rel="noopener">Celebrity Jeopardy</a><span class="show-status">Between seasons</span></div><div class="show-meta">S5 · ABC · on Hulu · Fridays 8/7c (S4 pattern)</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/beat-shazam" target="_blank" rel="noopener">Beat Shazam</a><span class="show-status">Between seasons</span></div><div class="show-meta">S8 · FOX · on Hulu · Tuesdays 9/8c</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.peacocktv.com/watch-online/tv/american-ninja-warrior/6412175794569200112" target="_blank" rel="noopener">American Ninja Warrior</a><span class="show-status">Between seasons</span></div><div class="show-meta">S18 · NBC · on Peacock · Mondays 8/7c</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/celebrity-family-feud-9917518d-1925-4fce-badd-893340cc7c66" target="_blank" rel="noopener">Celebrity Family Feud</a><span class="show-status">Between seasons</span></div><div class="show-meta">S12 · ABC · on Hulu · Thursdays 8/7c</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/the-quiz-with-balls-654b9726-93e4-436a-9d15-b13636f090e7" target="_blank" rel="noopener">The Quiz with Balls</a><span class="show-status">Between seasons</span></div><div class="show-meta">S3 · FOX · on Hulu · Mondays 9/8c (S3 pattern)</div></li>
+      <li><div class="show-row"><a class="show-link" href="https://www.hulu.com/series/masterchef" target="_blank" rel="noopener">MasterChef</a><span class="show-status">Between seasons</span></div><div class="show-meta">S17 · FOX · on Hulu · Wednesdays 8/7c (S16 pattern)</div></li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <span>Zacito</span>
+  <nav class="footer-nav" aria-label="Projects">
+    <a href="/coder/">Coder</a>
+    <a href="/nfl/">NFL</a>
+    <a href="/shows/">Shows</a>
+  </nav>
+</footer>
 </body>
 </html>
