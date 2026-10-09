@@ -4,6 +4,12 @@
 (() => {
   const app = document.querySelector("#blog-app");
   const TOKEN_KEY = "zacito_admin_token";
+  // On the static github.io mirror there is no local API, so talk to the
+  // Worker backend cross-origin (it allows CORS from zacito.github.io).
+  const API_BASE = location.hostname === "zacito.github.io"
+    ? "https://zacito-portfolio.rkp273.workers.dev"
+    : "";
+  const api = path => `${API_BASE}${path}`;
   let posts = [];
   let bySlug = new Map();
   let blogAvailable = false;
@@ -19,7 +25,7 @@
 
   async function refreshPosts() {
     try {
-      const res = await fetch("/api/posts", { headers: { accept: "application/json" } });
+      const res = await fetch(api("/api/posts"), { headers: { accept: "application/json" } });
       if (!res.ok) return false;
       const data = await res.json();
       if (!Array.isArray(data)) return false;
@@ -116,7 +122,7 @@
       if (!post || !confirm(`Delete "${post.title}"?`)) return;
       let res;
       try {
-        res = await fetch(`/api/posts/${encodeURIComponent(slug)}`, {
+        res = await fetch(api(`/api/posts/${encodeURIComponent(slug)}`), {
           method: "DELETE",
           headers: { authorization: `Bearer ${getToken()}` }
         });
@@ -138,7 +144,7 @@
       setStatus("Publishing…");
       let res;
       try {
-        res = await fetch("/api/posts", {
+        res = await fetch(api("/api/posts"), {
           method: "POST",
           headers: { "content-type": "application/json", authorization: `Bearer ${getToken()}` },
           body: JSON.stringify({
