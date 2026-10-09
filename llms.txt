@@ -1,0 +1,21 @@
+# Zacito
+
+> Portfolio, photography, code, and AI resources by Zacito (Mankato, Minnesota).
+
+## Pages
+
+- [Home](https://zacito.github.io/): Link hub — blog, AI resources, and creative profiles.
+- [AI](https://zacito.github.io/ai/): Curated AI links. Major assistants: Claude, ChatGPT, Gemini. Platforms: Hugging Face. News: The Neuron, TLDR AI, The Rundown AI.
+- [Blog](https://zacito.github.io/blog/): Blog by Zacito.
+- [Coder](https://zacito.github.io/coder/): Browser code playground — write HTML, CSS, and JavaScript and see the result live.
+- [NFL](https://zacito.github.io/nfl/): NFL links — fantasy football, scores, standings, and depth charts.
+- [Shows](https://zacito.github.io/shows/): Fall TV show tracker.
+
+## Creative profiles
+
+- [Pexels](https://www.pexels.com/@zacito-3182638/): Stock photography.
+- [CodePen](https://codepen.io/zacito): Front-end code experiments.
+- [Behance](https://www.behance.net/zacito): Design portfolio.
+- [Adobe Lightroom](https://lightroom.adobe.com/u/zacito/): Photo edits and galleries.
+- [Instagram](https://www.instagram.com/zacitomn): @zacitomn.
+- [Threads](https://www.threads.com/@zacitomn): @zacitomn.
