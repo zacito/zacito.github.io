@@ -209,15 +209,19 @@ h1 { font-size: 2rem; margin: 5px 0 18px; }
     }).join('');
   }
 
+  function etYmd(iso) {
+    return new Date(iso).toLocaleDateString('en-CA', { timeZone: 'America/New_York' }).replace(/-/g, '');
+  }
+
   function loadLeague(lg, dateStr) {
     var el = $(sectionId(lg.path));
-    fetch(ESPN_API + lg.path + '/scoreboard?dates=' + dateStr)
+    fetch(ESPN_API + lg.path + '/scoreboard')
       .then(function(r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
       })
       .then(function(d) {
-        var evs = d.events || [];
+        var evs = (d.events || []).filter(function(e) { return e.date && etYmd(e.date) === dateStr; });
         el.innerHTML = evs.length
           ? evs.map(gameCard).join('')
           : '<p class="muted">No games scheduled.</p>';
