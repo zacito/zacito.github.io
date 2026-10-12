@@ -85,7 +85,6 @@ h1 { font-size: 2rem; margin: 5px 0 18px; }
 (function() {
   "use strict";
 
-  var WORKER_API = 'https://rss-api.rkp273.workers.dev/api/scoreboard?league=';
   var ESPN_API = 'https://site.api.espn.com/apis/site/v2/sports/';
   var LEAGUES = [
     { name: 'NFL', path: 'football/nfl' },
@@ -210,23 +209,9 @@ h1 { font-size: 2rem; margin: 5px 0 18px; }
     }).join('');
   }
 
-  function fetchLeague(lg, dateStr) {
-    var workerUrl = WORKER_API + encodeURIComponent(lg.path) + '&dates=' + dateStr;
-    var directUrl = ESPN_API + lg.path + '/scoreboard?dates=' + dateStr;
-    return fetch(workerUrl).then(function(r) {
-      if (!r.ok) throw new Error('worker ' + r.status);
-      return r.json();
-    }).catch(function() {
-      return fetch(directUrl).then(function(r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      });
-    });
-  }
-
   function loadLeague(lg, dateStr) {
     var el = $(sectionId(lg.path));
-    fetchLeague(lg, dateStr)
+    fetch(ESPN_API + lg.path + '/scoreboard?dates=' + dateStr)
       .then(function(r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
