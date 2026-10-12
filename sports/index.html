@@ -10,26 +10,31 @@
   background: #ffffff;
   border: 1px solid #dfe2e4;
   border-radius: 3px;
-  margin: 0 0 9px;
-  padding: 12px 14px;
+  margin: 0 0 7px;
+  padding: 9px 12px;
 }
-.game-box.live { border: 2px solid #185e87; padding: 11px 13px; }
-.game-line { margin: 0 0 4px; }
+.game-box.live { border: 2px solid #185e87; padding: 8px 11px; }
+.game-line { margin: 0 0 2px; }
 .game-line .winner { font-weight: 700; }
 .game-line .rec { color: #6d7378; font-size: .88em; font-weight: 400; }
 .game-meta { margin: 0; color: #6d7378; font-size: .85rem; }
-.date-nav { display: flex; align-items: center; gap: 14px; margin: 0 0 8px; flex-wrap: wrap; }
+main { padding-top: 30px; }
+.breadcrumbs { margin-bottom: 18px; }
+h1 { font-size: 2rem; margin: 5px 0 18px; }
+.date-nav { display: flex; align-items: center; gap: 10px; margin: 0 0 6px; flex-wrap: nowrap; }
 .date-nav button {
   border: 1px solid #dfe2e4; border-radius: 3px; background: #ffffff;
-  padding: 8px 14px; cursor: pointer; font: inherit;
+  padding: 6px 11px; cursor: pointer; font: inherit; font-size: .92rem;
+  white-space: nowrap; flex: none;
 }
 .date-nav button:hover { border-color: #202428; }
-.date-label { font-weight: 700; }
-.data-loaded { color: #6d7378; font-size: .85rem; margin: 0 0 30px; }
-.league-section { margin-bottom: 38px; }
+.date-label { font-weight: 700; font-size: .95rem; white-space: nowrap; }
+.data-loaded { color: #6d7378; font-size: .85rem; margin: 0 0 18px; }
+.league-section { margin-bottom: 24px; }
 .league-section:last-of-type { margin-bottom: 0; }
+.section-heading { margin-bottom: 8px; }
 .muted { color: #6d7378; }
-.source-note { color: #6d7378; font-size: .85rem; margin-top: 34px; }
+.source-note { color: #6d7378; font-size: .85rem; margin-top: 24px; }
 </style>
 <!-- seo:start -->
   <meta name="description" content="Zacito's sports scores — live scores and schedules across the NFL, NBA, MLB, NHL, and more.">
@@ -80,7 +85,7 @@
 (function() {
   "use strict";
 
-  var API = 'https://site.web.api.espn.com/apis/site/v2/sports/';
+  var API = 'https://rss-api.rkp273.workers.dev/api/scoreboard?league=';
   var LEAGUES = [
     { name: 'NFL', path: 'football/nfl' },
     { name: 'NCAA Football', path: 'football/college-football' },
@@ -124,7 +129,7 @@
     var next = new Date(currentDate); next.setDate(next.getDate() + 1);
     $('prevLabel').textContent = prev.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
     $('nextLabel').textContent = next.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-    $('dateLabel').textContent = currentDate.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+    $('dateLabel').textContent = currentDate.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
   }
 
   function stampLoaded() {
@@ -206,7 +211,7 @@
 
   function loadLeague(lg, dateStr) {
     var el = $(sectionId(lg.path));
-    fetch(API + lg.path + '/scoreboard?dates=' + dateStr)
+    fetch(API + encodeURIComponent(lg.path) + '&dates=' + dateStr)
       .then(function(r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
