@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sports · Zacito</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+.game-box {
+  background: #ffffff;
+  border: 1px solid #dfe2e4;
+  border-radius: 3px;
+  margin: 0 0 9px;
+  padding: 12px 14px;
+}
+.game-box.live { border: 2px solid #185e87; padding: 11px 13px; }
+.game-line { margin: 0 0 4px; }
+.game-line .winner { font-weight: 700; }
+.game-line .rec { color: #6d7378; font-size: .88em; font-weight: 400; }
+.game-meta { margin: 0; color: #6d7378; font-size: .85rem; }
+.date-nav { display: flex; align-items: center; gap: 14px; margin: 0 0 8px; flex-wrap: wrap; }
+.date-nav button {
+  border: 1px solid #dfe2e4; border-radius: 3px; background: #ffffff;
+  padding: 8px 14px; cursor: pointer; font: inherit;
+}
+.date-nav button:hover { border-color: #202428; }
+.date-label { font-weight: 700; }
+.data-loaded { color: #6d7378; font-size: .85rem; margin: 0 0 30px; }
+.league-section { margin-bottom: 38px; }
+.league-section:last-of-type { margin-bottom: 0; }
+.muted { color: #6d7378; }
+.source-note { color: #6d7378; font-size: .85rem; margin-top: 34px; }
+</style>
+<!-- seo:start -->
+  <meta name="description" content="Zacito's sports scores — live scores and schedules across the NFL, NBA, MLB, NHL, and more.">
+  <link rel="canonical" href="https://zacito.github.io/sports/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Sports · Zacito">
+  <meta property="og:description" content="Zacito's sports scores — live scores and schedules across the NFL, NBA, MLB, NHL, and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zacito.github.io/sports/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sports · Zacito">
+  <meta name="twitter:description" content="Zacito's sports scores — live scores and schedules across the NFL, NBA, MLB, NHL, and more.">
+  <!-- seo:end -->
+</head>
+<body>
+<header class="site-header slim">
+  <a class="brand" href="/" aria-label="Zacito home">Zacito</a>
+</header>
+
+<main>
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">← Home</a></nav>
+  <h1>Sports</h1>
+
+  <div class="date-nav">
+    <button id="prevDay" type="button" aria-label="Previous day">‹ <span id="prevLabel"></span></button>
+    <span class="date-label" id="dateLabel"></span>
+    <button id="nextDay" type="button" aria-label="Next day"><span id="nextLabel"></span> ›</button>
+  </div>
+  <p class="data-loaded" id="dataLoaded"></p>
+
+  <div id="leagues"></div>
+
+  <p class="source-note">Scores via ESPN.</p>
+</main>
+
+<footer>
+  <span>Zacito</span>
+  <nav class="footer-nav" aria-label="Projects">
+    <a href="/coder/">Coder</a>
+    <a href="/nfl/">NFL</a>
+    <a href="/shows/">Shows</a>
+    <a href="/sports/">Sports</a>
+  </nav>
+</footer>
+
+<script>
+(function() {
+  "use strict";
+
+  var API = 'https://site.web.api.espn.com/apis/site/v2/sports/';
+  var LEAGUES = [
+    { name: 'NFL', path: 'football/nfl' },
+    { name: 'NCAA Football', path: 'football/college-football' },
+    { name: 'MLB', path: 'baseball/mlb' },
+    { name: 'NHL', path: 'hockey/nhl' },
+    { name: 'MLS', path: 'soccer/usa.1' },
+    { name: 'Premier League', path: 'soccer/eng.1' },
+    { name: 'Champions League', path: 'soccer/uefa.champions' },
+    { name: 'Europa League', path: 'soccer/uefa.europa' },
+    { name: 'NBA', path: 'basketball/nba' },
+    { name: 'WNBA', path: 'basketball/wnba' },
+    { name: "NCAA Men's Basketball", path: 'basketball/mens-college-basketball' }
+  ];
+
+  var currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0);
+
+  function $(id) { return document.getElementById(id); }
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function ymd(d) {
+    var m = d.getMonth() + 1, day = d.getDate();
+    return d.getFullYear() +
+      (m < 10 ? '0' + m : m) +
+      (day < 10 ? '0' + day : day);
+  }
+
+  function fmtTime(iso) {
+    var t = new Date(iso);
+    if (isNaN(t.getTime())) return '';
+    return t.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+  }
+
+  function updateDateNav() {
+    var prev = new Date(currentDate); prev.setDate(prev.getDate() - 1);
+    var next = new Date(currentDate); next.setDate(next.getDate() + 1);
+    $('prevLabel').textContent = prev.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+    $('nextLabel').textContent = next.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+    $('dateLabel').textContent = currentDate.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+  }
+
+  function stampLoaded() {
+    $('dataLoaded').textContent = 'Data loaded: ' +
+      new Date().toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+  }
+
+  function abbr(c) {
+    var t = c.team || {};
+    return esc(t.abbreviation || t.shortDisplayName || t.displayName || '');
+  }
+
+  function record(c) {
+    var r = (c.records || [])[0];
+    if (r && r.summary) return ' <span class="rec">' + esc(r.summary) + '</span>';
+    return '';
+  }
+
+  function tvLine(comp) {
+    var names = [];
+    (comp.broadcasts || []).forEach(function(b) {
+      (b.names || []).forEach(function(n) { if (n) names.push(n); });
+    });
+    return names.join(', ');
+  }
+
+  function gameCard(e) {
+    var comp = e.competitions && e.competitions[0];
+    if (!comp) return '';
+    var state = comp.status && comp.status.type ? comp.status.type.state : 'pre';
+    var cs = comp.competitors || [];
+    var away = null, home = null;
+    cs.forEach(function(c) {
+      if (c.homeAway === 'away') away = c;
+      else if (c.homeAway === 'home') home = c;
+    });
+    if (!away) away = cs[0];
+    if (!home) home = cs[1] || cs[0];
+    if (!away || !home) return '';
+
+    if (state === 'pre') {
+      var tv = tvLine(comp);
+      var html = '<div class="game-box"><p class="game-line">' +
+        abbr(away) + record(away) + ' · ' + esc(fmtTime(comp.date)) + ' · ' +
+        abbr(home) + record(home) + '</p>';
+      if (tv) html += '<p class="game-meta">' + esc(tv) + '</p>';
+      return html + '</div>';
+    }
+
+    var as = parseInt(away.score, 10), hs = parseInt(home.score, 10);
+    var aWin = !isNaN(as) && !isNaN(hs) && as > hs;
+    var hWin = !isNaN(as) && !isNaN(hs) && hs > as;
+    var line = '<span class="' + (aWin ? 'winner' : '') + '">' + abbr(away) + '</span> ' +
+      esc(away.score == null ? '' : away.score) + ' – ' +
+      esc(home.score == null ? '' : home.score) + ' ' +
+      '<span class="' + (hWin ? 'winner' : '') + '">' + abbr(home) + '</span>';
+
+    var meta = state === 'in'
+      ? (comp.status.shortDetail || comp.status.type.shortDetail || 'Live')
+      : (comp.status.shortDetail || comp.status.type.shortDetail || 'Final');
+
+    return '<div class="game-box' + (state === 'in' ? ' live' : '') + '">' +
+      '<p class="game-line">' + line + '</p>' +
+      '<p class="game-meta">' + esc(meta) + '</p></div>';
+  }
+
+  function sectionId(path) {
+    return 'lg-' + path.replace(/[^a-z0-9]/gi, '-');
+  }
+
+  function buildSections() {
+    $('leagues').innerHTML = LEAGUES.map(function(lg) {
+      return '<section class="league-section" aria-label="' + esc(lg.name) + '">' +
+        '<div class="section-heading"><h2>' + esc(lg.name) + '</h2></div>' +
+        '<div id="' + sectionId(lg.path) + '"><p class="muted">Loading…</p></div>' +
+        '</section>';
+    }).join('');
+  }
+
+  function loadLeague(lg, dateStr) {
+    var el = $(sectionId(lg.path));
+    fetch(API + lg.path + '/scoreboard?dates=' + dateStr)
+      .then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function(d) {
+        var evs = d.events || [];
+        el.innerHTML = evs.length
+          ? evs.map(gameCard).join('')
+          : '<p class="muted">No games scheduled.</p>';
+      })
+      .catch(function() {
+        el.innerHTML = '<p class="muted">Couldn\'t load scores.</p>';
+      })
+      .then(function() { stampLoaded(); });
+  }
+
+  function loadAll() {
+    var dateStr = ymd(currentDate);
+    updateDateNav();
+    LEAGUES.forEach(function(lg) {
+      var el = $(sectionId(lg.path));
+      if (el) el.innerHTML = '<p class="muted">Loading…</p>';
+      loadLeague(lg, dateStr);
+    });
+  }
+
+  $('prevDay').addEventListener('click', function() {
+    currentDate.setDate(currentDate.getDate() - 1);
+    loadAll();
+  });
+  $('nextDay').addEventListener('click', function() {
+    currentDate.setDate(currentDate.getDate() + 1);
+    loadAll();
+  });
+
+  buildSections();
+  loadAll();
+})();
+</script>
+</body>
+</html>
