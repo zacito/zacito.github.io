@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gravel · Zacito</title>
+  <link rel="stylesheet" href="/styles.css">
+  <meta name="description" content="Gravel — Zacito's reusable website and app framework. Everything is built on Gravel.">
+  <link rel="canonical" href="https://zacito.github.io/gravel/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Gravel · Zacito">
+  <meta property="og:description" content="Gravel — Zacito's reusable website and app framework. Everything is built on Gravel.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zacito.github.io/gravel/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Gravel · Zacito">
+  <meta name="twitter:description" content="Gravel — Zacito's reusable website and app framework. Everything is built on Gravel.">
+</head>
+<body>
+  <header class="site-header slim">
+    <a class="brand" href="/" aria-label="Zacito home">Zacito</a>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">← Home</a></nav>
+    <p class="eyebrow">Framework</p>
+    <h1>Gravel</h1>
+    <p class="description">My reusable framework for websites and apps —
+      like Bootstrap or Foundation, except every style and layout in it was
+      gathered from my own live sites. Everything is built on Gravel.</p>
+
+    <section class="ai-section">
+      <div class="section-heading"><h2>The framework</h2></div>
+      <nav class="category-menu" aria-label="Gravel framework">
+        <a class="category-option" href="https://github.com/zacito/Gravel">GitHub repo (private)</a>
+        <a class="category-option" href="https://github.com/zacito/Gravel/blob/main/css/gravel.css">gravel.css</a>
+        <a class="category-option" href="https://github.com/zacito/Gravel/blob/main/css/gravel-classic.css">gravel-classic.css</a>
+        <a class="category-option" href="https://github.com/zacito/Gravel/blob/main/js/gravel.js">gravel.js</a>
+        <a class="category-option" href="https://github.com/zacito/Gravel/blob/main/docs/STANDARD.md">The standard</a>
+        <a class="category-option" href="https://github.com/zacito/Gravel/blob/main/docs/INVENTORY.md">Site inventory</a>
+      </nav>
+    </section>
+
+    <section class="ai-section">
+      <div class="section-heading"><h2>Two halves</h2></div>
+      <div class="blog-list">
+        <div class="blog-item">
+          <h2>Gravel Web</h2>
+          <p class="excerpt">One stylesheet and a handful of helpers: design
+            tokens, a centered single-column layout, rectangle link grids,
+            white box cards, list rows, admin forms. Static HTML, rendered
+            client-side from one data store. No build step.</p>
+        </div>
+        <div class="blog-item">
+          <h2>Gravel App</h2>
+          <p class="excerpt">The app framework: the Android template standard
+            (API 36, per-app release signing, local-first data with
+            import/export) plus the web-app pattern — sheet or KV in,
+            Gravel page out, token-gated admin.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-section">
+      <div class="section-heading"><h2>Gathered from</h2></div>
+      <div class="blog-list">
+        <div class="blog-item">
+          <h2>Kato Life</h2>
+          <p class="excerpt">The origin — its stylesheet opens with a block
+            literally marked /*gravel*/: white boxes, lightgray borders,
+            #f7f7f7 ground. Preserved as gravel-classic.css.</p>
+        </div>
+        <div class="blog-item">
+          <h2>Cuhlur + this site</h2>
+          <p class="excerpt">The current standard — identical core stylesheet
+            on both: ink #202428, accent #185e87, 780px column, big brand
+            header, rectangle link buttons.</p>
+        </div>
+        <div class="blog-item">
+          <h2>kscmn.com</h2>
+          <p class="excerpt">The card variant: navy #1e3a7d, 980px wrap,
+            rounded white boxes, two-column card grid on desktop.</p>
+        </div>
+        <div class="blog-item">
+          <h2>znet</h2>
+          <p class="excerpt">The app-like variant: 12px radius cards,
+            accent-soft fills, KV-backed data with in-page editing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-section">
+      <div class="section-heading"><h2>The rule</h2></div>
+      <p class="description">Data lives in one canonical store — a Google
+        Sheet, Cloudflare KV, or repo JSON — never hardcoded in HTML.
+        I edit the sheet. Gravel does the rest.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>Zacito</span>
+    <nav class="footer-nav" aria-label="Projects">
+      <a href="/coder/">Coder</a>
+      <a href="/nfl/">NFL</a>
+      <a href="/shows/">Shows</a>
+      <a href="/sports/">Sports</a>
+    </nav>
+  </footer>
+</body>
+</html>
