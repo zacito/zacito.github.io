@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard theme demo · Gravel</title>
+  <link rel="stylesheet" href="../../gravel.css">
+  <link rel="stylesheet" href="../../themes/dashboard.css">
+</head>
+<body>
+  <div class="topbar">
+    <button id="menu-btn" aria-label="Menu">☰</button>
+    <span class="brand">Dashboard</span>
+    <span class="spacer"></span>
+    <span class="meta">Updated demo · Gravel dashboard theme</span>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+  </div>
+
+  <div class="shell">
+    <nav class="sidebar" id="sidebar">
+      <div class="grp">Main</div>
+      <a href="#" class="active">Overview</a>
+      <a href="#">Deals</a>
+      <a href="#">Watchlist</a>
+      <div class="grp">Library</div>
+      <a href="#">Links</a>
+      <a href="#">RSS</a>
+      <a href="#">Sports</a>
+    </nav>
+
+    <main>
+      <h1>Overview</h1>
+      <p class="sub">One theme for znet, /rss, /links, /sports and the Sports Card Dashboard.</p>
+
+      <div class="dd-row">
+        <details class="dd"><summary>Apps</summary><div class="dd-list"><a href="#">App one</a><a href="#">App two</a></div></details>
+        <details class="dd"><summary>Comps</summary><div class="dd-list"><a href="#">eBay Sold</a><a href="#">130 Point</a></div></details>
+        <details class="dd"><summary>Marketplaces</summary><div class="dd-list"><a href="#">eBay</a><a href="#">Fanatics</a></div></details>
+        <details class="dd"><summary>News</summary><div class="dd-list"><a href="#">Headlines</a></div></details>
+      </div>
+
+      <div class="chips">
+        <button class="chip-btn active">All</button>
+        <button class="chip-btn">Unread</button>
+        <button class="chip-btn">Read</button>
+        <button class="chip-btn">#cards</button>
+        <button class="chip-btn">#sports</button>
+      </div>
+
+      <section class="card">
+        <h3>2026 Bowman Chrome Baseball Mega Box <span class="badge">mega</span> <span class="badge green">deal</span></h3>
+        <p class="meta">$87.33 BIN, free ship · Avg $128.28</p>
+        <p>~32% below going rate — eBay: Cards and Collectibles 4 Less</p>
+        <div class="actions">
+          <button class="act read">✓ Read</button>
+          <button class="act">Edit</button>
+          <button class="act delete">Delete</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>A plain saved-link card</h3>
+        <p class="meta">example.com · Oct 29, 2026</p>
+        <p>White radius cards on the gray ground — the /rss and /links pattern.</p>
+      </section>
+
+      <section class="card plain">
+        <h3 style="margin-bottom:8px">Plain-text mode (/sports)</h3>
+        <span class="row"><a href="#">NFL</a> — <a href="#">Scores</a> <a href="#">Stats</a> <a href="#">Standings</a></span>
+        <span class="row"><a href="#">NBA</a> — <a href="#">Scores</a> <a href="#">Stats</a> <a href="#">Standings</a></span>
+        <span class="row"><a href="#">MLB</a> — <a href="#">Scores</a> <a href="#">Stats</a> <a href="#">Standings</a></span>
+      </section>
+    </main>
+  </div>
+
+  <script src="../../gravel.js"></script>
+  <script src="../../gravel-app.js"></script>
+  <script>
+    document.getElementById("theme-toggle").addEventListener("click", gravelThemeToggle);
+    document.getElementById("menu-btn").addEventListener("click", () =>
+      document.getElementById("sidebar").classList.toggle("open"));
+    document.querySelectorAll(".chip-btn").forEach(b => b.addEventListener("click", () => {
+      document.querySelectorAll(".chip-btn").forEach(x => x.classList.remove("active"));
+      b.classList.add("active");
+    }));
+  </script>
+</body>
+</html>
