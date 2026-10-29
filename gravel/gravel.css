@@ -1,0 +1,224 @@
+/* ============================================================
+   GRAVEL — web framework (canonical)
+   Consolidated 2026-10-29 from the live sites:
+   - Base tokens + layout: Cuhlur Database / zacito.github.io
+     (identical core stylesheet, the current Gravel standard)
+   - .box card component: kscmn.com theme.css + Kato Life classic
+   - Radius / accent-soft tokens: znet
+   Rule: one stylesheet, CSS variables for every color/size.
+   No build step, no framework, system fonts only.
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+  /* color — Gravel Modern (Cuhlur / zacito.github.io) */
+  --ink: #202428;
+  --muted: #6d7378;
+  --line: #dfe2e4;
+  --paper: #ffffff;
+  --wash: #f5f6f7;
+  --accent: #185e87;
+  --accent-soft: #e8f1ff;
+  --danger: #e5484d;
+  /* shape */
+  --radius: 3px;        /* modern default; card variant uses 14px */
+  --radius-card: 14px;
+  /* layout */
+  --max: 780px;         /* single-column reading width */
+  --max-wide: 980px;    /* card / dashboard width (kscmn .wrap) */
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+a { color: inherit; }
+button, input, select, textarea { font: inherit; }
+
+/* ---------- layout ---------- */
+.site-header,
+main,
+footer {
+  width: min(calc(100% - 40px), var(--max));
+  margin-inline: auto;
+}
+.wrap { width: min(calc(100% - 32px), var(--max-wide)); margin-inline: auto; }
+main { min-height: 62vh; padding: 54px 0 80px; }
+main:focus { outline: none; }
+
+/* two-column card layout on desktop (kscmn .cols) */
+@media (min-width: 860px) {
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .cols .box { margin-bottom: 0; }
+  .cols .span2 { grid-column: 1 / -1; }
+}
+
+/* ---------- header / brand ---------- */
+.site-header {
+  min-height: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+.site-header.slim { min-height: 76px; }
+.site-header.slim .brand { font-size: 1.7rem; }
+.brand {
+  color: var(--ink);
+  font-size: clamp(2rem, 7vw, 3.45rem);
+  font-weight: 750;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  text-decoration: none;
+}
+.site-nav { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px; }
+.site-nav a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
+.site-nav a:hover { text-decoration: underline; }
+
+/* ---------- type ---------- */
+.breadcrumbs { margin: 0 0 54px; color: var(--muted); font-size: clamp(1.1rem, 4vw, 1.5rem); }
+.breadcrumbs a { text-decoration: none; }
+.breadcrumbs a:hover { color: var(--accent); text-decoration: underline; }
+.eyebrow {
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+h1 {
+  max-width: 700px;
+  margin: 5px 0 24px;
+  font-size: clamp(2.35rem, 8vw, 4.3rem);
+  line-height: 1.03;
+  letter-spacing: -.045em;
+}
+.description { max-width: 650px; margin: 0; font-size: clamp(1.15rem, 3vw, 1.45rem); line-height: 1.6; }
+.empty { color: var(--muted); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 22px; color: var(--muted); font-size: .94rem; }
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 14px;
+}
+.section-heading h2 { margin: 0; font-size: 1.05rem; letter-spacing: .06em; text-transform: uppercase; }
+.section { margin-bottom: 44px; }
+.section:last-child { margin-bottom: 0; }
+
+/* ---------- link grid (the Gravel rectangle buttons) ---------- */
+.category-menu {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 14px;
+}
+.category-option {
+  display: flex;
+  align-items: center;
+  min-height: 58px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 12px;
+  text-align: left;
+  font-weight: 700;
+  text-decoration: none;
+}
+.category-option:hover { border-color: var(--ink); }
+
+/* ---------- box / card (Kato Life classic -> kscmn card) ---------- */
+.box {
+  display: block;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  width: 100%;
+  text-decoration: none;
+  color: var(--ink);
+}
+.box-name { display: block; font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.box a.link-row { display: block; text-decoration: none; color: var(--ink); padding: 7px 4px; border-radius: 12px; }
+.box a.link-row:hover { background: var(--wash); }
+.more-link { display: inline-block; margin-top: 8px; color: var(--accent); font-weight: 700; text-decoration: none; }
+.more-link:hover { text-decoration: underline; }
+
+/* ---------- list rows (blog / index pattern) ---------- */
+.list { border-top: 1px solid var(--line); margin-top: 8px; }
+.list-item { display: block; padding: 22px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+.list-item:hover h2, .list-item:hover h3 { color: var(--accent); text-decoration: underline; }
+.list-item h2, .list-item h3 { margin: 0 0 4px; font-size: 1.5rem; line-height: 1.25; }
+.list-item .excerpt { margin: 6px 0 0; color: var(--muted); }
+.list-date { color: var(--muted); font-size: .85rem; }
+
+/* ---------- buttons / chips / forms ---------- */
+.btn {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 9px 13px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn:hover { border-color: var(--ink); }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.btn-primary:hover { border-color: var(--ink); }
+.chip {
+  display: inline-block;
+  font-size: 13px; font-weight: 700; color: var(--muted);
+  border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px;
+}
+.search { margin: 0 0 10px; }
+.search input, .field {
+  width: 100%;
+  border: 1px solid #aeb4b8;
+  border-radius: var(--radius);
+  padding: 11px 12px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.search input:focus, .field:focus { outline: 3px solid rgba(24,94,135,.18); border-color: var(--accent); }
+
+/* admin form (Cuhlur / blog CMS pattern) */
+.admin-form { display: grid; gap: 14px; margin: 24px 0 44px; max-width: 680px; }
+.admin-form label { display: grid; gap: 6px; font-weight: 700; font-size: .9rem; }
+.admin-form .hint { font-weight: 400; color: var(--muted); }
+.admin-form input, .admin-form textarea { border: 1px solid #aeb4b8; border-radius: var(--radius); padding: 11px 12px; font: inherit; font-weight: 400; }
+
+/* ---------- footer ---------- */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0 36px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .82rem;
+}
+.footer-nav { display: flex; gap: 18px; }
+.footer-nav a { text-decoration: none; }
+.footer-nav a:hover { color: var(--ink); text-decoration: underline; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 540px) {
+  .site-header, main, footer { width: min(calc(100% - 28px), var(--max)); }
+  .site-header { min-height: 105px; }
+  .site-header.slim { min-height: 68px; }
+  main { padding-top: 38px; }
+  .breadcrumbs { margin-bottom: 38px; }
+  .category-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
