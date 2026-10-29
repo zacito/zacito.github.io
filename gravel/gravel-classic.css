@@ -1,0 +1,25 @@
+/* ============================================================
+   GRAVEL CLASSIC — the original Gravel, preserved.
+   Source: katolife.net styles.css, the block literally marked
+   "/*gravel*/" in that file (the "not gravel" app-specific
+   rules below it were not carried over).
+   Kept for reference / legacy pages. New builds use gravel.css.
+   ============================================================ */
+
+a { color: black; outline: 0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+body { background: #f7f7f7; font-family: arial; font-size: 16px; }
+footer { color: gray; font-size: 13px; margin: 50px 0; text-align: center; }
+footer a { color: gray; }
+header p { margin: 5px; }
+.box { background: white; border: 1px solid lightgray; margin: 5px; padding: 5px; }
+.box a { display: block; margin-left: 5px; }
+.box p { font-weight: bold; margin: 0px 5px 5px 5px; }
+.content { display: flex; flex-direction: column; }
+.col { margin: 10px 0; width: 99%; }
+.row { background: white; border: 1px solid lightgray; text-align: center; width: 100%; }
+
+@media (min-width: 700px) {
+  body { margin: 11px 200px; }
+  .content { flex-direction: row; }
+}
