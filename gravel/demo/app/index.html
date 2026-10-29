@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>App demo · Gravel</title>
+  <link rel="stylesheet" href="../../gravel.css">
+  <link rel="stylesheet" href="../../gravel-app.css">
+</head>
+<body class="has-bottom-nav">
+  <div class="app-bar">
+    <span class="title">Gravel App</span>
+    <span class="spacer"></span>
+    <button id="theme-btn" aria-label="Toggle dark mode">🌙</button>
+  </div>
+
+  <div class="install-banner" id="install-banner">
+    <span>Install this app on your phone.</span>
+    <button class="btn btn-primary" onclick="gravelInstall()">Install</button>
+  </div>
+
+  <main style="width:min(calc(100% - 32px), 780px); margin-inline:auto;">
+    <section class="view active" id="view-home">
+      <h1 style="font-size:2rem;">Phone features, built in</h1>
+      <p class="description">gravel-app.css + gravel-app.js: the common
+        phone functionality every app needs, no dependencies.</p>
+
+      <section class="section" style="margin-top:36px;">
+        <div class="section-heading"><h2>Try them</h2></div>
+        <nav class="category-menu" style="grid-template-columns:repeat(2,1fr);">
+          <button class="category-option" onclick="gravelToast('Saved ✓')">Toast</button>
+          <button class="category-option" onclick="gravelShare({title:'Gravel', text:'Everything is built on Gravel.', url:location.href})">Share sheet</button>
+          <button class="category-option" onclick="gravelSheet('demo-sheet', true)">Bottom sheet</button>
+          <button class="category-option" onclick="gravelHaptic(30); gravelToast('Buzz')">Haptic tap</button>
+          <button class="category-option" onclick="gravelPhotoInput(f => gravelToast('Photo picked: ' + f.name))">Take photo</button>
+          <button class="category-option" onclick="bump()">Local store: <span id="count">0</span> taps</button>
+        </nav>
+        <p class="empty" style="margin-top:14px;">The counter persists in localStorage
+          (GravelStore) — reload the page, it stays. Dark mode (🌙, top right)
+          persists too.</p>
+      </section>
+    </section>
+
+    <section class="view" id="view-about">
+      <h1 style="font-size:2rem;">About</h1>
+      <p class="description">Second view — bottom-nav tab switching via
+        <code>gravelShowView()</code>. Add the PWA manifest + service worker
+        (in the repo under <code>app/pwa/</code>) and this page installs
+        to a home screen like a native app.</p>
+    </section>
+  </main>
+
+  <button class="fab" onclick="gravelToast('FAB tapped')" aria-label="Add">+</button>
+
+  <div class="sheet" id="demo-sheet">
+    <div class="grab"></div>
+    <h3 style="margin:0 0 8px;">Bottom sheet</h3>
+    <p>Slides up over the page, backdrop tap dismisses. Used for actions,
+      pickers and detail panels in phone apps.</p>
+    <button class="btn btn-primary" onclick="gravelSheet('demo-sheet', false)">Close</button>
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="active" onclick="gravelShowView('view-home', this)"><span class="icon">⌂</span>Home</button>
+    <button onclick="gravelShowView('view-about', this)"><span class="icon">ⓘ</span>About</button>
+    <button onclick="gravelInstall()"><span class="icon">⬇</span>Install</button>
+  </nav>
+
+  <script src="../../gravel.js"></script>
+  <script src="../../gravel-app.js"></script>
+  <script>
+    document.getElementById("theme-btn").addEventListener("click", gravelThemeToggle);
+    const store = GravelStore.ns("gravel-demo");
+    let n = store.get({ n: 0 }).n;
+    document.getElementById("count").textContent = n;
+    function bump() { n++; store.set({ n }); document.getElementById("count").textContent = n; gravelHaptic(8); }
+    if (!window.matchMedia("(display-mode: standalone)").matches)
+      document.getElementById("install-banner").classList.add("show");
+  </script>
+</body>
+</html>
