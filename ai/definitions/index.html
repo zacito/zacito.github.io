@@ -58,6 +58,13 @@
     },
     {
       "@type": "DefinedTerm",
+      "name": "Attention",
+      "description": "The mechanism that lets a model weigh which parts of its input matter to each other. Reading \"the bank by the river,\" attention is how the model links bank to river instead of money. GQA, SWA, and MLA are all variations on how attention gets computed.",
+      "url": "https://zacito.github.io/ai/definitions/#attention",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
       "name": "Benchmark",
       "description": "A standardized test used to compare AI models, like an exam for software. Scores on benchmarks such as MMLU or SWE-bench drive headlines and leaderboards. They are useful but imperfect — a model can ace a test and still fumble real work.",
       "url": "https://zacito.github.io/ai/definitions/#benchmark",
@@ -108,6 +115,14 @@
     },
     {
       "@type": "DefinedTerm",
+      "name": "GQA (Grouped Query Attention)",
+      "description": "An efficiency trick for attention in which several attention heads share the same key and value data instead of each keeping its own copy. It makes models noticeably faster and cheaper to run, with little loss of quality. Most modern open models use GQA.",
+      "url": "https://zacito.github.io/ai/definitions/#gqa",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/",
+      "alternateName": "Grouped Query Attention"
+    },
+    {
+      "@type": "DefinedTerm",
       "name": "Hallucination",
       "description": "When a model states something false with total confidence — an invented citation, a wrong date, a person who does not exist. It happens because models predict plausible text, not verified truth. Always check an AI's facts when they matter.",
       "url": "https://zacito.github.io/ai/definitions/#hallucination",
@@ -137,11 +152,34 @@
     },
     {
       "@type": "DefinedTerm",
+      "name": "Mamba",
+      "description": "An alternative to the Transformer architecture, based on state space models that process text as a stream instead of comparing every word to every other word. That makes Mamba models very fast on long inputs. Some models are hybrids, mixing Mamba layers with a few attention layers.",
+      "url": "https://zacito.github.io/ai/definitions/#mamba",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
       "name": "MCP (Model Context Protocol)",
       "description": "An open standard, introduced by Anthropic in 2024, for connecting AI assistants to external tools and data. Instead of every app building its own custom integration, MCP gives models one common plug shape for files, databases, and services. Think of it as USB for AI tools.",
       "url": "https://zacito.github.io/ai/definitions/#mcp",
       "inDefinedTermSet": "https://zacito.github.io/ai/definitions/",
       "alternateName": "Model Context Protocol"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "MLA (Multi-head Latent Attention)",
+      "description": "DeepSeek's attention design, which compresses the model's attention memory — the KV cache — into a small \"latent\" form. That shrinks memory use dramatically, making long conversations and large deployments cheaper to run. MLA first appeared in DeepSeek-V2 and has been widely copied since.",
+      "url": "https://zacito.github.io/ai/definitions/#mla",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/",
+      "alternateName": "Multi-head Latent Attention"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "MoE (Mixture of Experts)",
+      "description": "An architecture that splits a model into many specialized sub-networks called experts and activates only a few of them for each token. Total size can be enormous while the cost per answer stays low, because most of the model sits out each step. DeepSeek and Mixtral are MoE designs, and newer variants like LatentMoE push toward many smaller experts.",
+      "url": "https://zacito.github.io/ai/definitions/#moe",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/",
+      "alternateName": "Mixture of Experts"
     },
     {
       "@type": "DefinedTerm",
@@ -192,6 +230,14 @@
       "description": "An LLM trained to think step by step, working through a problem in extended chains of thought before answering. These models are slower and costlier than standard ones but much stronger at math, code, and multi-step logic. OpenAI's o-series and Claude's extended thinking are examples.",
       "url": "https://zacito.github.io/ai/definitions/#reasoning-model",
       "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "SWA (Sliding Window Attention)",
+      "description": "Attention that only looks at a moving window of nearby tokens instead of the whole text at once. Nearby words usually matter most, so this saves enormous computing power on long inputs. Models often mix SWA layers with a few full-attention layers to keep a global view.",
+      "url": "https://zacito.github.io/ai/definitions/#swa",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/",
+      "alternateName": "Sliding Window Attention"
     },
     {
       "@type": "DefinedTerm",
@@ -261,6 +307,7 @@
         <a class="category-option" href="#agi">AGI</a>
         <a class="category-option" href="#alignment">Alignment</a>
         <a class="category-option" href="#api">API</a>
+        <a class="category-option" href="#attention">Attention</a>
         <a class="category-option" href="#benchmark">Benchmark</a>
         <a class="category-option" href="#chatbot">Chatbot</a>
         <a class="category-option" href="#context-window">Context Window</a>
@@ -268,11 +315,15 @@
         <a class="category-option" href="#fine-tuning">Fine-Tuning</a>
         <a class="category-option" href="#generative-ai">Generative AI</a>
         <a class="category-option" href="#gpu">GPU</a>
+        <a class="category-option" href="#gqa">GQA</a>
         <a class="category-option" href="#hallucination">Hallucination</a>
         <a class="category-option" href="#inference">Inference</a>
         <a class="category-option" href="#llm">LLM</a>
         <a class="category-option" href="#machine-learning">Machine Learning</a>
+        <a class="category-option" href="#mamba">Mamba</a>
         <a class="category-option" href="#mcp">MCP</a>
+        <a class="category-option" href="#mla">MLA</a>
+        <a class="category-option" href="#moe">MoE</a>
         <a class="category-option" href="#multimodal">Multimodal</a>
         <a class="category-option" href="#neural-network">Neural Network</a>
         <a class="category-option" href="#open-weights">Open Weights</a>
@@ -280,6 +331,7 @@
         <a class="category-option" href="#prompt">Prompt</a>
         <a class="category-option" href="#rag">RAG</a>
         <a class="category-option" href="#reasoning-model">Reasoning Model</a>
+        <a class="category-option" href="#swa">SWA</a>
         <a class="category-option" href="#system-prompt">System Prompt</a>
         <a class="category-option" href="#temperature">Temperature</a>
         <a class="category-option" href="#token">Token</a>
@@ -307,6 +359,11 @@
       <h2>API</h2>
       <p class="def-full">Application Programming Interface</p>
       <p>A way for software to talk to software. When an app "uses AI," it usually sends text to a model through an API and gets text back. APIs are how AI gets built into products instead of living only in a chat window.</p>
+    </section>
+    <section class="def" id="attention">
+      <h2>Attention</h2>
+      
+      <p>The mechanism that lets a model weigh which parts of its input matter to each other. Reading "the bank by the river," attention is how the model links bank to river instead of money. GQA, SWA, and MLA are all variations on how attention gets computed.</p>
     </section>
     <section class="def" id="benchmark">
       <h2>Benchmark</h2>
@@ -343,6 +400,11 @@
       <p class="def-full">Graphics Processing Unit</p>
       <p>The chip that does the heavy math for training and running AI models. Originally built for video games, GPUs turned out to be perfect for the parallel calculations neural networks need. Their scarcity is why AI companies spend billions on data centers.</p>
     </section>
+    <section class="def" id="gqa">
+      <h2>GQA</h2>
+      <p class="def-full">Grouped Query Attention</p>
+      <p>An efficiency trick for attention in which several attention heads share the same key and value data instead of each keeping its own copy. It makes models noticeably faster and cheaper to run, with little loss of quality. Most modern open models use GQA.</p>
+    </section>
     <section class="def" id="hallucination">
       <h2>Hallucination</h2>
       
@@ -363,10 +425,25 @@
       <p class="def-full">ML</p>
       <p>Software that learns patterns from data instead of being programmed with explicit rules. You show it examples; it figures out the pattern. Nearly all modern AI, including every LLM, is machine learning under the hood.</p>
     </section>
+    <section class="def" id="mamba">
+      <h2>Mamba</h2>
+      
+      <p>An alternative to the Transformer architecture, based on state space models that process text as a stream instead of comparing every word to every other word. That makes Mamba models very fast on long inputs. Some models are hybrids, mixing Mamba layers with a few attention layers.</p>
+    </section>
     <section class="def" id="mcp">
       <h2>MCP</h2>
       <p class="def-full">Model Context Protocol</p>
       <p>An open standard, introduced by Anthropic in 2024, for connecting AI assistants to external tools and data. Instead of every app building its own custom integration, MCP gives models one common plug shape for files, databases, and services. Think of it as USB for AI tools.</p>
+    </section>
+    <section class="def" id="mla">
+      <h2>MLA</h2>
+      <p class="def-full">Multi-head Latent Attention</p>
+      <p>DeepSeek's attention design, which compresses the model's attention memory &mdash; the KV cache &mdash; into a small "latent" form. That shrinks memory use dramatically, making long conversations and large deployments cheaper to run. MLA first appeared in DeepSeek-V2 and has been widely copied since.</p>
+    </section>
+    <section class="def" id="moe">
+      <h2>MoE</h2>
+      <p class="def-full">Mixture of Experts</p>
+      <p>An architecture that splits a model into many specialized sub-networks called experts and activates only a few of them for each token. Total size can be enormous while the cost per answer stays low, because most of the model sits out each step. DeepSeek and Mixtral are MoE designs, and newer variants like LatentMoE push toward many smaller experts.</p>
     </section>
     <section class="def" id="multimodal">
       <h2>Multimodal</h2>
@@ -402,6 +479,11 @@
       <h2>Reasoning Model</h2>
       
       <p>An LLM trained to think step by step, working through a problem in extended chains of thought before answering. These models are slower and costlier than standard ones but much stronger at math, code, and multi-step logic. OpenAI's o-series and Claude's extended thinking are examples.</p>
+    </section>
+    <section class="def" id="swa">
+      <h2>SWA</h2>
+      <p class="def-full">Sliding Window Attention</p>
+      <p>Attention that only looks at a moving window of nearby tokens instead of the whole text at once. Nearby words usually matter most, so this saves enormous computing power on long inputs. Models often mix SWA layers with a few full-attention layers to keep a global view.</p>
     </section>
     <section class="def" id="system-prompt">
       <h2>System Prompt</h2>
