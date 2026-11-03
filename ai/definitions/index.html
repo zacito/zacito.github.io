@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Definitions · Zacito</title>
+  <link rel="stylesheet" href="/styles.css">
+<!-- seo:start -->
+  <meta name="description" content="Plain-language definitions of AI terms and acronyms: LLM, agent, RAG, token, MCP, hallucination, fine-tuning, and more.">
+  <link rel="canonical" href="https://zacito.github.io/ai/definitions/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="AI Definitions · Zacito">
+  <meta property="og:description" content="Plain-language definitions of AI terms and acronyms: LLM, agent, RAG, token, MCP, hallucination, fine-tuning, and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zacito.github.io/ai/definitions/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Definitions · Zacito">
+  <meta name="twitter:description" content="Plain-language definitions of AI terms and acronyms: LLM, agent, RAG, token, MCP, hallucination, fine-tuning, and more.">
+  <!-- seo:end -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "AI Definitions",
+  "url": "https://zacito.github.io/ai/definitions/",
+  "description": "Plain-language definitions of AI terms and acronyms: LLM, agent, RAG, tokens, MCP, and more.",
+  "hasDefinedTerm": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Agent",
+      "description": "An AI system that does tasks, not just answers questions. It can use tools, browse, write files, and take multiple steps toward a goal with little human guidance. Chatbots reply; agents act.",
+      "url": "https://zacito.github.io/ai/definitions/#agent",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "AGI (Artificial General Intelligence)",
+      "description": "A hypothetical AI that can learn and do any intellectual task a human can, instead of being good at one narrow job. Today's systems are not AGI, whatever the marketing says. Nobody agrees on an exact test for it, which is why the term sparks so many arguments.",
+      "url": "https://zacito.github.io/ai/definitions/#agi",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/",
+      "alternateName": "Artificial General Intelligence"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Alignment",
+      "description": "The work of making AI systems do what their makers actually intend, safely and honestly. A misaligned system can follow the letter of an instruction while missing its point, or pursue goals its users never wanted. Alignment research covers everything from training methods to testing for deceptive behavior.",
+      "url": "https://zacito.github.io/ai/definitions/#alignment",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "API (Application Programming Interface)",
+      "description": "A way for software to talk to software. When an app \"uses AI,\" it usually sends text to a model through an API and gets text back. APIs are how AI gets built into products instead of living only in a chat window.",
+      "url": "https://zacito.github.io/ai/definitions/#api",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/",
+      "alternateName": "Application Programming Interface"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Benchmark",
+      "description": "A standardized test used to compare AI models, like an exam for software. Scores on benchmarks such as MMLU or SWE-bench drive headlines and leaderboards. They are useful but imperfect — a model can ace a test and still fumble real work.",
+      "url": "https://zacito.github.io/ai/definitions/#benchmark",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Chatbot",
+      "description": "A program you converse with in text or voice. Modern chatbots like ChatGPT and Claude are front ends for LLMs. The chat format hides a lot of machinery: the model, its instructions, and often tools working behind the scenes.",
+      "url": "https://zacito.github.io/ai/definitions/#chatbot",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Context Window",
+      "description": "How much text a model can consider at once — your prompt, the conversation history, and any documents you attach. It is measured in tokens, and when a conversation overflows it, the model starts forgetting the beginning. Bigger windows mean longer documents and longer memories per session.",
+      "url": "https://zacito.github.io/ai/definitions/#context-window",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Embedding",
+      "description": "A list of numbers that represents the meaning of a piece of text. Texts with similar meanings get similar numbers, so software can search by meaning instead of exact words. Embeddings power semantic search and the retrieval half of RAG.",
+      "url": "https://zacito.github.io/ai/definitions/#embedding",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Fine-Tuning",
+      "description": "Extra training that specializes a general model for a particular job, voice, or format. It teaches behavior and style more than new facts. Fine-tuning is how a base model becomes, say, a support assistant that always answers in a company's tone.",
+      "url": "https://zacito.github.io/ai/definitions/#fine-tuning",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Generative AI",
+      "description": "AI that creates new content — text, images, audio, video, code — instead of just classifying or predicting. It is the umbrella term for LLMs, image generators, and music and video models. The name comes from generating outputs rather than analyzing inputs.",
+      "url": "https://zacito.github.io/ai/definitions/#generative-ai",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "GPU (Graphics Processing Unit)",
+      "description": "The chip that does the heavy math for training and running AI models. Originally built for video games, GPUs turned out to be perfect for the parallel calculations neural networks need. Their scarcity is why AI companies spend billions on data centers.",
+      "url": "https://zacito.github.io/ai/definitions/#gpu",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/",
+      "alternateName": "Graphics Processing Unit"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Hallucination",
+      "description": "When a model states something false with total confidence — an invented citation, a wrong date, a person who does not exist. It happens because models predict plausible text, not verified truth. Always check an AI's facts when they matter.",
+      "url": "https://zacito.github.io/ai/definitions/#hallucination",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Inference",
+      "description": "The act of running a trained model to produce an answer. Training builds the model; inference is using it, and it happens every time you send a prompt. When people talk about AI's running costs or speed, they usually mean inference.",
+      "url": "https://zacito.github.io/ai/definitions/#inference",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "LLM (Large Language Model)",
+      "description": "A neural network trained on enormous amounts of text to predict what word comes next. That simple skill, scaled up, produces systems that can write, summarize, translate, and reason. ChatGPT, Claude, and Gemini are all powered by LLMs.",
+      "url": "https://zacito.github.io/ai/definitions/#llm",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/",
+      "alternateName": "Large Language Model"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Machine Learning",
+      "description": "Software that learns patterns from data instead of being programmed with explicit rules. You show it examples; it figures out the pattern. Nearly all modern AI, including every LLM, is machine learning under the hood.",
+      "url": "https://zacito.github.io/ai/definitions/#machine-learning",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "MCP (Model Context Protocol)",
+      "description": "An open standard, introduced by Anthropic in 2024, for connecting AI assistants to external tools and data. Instead of every app building its own custom integration, MCP gives models one common plug shape for files, databases, and services. Think of it as USB for AI tools.",
+      "url": "https://zacito.github.io/ai/definitions/#mcp",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/",
+      "alternateName": "Model Context Protocol"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Multimodal",
+      "description": "Able to work with more than one kind of input — text, images, audio, video. A multimodal model can look at a photo and discuss it, or listen to a recording and summarize it. Most frontier models are multimodal now.",
+      "url": "https://zacito.github.io/ai/definitions/#multimodal",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Neural Network",
+      "description": "A program loosely inspired by the brain, built from layers of connected mathematical operations. It learns by adjusting millions or billions of connection strengths as it trains on examples. Neural networks are the engine inside modern AI.",
+      "url": "https://zacito.github.io/ai/definitions/#neural-network",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Open Weights",
+      "description": "A model whose trained parameters — its weights — are published for anyone to download and run. You can run open-weights models like Llama on your own hardware, privately and for free. The catch: you provide the computer, and the biggest models need a serious one.",
+      "url": "https://zacito.github.io/ai/definitions/#open-weights",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Parameters",
+      "description": "The internal numbers a model learns during training — its stored knowledge and skill in numeric form. Model sizes are quoted in them: a \"70B\" model has 70 billion parameters. More parameters generally means more capability, and more computer needed to run it.",
+      "url": "https://zacito.github.io/ai/definitions/#parameters",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Prompt",
+      "description": "The text you give an AI model — your question, instruction, or request. How you phrase it strongly affects what you get back, which is why prompt engineering became a skill. A prompt can be one line or a whole document of context and rules.",
+      "url": "https://zacito.github.io/ai/definitions/#prompt",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "RAG (Retrieval-Augmented Generation)",
+      "description": "A technique that looks up relevant documents first, then hands them to the model so it answers from real sources instead of memory alone. It is how chatbots answer questions about your files, a company's docs, or today's news. RAG reduces hallucinations because the model can work from what it retrieved.",
+      "url": "https://zacito.github.io/ai/definitions/#rag",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/",
+      "alternateName": "Retrieval-Augmented Generation"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Reasoning Model",
+      "description": "An LLM trained to think step by step, working through a problem in extended chains of thought before answering. These models are slower and costlier than standard ones but much stronger at math, code, and multi-step logic. OpenAI's o-series and Claude's extended thinking are examples.",
+      "url": "https://zacito.github.io/ai/definitions/#reasoning-model",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "System Prompt",
+      "description": "Hidden instructions given to a model before your conversation starts, setting its role, rules, and personality. Apps and companies use system prompts to turn a general model into their assistant. You usually never see it, but it shapes every reply.",
+      "url": "https://zacito.github.io/ai/definitions/#system-prompt",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Temperature",
+      "description": "A setting that controls how random a model's word choices are. Low temperature sticks to the most predictable answer — good for facts and code. High temperature gets creative and erratic — sometimes brilliant, sometimes nonsense.",
+      "url": "https://zacito.github.io/ai/definitions/#temperature",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Token",
+      "description": "The chunk of text a model actually reads and writes — roughly three-quarters of a word on average. Pricing, speed, and context limits are all measured in tokens. \"The\" is one token; \"unbelievable\" might be three.",
+      "url": "https://zacito.github.io/ai/definitions/#token",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Tool Use",
+      "description": "When a model calls external functions — searching the web, running code, reading a file — instead of answering from memory alone. It is also called function calling. Tool use is what turns a chatbot into an agent.",
+      "url": "https://zacito.github.io/ai/definitions/#tool-use",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Training",
+      "description": "The process of building a model by feeding it huge amounts of data and adjusting its parameters until its predictions get good. Training a frontier model takes months and warehouses of GPUs. Once training ends, the model's knowledge is frozen at that point — which is why models have knowledge cutoffs.",
+      "url": "https://zacito.github.io/ai/definitions/#training",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Transformer",
+      "description": "The neural network architecture behind nearly every modern AI model, introduced in a 2017 paper called \"Attention Is All You Need.\" Its key trick, attention, lets the model weigh which words in a text matter to which other words. The T in GPT stands for Transformer.",
+      "url": "https://zacito.github.io/ai/definitions/#transformer",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    }
+  ]
+}
+  </script>
+  <style>
+    .def-index { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+    .def { border-top: 1px solid var(--line); padding: 22px 0 4px; }
+    .def h2 { margin: 0 0 2px; font-size: 1.3rem; }
+    .def-full { margin: 0 0 4px; color: var(--muted); font-weight: 700; }
+    .def p:last-child { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <header class="site-header slim">
+    <a class="brand" href="/" aria-label="Zacito home">Zacito</a>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/ai/">&larr; AI</a></nav>
+    <h1>AI Definitions</h1>
+    <p>Plain-language definitions of the AI terms and acronyms that come up everywhere &mdash; three sentences each, no jargon.</p>
+
+    <nav class="def-index" aria-label="All terms">
+        <a class="category-option" href="#agent">Agent</a>
+        <a class="category-option" href="#agi">AGI</a>
+        <a class="category-option" href="#alignment">Alignment</a>
+        <a class="category-option" href="#api">API</a>
+        <a class="category-option" href="#benchmark">Benchmark</a>
+        <a class="category-option" href="#chatbot">Chatbot</a>
+        <a class="category-option" href="#context-window">Context Window</a>
+        <a class="category-option" href="#embedding">Embedding</a>
+        <a class="category-option" href="#fine-tuning">Fine-Tuning</a>
+        <a class="category-option" href="#generative-ai">Generative AI</a>
+        <a class="category-option" href="#gpu">GPU</a>
+        <a class="category-option" href="#hallucination">Hallucination</a>
+        <a class="category-option" href="#inference">Inference</a>
+        <a class="category-option" href="#llm">LLM</a>
+        <a class="category-option" href="#machine-learning">Machine Learning</a>
+        <a class="category-option" href="#mcp">MCP</a>
+        <a class="category-option" href="#multimodal">Multimodal</a>
+        <a class="category-option" href="#neural-network">Neural Network</a>
+        <a class="category-option" href="#open-weights">Open Weights</a>
+        <a class="category-option" href="#parameters">Parameters</a>
+        <a class="category-option" href="#prompt">Prompt</a>
+        <a class="category-option" href="#rag">RAG</a>
+        <a class="category-option" href="#reasoning-model">Reasoning Model</a>
+        <a class="category-option" href="#system-prompt">System Prompt</a>
+        <a class="category-option" href="#temperature">Temperature</a>
+        <a class="category-option" href="#token">Token</a>
+        <a class="category-option" href="#tool-use">Tool Use</a>
+        <a class="category-option" href="#training">Training</a>
+        <a class="category-option" href="#transformer">Transformer</a>
+    </nav>
+
+    <section class="def" id="agent">
+      <h2>Agent</h2>
+      
+      <p>An AI system that does tasks, not just answers questions. It can use tools, browse, write files, and take multiple steps toward a goal with little human guidance. Chatbots reply; agents act.</p>
+    </section>
+    <section class="def" id="agi">
+      <h2>AGI</h2>
+      <p class="def-full">Artificial General Intelligence</p>
+      <p>A hypothetical AI that can learn and do any intellectual task a human can, instead of being good at one narrow job. Today's systems are not AGI, whatever the marketing says. Nobody agrees on an exact test for it, which is why the term sparks so many arguments.</p>
+    </section>
+    <section class="def" id="alignment">
+      <h2>Alignment</h2>
+      
+      <p>The work of making AI systems do what their makers actually intend, safely and honestly. A misaligned system can follow the letter of an instruction while missing its point, or pursue goals its users never wanted. Alignment research covers everything from training methods to testing for deceptive behavior.</p>
+    </section>
+    <section class="def" id="api">
+      <h2>API</h2>
+      <p class="def-full">Application Programming Interface</p>
+      <p>A way for software to talk to software. When an app "uses AI," it usually sends text to a model through an API and gets text back. APIs are how AI gets built into products instead of living only in a chat window.</p>
+    </section>
+    <section class="def" id="benchmark">
+      <h2>Benchmark</h2>
+      
+      <p>A standardized test used to compare AI models, like an exam for software. Scores on benchmarks such as MMLU or SWE-bench drive headlines and leaderboards. They are useful but imperfect &mdash; a model can ace a test and still fumble real work.</p>
+    </section>
+    <section class="def" id="chatbot">
+      <h2>Chatbot</h2>
+      
+      <p>A program you converse with in text or voice. Modern chatbots like ChatGPT and Claude are front ends for LLMs. The chat format hides a lot of machinery: the model, its instructions, and often tools working behind the scenes.</p>
+    </section>
+    <section class="def" id="context-window">
+      <h2>Context Window</h2>
+      
+      <p>How much text a model can consider at once &mdash; your prompt, the conversation history, and any documents you attach. It is measured in tokens, and when a conversation overflows it, the model starts forgetting the beginning. Bigger windows mean longer documents and longer memories per session.</p>
+    </section>
+    <section class="def" id="embedding">
+      <h2>Embedding</h2>
+      
+      <p>A list of numbers that represents the meaning of a piece of text. Texts with similar meanings get similar numbers, so software can search by meaning instead of exact words. Embeddings power semantic search and the retrieval half of RAG.</p>
+    </section>
+    <section class="def" id="fine-tuning">
+      <h2>Fine-Tuning</h2>
+      
+      <p>Extra training that specializes a general model for a particular job, voice, or format. It teaches behavior and style more than new facts. Fine-tuning is how a base model becomes, say, a support assistant that always answers in a company's tone.</p>
+    </section>
+    <section class="def" id="generative-ai">
+      <h2>Generative AI</h2>
+      
+      <p>AI that creates new content &mdash; text, images, audio, video, code &mdash; instead of just classifying or predicting. It is the umbrella term for LLMs, image generators, and music and video models. The name comes from generating outputs rather than analyzing inputs.</p>
+    </section>
+    <section class="def" id="gpu">
+      <h2>GPU</h2>
+      <p class="def-full">Graphics Processing Unit</p>
+      <p>The chip that does the heavy math for training and running AI models. Originally built for video games, GPUs turned out to be perfect for the parallel calculations neural networks need. Their scarcity is why AI companies spend billions on data centers.</p>
+    </section>
+    <section class="def" id="hallucination">
+      <h2>Hallucination</h2>
+      
+      <p>When a model states something false with total confidence &mdash; an invented citation, a wrong date, a person who does not exist. It happens because models predict plausible text, not verified truth. Always check an AI's facts when they matter.</p>
+    </section>
+    <section class="def" id="inference">
+      <h2>Inference</h2>
+      
+      <p>The act of running a trained model to produce an answer. Training builds the model; inference is using it, and it happens every time you send a prompt. When people talk about AI's running costs or speed, they usually mean inference.</p>
+    </section>
+    <section class="def" id="llm">
+      <h2>LLM</h2>
+      <p class="def-full">Large Language Model</p>
+      <p>A neural network trained on enormous amounts of text to predict what word comes next. That simple skill, scaled up, produces systems that can write, summarize, translate, and reason. ChatGPT, Claude, and Gemini are all powered by LLMs.</p>
+    </section>
+    <section class="def" id="machine-learning">
+      <h2>Machine Learning</h2>
+      <p class="def-full">ML</p>
+      <p>Software that learns patterns from data instead of being programmed with explicit rules. You show it examples; it figures out the pattern. Nearly all modern AI, including every LLM, is machine learning under the hood.</p>
+    </section>
+    <section class="def" id="mcp">
+      <h2>MCP</h2>
+      <p class="def-full">Model Context Protocol</p>
+      <p>An open standard, introduced by Anthropic in 2024, for connecting AI assistants to external tools and data. Instead of every app building its own custom integration, MCP gives models one common plug shape for files, databases, and services. Think of it as USB for AI tools.</p>
+    </section>
+    <section class="def" id="multimodal">
+      <h2>Multimodal</h2>
+      
+      <p>Able to work with more than one kind of input &mdash; text, images, audio, video. A multimodal model can look at a photo and discuss it, or listen to a recording and summarize it. Most frontier models are multimodal now.</p>
+    </section>
+    <section class="def" id="neural-network">
+      <h2>Neural Network</h2>
+      
+      <p>A program loosely inspired by the brain, built from layers of connected mathematical operations. It learns by adjusting millions or billions of connection strengths as it trains on examples. Neural networks are the engine inside modern AI.</p>
+    </section>
+    <section class="def" id="open-weights">
+      <h2>Open Weights</h2>
+      
+      <p>A model whose trained parameters &mdash; its weights &mdash; are published for anyone to download and run. You can run open-weights models like Llama on your own hardware, privately and for free. The catch: you provide the computer, and the biggest models need a serious one.</p>
+    </section>
+    <section class="def" id="parameters">
+      <h2>Parameters</h2>
+      
+      <p>The internal numbers a model learns during training &mdash; its stored knowledge and skill in numeric form. Model sizes are quoted in them: a "70B" model has 70 billion parameters. More parameters generally means more capability, and more computer needed to run it.</p>
+    </section>
+    <section class="def" id="prompt">
+      <h2>Prompt</h2>
+      
+      <p>The text you give an AI model &mdash; your question, instruction, or request. How you phrase it strongly affects what you get back, which is why prompt engineering became a skill. A prompt can be one line or a whole document of context and rules.</p>
+    </section>
+    <section class="def" id="rag">
+      <h2>RAG</h2>
+      <p class="def-full">Retrieval-Augmented Generation</p>
+      <p>A technique that looks up relevant documents first, then hands them to the model so it answers from real sources instead of memory alone. It is how chatbots answer questions about your files, a company's docs, or today's news. RAG reduces hallucinations because the model can work from what it retrieved.</p>
+    </section>
+    <section class="def" id="reasoning-model">
+      <h2>Reasoning Model</h2>
+      
+      <p>An LLM trained to think step by step, working through a problem in extended chains of thought before answering. These models are slower and costlier than standard ones but much stronger at math, code, and multi-step logic. OpenAI's o-series and Claude's extended thinking are examples.</p>
+    </section>
+    <section class="def" id="system-prompt">
+      <h2>System Prompt</h2>
+      
+      <p>Hidden instructions given to a model before your conversation starts, setting its role, rules, and personality. Apps and companies use system prompts to turn a general model into their assistant. You usually never see it, but it shapes every reply.</p>
+    </section>
+    <section class="def" id="temperature">
+      <h2>Temperature</h2>
+      
+      <p>A setting that controls how random a model's word choices are. Low temperature sticks to the most predictable answer &mdash; good for facts and code. High temperature gets creative and erratic &mdash; sometimes brilliant, sometimes nonsense.</p>
+    </section>
+    <section class="def" id="token">
+      <h2>Token</h2>
+      
+      <p>The chunk of text a model actually reads and writes &mdash; roughly three-quarters of a word on average. Pricing, speed, and context limits are all measured in tokens. "The" is one token; "unbelievable" might be three.</p>
+    </section>
+    <section class="def" id="tool-use">
+      <h2>Tool Use</h2>
+      
+      <p>When a model calls external functions &mdash; searching the web, running code, reading a file &mdash; instead of answering from memory alone. It is also called function calling. Tool use is what turns a chatbot into an agent.</p>
+    </section>
+    <section class="def" id="training">
+      <h2>Training</h2>
+      
+      <p>The process of building a model by feeding it huge amounts of data and adjusting its parameters until its predictions get good. Training a frontier model takes months and warehouses of GPUs. Once training ends, the model's knowledge is frozen at that point &mdash; which is why models have knowledge cutoffs.</p>
+    </section>
+    <section class="def" id="transformer">
+      <h2>Transformer</h2>
+      
+      <p>The neural network architecture behind nearly every modern AI model, introduced in a 2017 paper called "Attention Is All You Need." Its key trick, attention, lets the model weigh which words in a text matter to which other words. The T in GPT stands for Transformer.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>Zacito</span>
+    <nav class="footer-nav" aria-label="Projects">
+      <a href="/coder/">Coder</a>
+      <a href="/shows/">Shows</a>
+    </nav>
+  </footer>
+</body>
+</html>
