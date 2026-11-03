@@ -6,6 +6,7 @@
 
 - [Home](https://zacito.github.io/): Link hub — blog, AI resources, and creative profiles.
 - [AI](https://zacito.github.io/ai/): Curated AI links. Major assistants: Claude, ChatGPT, Gemini. Platforms: Hugging Face. News: The Neuron, TLDR AI, The Rundown AI.
+- [AI Definitions](https://zacito.github.io/ai/definitions/): Plain-language definitions of AI terms and acronyms (LLM, agent, RAG, token, MCP, hallucination, fine-tuning, and more), three sentences each. Also published as schema.org DefinedTermSet structured data in the page.
 - [Blog](https://zacito.github.io/blog/): Blog by Zacito.
 - [Coder](https://zacito.github.io/coder/): Browser code playground — write HTML, CSS, and JavaScript and see the result live.
 - [NFL](https://zacito.github.io/nfl/): NFL links — fantasy football, scores, standings, and depth charts.
