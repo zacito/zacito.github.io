@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 101 · Zacito</title>
+  <link rel="stylesheet" href="/styles.css">
+<!-- seo:start -->
+  <meta name="description" content="AI 101: a plain-language introduction to artificial intelligence. What AI is, what it can do, and how large language models work, plus the Transformer paper and Andrej Karpathy's 3-hour LLM deep dive.">
+  <link rel="canonical" href="https://zacito.github.io/ai/101/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="AI 101 · Zacito">
+  <meta property="og:description" content="A plain-language introduction to artificial intelligence: what AI is, what it can do, and how large language models work.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://zacito.github.io/ai/101/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI 101 · Zacito">
+  <meta name="twitter:description" content="A plain-language introduction to artificial intelligence: what AI is, what it can do, and how large language models work.">
+  <!-- seo:end -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI 101 — An Introduction to Artificial Intelligence",
+    "url": "https://zacito.github.io/ai/101/",
+    "description": "A plain-language introduction to artificial intelligence: what AI is, what it can do, and how large language models work.",
+    "author": { "@type": "Person", "name": "Zacito", "url": "https://zacito.github.io/" },
+    "citation": [
+      { "@type": "ScholarlyArticle", "name": "Attention Is All You Need", "url": "https://arxiv.org/abs/1706.03762" },
+      { "@type": "VideoObject", "name": "Deep Dive into LLMs like ChatGPT — Andrej Karpathy", "url": "https://www.youtube.com/watch?v=7xTGNNLPyMI" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header slim">
+    <a class="brand" href="/" aria-label="Zacito home">Zacito</a>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/ai/">← AI</a></nav>
+    <h1>AI 101</h1>
+    <p class="blog-intro">A plain-language introduction to artificial intelligence: what it is, what it does, and how the chatbots actually work.</p>
+
+    <section>
+      <h2>What is AI?</h2>
+      <p>Artificial intelligence is software that learns patterns from examples instead of only following hand-written rules. Traditional software does exactly what a programmer told it to do. AI is trained: you show it enormous amounts of data, and it works out the patterns itself.</p>
+      <p>Most of today's AI is built on <a href="/ai/definitions/#neural-network">neural networks</a> — programs loosely modeled on how brains connect — trained on data at a massive scale. When people say "AI" now, they usually mean generative AI: models that create new text, images, audio, and code instead of just sorting or labeling things.</p>
+      <p>The chatbots — ChatGPT, Claude, Gemini, Grok — are <a href="/ai/definitions/#llm">large language models</a>, or LLMs. An LLM is trained on huge amounts of text to do one thing: predict what comes next. At enough scale, that single skill turns into answering questions, writing, translating, coding, and holding a conversation.</p>
+    </section>
+
+    <section>
+      <h2>What does it do?</h2>
+      <p>Things people use AI for every day:</p>
+      <ul>
+        <li><strong>Answer and explain.</strong> Questions on any topic, explained at whatever level you ask for.</li>
+        <li><strong>Write and edit.</strong> Emails, documents, articles, summaries, and rewrites in a different tone.</li>
+        <li><strong>Code.</strong> Write, explain, and debug computer programs.</li>
+        <li><strong>See and hear.</strong> Describe and analyze images, transcribe speech, and read text aloud.</li>
+        <li><strong>Create media.</strong> Generate images, music, and increasingly video from a written description.</li>
+        <li><strong>Work with your files.</strong> Search your documents and answer questions from them instead of from memory.</li>
+        <li><strong>Act as an <a href="/ai/definitions/#agent">agent</a>.</strong> Use tools, browse the web, and carry out multi-step tasks, not just chat about them.</li>
+      </ul>
+      <p>Just as important is what it doesn't do. An LLM doesn't know things the way a person does, and it can be confidently wrong — making up facts is called a <a href="/ai/definitions/#hallucination">hallucination</a>. It knows nothing newer than its training, and it has no goals or awareness of its own. The right mental model is a fast, extremely well-read assistant whose work you still check.</p>
+    </section>
+
+    <section>
+      <h2>How does it work, in 30 seconds?</h2>
+      <p>During <a href="/ai/definitions/#training">training</a>, the model reads trillions of words and keeps adjusting billions of internal dials — its <a href="/ai/definitions/#parameters">parameters</a> — until its guesses about the next word get very good. Text is chopped into chunks called <a href="/ai/definitions/#token">tokens</a>, and the model works one token at a time. Inside, a mechanism called <a href="/ai/definitions/#attention">attention</a>, from the <a href="/ai/definitions/#transformer">Transformer</a> architecture, lets it weigh which earlier words matter most to the word it's producing. Everything else — the chat, the reasoning, the tools — is built on top of that.</p>
+    </section>
+
+    <section>
+      <h2>Go deeper</h2>
+      <ul>
+        <li><strong>The paper:</strong> <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Attention Is All You Need</a> (2017) — the Google paper that introduced the Transformer, the architecture every modern LLM is built on.</li>
+        <li><strong>The video:</strong> <a href="https://www.youtube.com/watch?v=7xTGNNLPyMI" target="_blank" rel="noopener">Deep Dive into LLMs like ChatGPT</a> — Andrej Karpathy's 3-hour, general-audience walkthrough of how LLMs are trained and how they work.</li>
+        <li><strong>The glossary:</strong> <a href="/ai/definitions/">AI Definitions</a> — the terms on this page and more, each explained in a few sentences.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <span>Zacito</span>
+    <nav class="footer-nav" aria-label="Projects">
+      <a href="/coder/">Coder</a>
+      <a href="/shows/">Shows</a>
+    </nav>
+  </footer>
+</body>
+</html>
