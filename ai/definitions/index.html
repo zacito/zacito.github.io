@@ -123,6 +123,13 @@
     },
     {
       "@type": "DefinedTerm",
+      "name": "Graphing",
+      "description": "Representing information as a graph — things (people, places, products) as dots, and their relationships as lines between them. AI systems use graphs to store facts more precisely than raw text allows, so answers can follow the connections. GraphRAG is a popular example: it builds a knowledge graph from your documents, then retrieves along the connections.",
+      "url": "https://zacito.github.io/ai/definitions/#graphing",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
       "name": "Hallucination",
       "description": "When a model states something false with total confidence — an invented citation, a wrong date, a person who does not exist. It happens because models predict plausible text, not verified truth. Always check an AI's facts when they matter.",
       "url": "https://zacito.github.io/ai/definitions/#hallucination",
@@ -241,6 +248,13 @@
     },
     {
       "@type": "DefinedTerm",
+      "name": "Swarm",
+      "description": "A setup where many AI agents run at once and coordinate — splitting a job into pieces, working in parallel, and checking each other's output. Like a bee swarm, no single agent runs the whole show; the result emerges from lots of small contributions. Swarms are used for big research, coding, and analysis jobs that would overwhelm one agent.",
+      "url": "https://zacito.github.io/ai/definitions/#swarm",
+      "inDefinedTermSet": "https://zacito.github.io/ai/definitions/"
+    },
+    {
+      "@type": "DefinedTerm",
       "name": "System Prompt",
       "description": "Hidden instructions given to a model before your conversation starts, setting its role, rules, and personality. Apps and companies use system prompts to turn a general model into their assistant. You usually never see it, but it shapes every reply.",
       "url": "https://zacito.github.io/ai/definitions/#system-prompt",
@@ -316,6 +330,7 @@
         <a class="category-option" href="#generative-ai">Generative AI</a>
         <a class="category-option" href="#gpu">GPU</a>
         <a class="category-option" href="#gqa">GQA</a>
+        <a class="category-option" href="#graphing">Graphing</a>
         <a class="category-option" href="#hallucination">Hallucination</a>
         <a class="category-option" href="#inference">Inference</a>
         <a class="category-option" href="#llm">LLM</a>
@@ -332,6 +347,7 @@
         <a class="category-option" href="#rag">RAG</a>
         <a class="category-option" href="#reasoning-model">Reasoning Model</a>
         <a class="category-option" href="#swa">SWA</a>
+        <a class="category-option" href="#swarm">Swarm</a>
         <a class="category-option" href="#system-prompt">System Prompt</a>
         <a class="category-option" href="#temperature">Temperature</a>
         <a class="category-option" href="#token">Token</a>
@@ -404,6 +420,11 @@
       <h2>GQA</h2>
       <p class="def-full">Grouped Query Attention</p>
       <p>An efficiency trick for attention in which several attention heads share the same key and value data instead of each keeping its own copy. It makes models noticeably faster and cheaper to run, with little loss of quality. Most modern open models use GQA.</p>
+    </section>
+    <section class="def" id="graphing">
+      <h2>Graphing</h2>
+      <p class="def-full">Knowledge Graphs</p>
+      <p>Representing information as a graph &mdash; things (people, places, products) as dots, and their relationships as lines between them. AI systems use graphs to store facts more precisely than raw text allows, so answers can follow the connections. GraphRAG is a popular example: it builds a knowledge graph from your documents, then retrieves along the connections.</p>
     </section>
     <section class="def" id="hallucination">
       <h2>Hallucination</h2>
@@ -484,6 +505,11 @@
       <h2>SWA</h2>
       <p class="def-full">Sliding Window Attention</p>
       <p>Attention that only looks at a moving window of nearby tokens instead of the whole text at once. Nearby words usually matter most, so this saves enormous computing power on long inputs. Models often mix SWA layers with a few full-attention layers to keep a global view.</p>
+    </section>
+    <section class="def" id="swarm">
+      <h2>Swarm</h2>
+      <p class="def-full">Agent Swarm</p>
+      <p>A setup where many AI agents run at once and coordinate &mdash; splitting a job into pieces, working in parallel, and checking each other's output. Like a bee swarm, no single agent runs the whole show; the result emerges from lots of small contributions. Swarms are used for big research, coding, and analysis jobs that would overwhelm one agent.</p>
     </section>
     <section class="def" id="system-prompt">
       <h2>System Prompt</h2>
