@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcade · Zacito</title>
+  <link rel="stylesheet" href="/styles.css">
+<!-- seo:start -->
+  <meta name="description" content="A tiny arcade by Zacito: tic tac toe against the computer and classic snake, with saved scores and high scores.">
+  <link rel="canonical" href="https://zacito.github.io/arcade/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Arcade · Zacito">
+  <meta property="og:description" content="Tic tac toe and snake, with saved scores and high scores.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zacito.github.io/arcade/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Arcade · Zacito">
+  <meta name="twitter:description" content="Tic tac toe and snake, with saved scores and high scores.">
+  <!-- seo:end -->
+  <style>
+    .game-head { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .score-line { font-size:.95rem; color:#444; margin:6px 0 14px; }
+    .score-line strong { color:#111; }
+    .btn { display:inline-block; border:1px solid #111; background:#111; color:#fff; padding:8px 18px; border-radius:6px; font-size:.95rem; cursor:pointer; text-decoration:none; }
+    .btn.ghost { background:#fff; color:#111; }
+    .btn.small { padding:5px 12px; font-size:.85rem; }
+    .btn[disabled] { opacity:.4; cursor:default; }
+    .diff-row { display:flex; gap:8px; margin:10px 0 4px; }
+    .diff-row .btn.active { background:#fff; color:#111; box-shadow:inset 0 0 0 2px #111; }
+    /* tic tac toe */
+    .ttt-board { display:grid; grid-template-columns:repeat(3, 96px); gap:6px; margin:16px 0; }
+    .ttt-cell { width:96px; height:96px; font-size:2.6rem; font-family:Arial, Helvetica, sans-serif; background:#fff; border:2px solid #111; border-radius:8px; cursor:pointer; line-height:1; }
+    .ttt-cell.win { background:#111; color:#fff; }
+    .ttt-cell[disabled] { cursor:default; }
+    .status { min-height:1.4em; font-size:1.05rem; margin:8px 0; }
+    table.scores { border-collapse:collapse; margin:10px 0; }
+    table.scores th, table.scores td { border:1px solid #ccc; padding:5px 14px; text-align:left; font-size:.95rem; }
+    table.scores th { background:#f4f4f4; }
+    /* snake */
+    .snake-wrap { margin:14px 0; }
+    #snakeCanvas { background:#111; border-radius:8px; width:400px; height:400px; max-width:100%; aspect-ratio:1; touch-action:none; display:block; }
+    .dpad { display:none; margin-top:12px; width:168px; }
+    .dpad .row { display:flex; justify-content:center; gap:8px; margin-bottom:8px; }
+    .dpad button { width:52px; height:52px; font-size:1.3rem; border:1px solid #111; background:#fff; border-radius:8px; cursor:pointer; }
+    @media (pointer:coarse) { .dpad { display:block; } }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+  <header class="site-header slim">
+    <a class="brand" href="/" aria-label="Zacito home">Zacito</a>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">← Home</a></nav>
+    <h1>Arcade</h1>
+
+    <!-- HUB -->
+    <div id="view-hub">
+      <section class="ai-section">
+        <div class="section-heading"><h2>Games</h2></div>
+        <nav class="category-menu" aria-label="Games">
+          <a class="category-option" href="#/tic-tac-toe" data-game-link>Tic Tac Toe</a>
+          <a class="category-option" href="#/snake" data-game-link>Snake</a>
+        </nav>
+      </section>
+      <section class="ai-section">
+        <div class="section-heading"><h2>High Scores</h2></div>
+        <p class="score-line" id="hubTtt">Tic Tac Toe — no games yet.</p>
+        <p class="score-line" id="hubSnake">Snake — no games yet.</p>
+        <p><button class="btn ghost small" id="resetAllBtn" type="button">Reset all scores</button></p>
+      </section>
+    </div>
+
+    <!-- TIC TAC TOE -->
+    <div id="view-ttt" class="hidden">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="#/">← Arcade</a></nav>
+      <div class="game-head"><h2 style="margin:0">Tic Tac Toe</h2></div>
+      <p class="score-line" id="tttRecord"></p>
+      <div class="diff-row" role="group" aria-label="Difficulty">
+        <button class="btn ghost small" type="button" data-diff="easy">Easy</button>
+        <button class="btn ghost small" type="button" data-diff="medium">Medium</button>
+        <button class="btn ghost small" type="button" data-diff="hard">Hard</button>
+      </div>
+      <p class="status" id="tttStatus">Your move — you are X.</p>
+      <div class="ttt-board" id="tttBoard"></div>
+      <p>
+        <button class="btn" id="tttNewBtn" type="button">New game</button>
+        <button class="btn ghost" id="tttResetBtn" type="button">Reset record</button>
+      </p>
+    </div>
+
+    <!-- SNAKE -->
+    <div id="view-snake" class="hidden">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="#/">← Arcade</a></nav>
+      <div class="game-head"><h2 style="margin:0">Snake</h2></div>
+      <p class="score-line" id="snakeScoreLine">Score: <strong>0</strong> · Best: <strong>0</strong></p>
+      <div class="snake-wrap">
+        <canvas id="snakeCanvas" width="400" height="400"></canvas>
+        <div class="dpad" aria-hidden="true">
+          <div class="row"><button type="button" data-dir="up">↑</button></div>
+          <div class="row"><button type="button" data-dir="left">←</button><button type="button" data-dir="down">↓</button><button type="button" data-dir="right">→</button></div>
+        </div>
+      </div>
+      <p class="status" id="snakeStatus">Press Start, then steer with the arrow keys, WASD, swipe, or the pad.</p>
+      <p>
+        <button class="btn" id="snakeStartBtn" type="button">Start</button>
+        <button class="btn ghost" id="snakeResetBtn" type="button">Reset high scores</button>
+      </p>
+      <h3>High scores</h3>
+      <div id="snakeScores"></div>
+    </div>
+  </main>
+
+  <footer>
+    <span>Zacito</span>
+    <nav class="footer-nav" aria-label="Projects">
+      <a href="/coder/">Coder</a>
+      <a href="/shows/">Shows</a>
+    </nav>
+  </footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- storage ---------- */
+  function loadJSON(key, fallback) {
+    try { var v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
+    catch (e) { return fallback; }
+  }
+  function saveJSON(key, val) {
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {}
+  }
+
+  /* ---------- router ---------- */
+  var views = { hub: document.getElementById("view-hub"), ttt: document.getElementById("view-ttt"), snake: document.getElementById("view-snake") };
+  function route() {
+    var h = location.hash || "#/";
+    var name = h.indexOf("tic-tac-toe") !== -1 ? "ttt" : (h.indexOf("snake") !== -1 ? "snake" : "hub");
+    views.hub.classList.toggle("hidden", name !== "hub");
+    views.ttt.classList.toggle("hidden", name !== "ttt");
+    views.snake.classList.toggle("hidden", name !== "snake");
+    if (name === "hub") renderHub();
+    if (name === "snake") renderSnakeScores();
+    if (name !== "snake") snakeStop();
+  }
+  window.addEventListener("hashchange", route);
+
+  /* ---------- hub ---------- */
+  function renderHub() {
+    var t = loadJSON("arcade.ttt.v1", null);
+    document.getElementById("hubTtt").innerHTML = t
+      ? "Tic Tac Toe — <strong>" + t.wins + " wins</strong>, " + t.losses + " losses, " + t.draws + " draws · best streak <strong>" + t.bestStreak + "</strong>"
+      : "Tic Tac Toe — no games yet.";
+    var s = loadJSON("arcade.snake.v1", []);
+    document.getElementById("hubSnake").innerHTML = (s && s.length)
+      ? "Snake — high score <strong>" + s[0].score + "</strong>"
+      : "Snake — no games yet.";
+  }
+  document.getElementById("resetAllBtn").addEventListener("click", function () {
+    if (!confirm("Reset all arcade scores?")) return;
+    localStorage.removeItem("arcade.ttt.v1");
+    localStorage.removeItem("arcade.snake.v1");
+    ttt = freshTtt(); renderTttRecord(); renderHub();
+  });
+
+  /* ---------- tic tac toe ---------- */
+  function freshTtt() { return { wins: 0, losses: 0, draws: 0, streak: 0, bestStreak: 0 }; }
+  var ttt = loadJSON("arcade.ttt.v1", null) || freshTtt();
+  var board = ["", "", "", "", "", "", "", "", ""];
+  var gameOver = false;
+  var difficulty = localStorage.getItem("arcade.ttt.diff") || "medium";
+  var LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  var boardEl = document.getElementById("tttBoard");
+  var statusEl = document.getElementById("tttStatus");
+  var cells = [];
+  for (var i = 0; i < 9; i++) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "ttt-cell"; b.setAttribute("aria-label", "Cell " + (i + 1));
+    (function (idx) { b.addEventListener("click", function () { playerMove(idx); }); })(i);
+    boardEl.appendChild(b); cells.push(b);
+  }
+  function renderTttRecord() {
+    document.getElementById("tttRecord").innerHTML =
+      "Record — <strong>" + ttt.wins + " wins</strong> · " + ttt.losses + " losses · " + ttt.draws +
+      " draws · streak <strong>" + ttt.streak + "</strong> · best streak <strong>" + ttt.bestStreak + "</strong>";
+  }
+  function paintBoard(winLine) {
+    for (var i = 0; i < 9; i++) {
+      cells[i].textContent = board[i];
+      cells[i].disabled = gameOver || board[i] !== "";
+      cells[i].classList.toggle("win", !!winLine && winLine.indexOf(i) !== -1);
+    }
+  }
+  function winnerOf(bd) {
+    for (var i = 0; i < LINES.length; i++) {
+      var L = LINES[i];
+      if (bd[L[0]] && bd[L[0]] === bd[L[1]] && bd[L[0]] === bd[L[2]]) return { who: bd[L[0]], line: L };
+    }
+    return null;
+  }
+  function emptyCells(bd) { var r = []; for (var i = 0; i < 9; i++) if (!bd[i]) r.push(i); return r; }
+  function minimax(bd, isMax, depth) {
+    var w = winnerOf(bd);
+    if (w) return w.who === "O" ? 10 - depth : depth - 10;
+    var open = emptyCells(bd);
+    if (!open.length) return 0;
+    var best = isMax ? -Infinity : Infinity;
+    for (var i = 0; i < open.length; i++) {
+      bd[open[i]] = isMax ? "O" : "X";
+      var s = minimax(bd, !isMax, depth + 1);
+      bd[open[i]] = "";
+      best = isMax ? Math.max(best, s) : Math.min(best, s);
+    }
+    return best;
+  }
+  function computerMove() {
+    var open = emptyCells(board);
+    if (!open.length) return;
+    var pick;
+    if (difficulty === "easy") {
+      pick = open[Math.floor(Math.random() * open.length)];
+    } else if (difficulty === "medium") {
+      pick = -1;
+      var j;
+      for (j = 0; j < open.length; j++) { board[open[j]] = "O"; if (winnerOf(board)) { pick = open[j]; } board[open[j]] = ""; if (pick !== -1) break; }
+      if (pick === -1) for (j = 0; j < open.length; j++) { board[open[j]] = "X"; if (winnerOf(board)) { pick = open[j]; } board[open[j]] = ""; if (pick !== -1) break; }
+      if (pick === -1 && !board[4]) pick = 4;
+      if (pick === -1) pick = open[Math.floor(Math.random() * open.length)];
+    } else {
+      var bestScore = -Infinity;
+      for (var k = 0; k < open.length; k++) {
+        board[open[k]] = "O";
+        var s = minimax(board, false, 0);
+        board[open[k]] = "";
+        if (s > bestScore) { bestScore = s; pick = open[k]; }
+      }
+    }
+    board[pick] = "O";
+  }
+  function endGame(result, winLine) {
+    gameOver = true;
+    if (result === "X") { ttt.wins++; ttt.streak++; ttt.bestStreak = Math.max(ttt.bestStreak, ttt.streak); statusEl.textContent = "You win!"; }
+    else if (result === "O") { ttt.losses++; ttt.streak = 0; statusEl.textContent = "Computer wins. Try again."; }
+    else { ttt.draws++; statusEl.textContent = "It's a draw."; }
+    saveJSON("arcade.ttt.v1", ttt);
+    renderTttRecord();
+    paintBoard(winLine);
+  }
+  function checkEnd() {
+    var w = winnerOf(board);
+    if (w) { endGame(w.who, w.line); return true; }
+    if (!emptyCells(board).length) { endGame("draw", null); return true; }
+    return false;
+  }
+  function playerMove(idx) {
+    if (gameOver || board[idx]) return;
+    board[idx] = "X";
+    paintBoard(null);
+    if (checkEnd()) return;
+    statusEl.textContent = "Computer is thinking…";
+    setTimeout(function () {
+      computerMove();
+      paintBoard(null);
+      if (!checkEnd()) statusEl.textContent = "Your move — you are X.";
+    }, 280);
+  }
+  function newTttGame() {
+    board = ["", "", "", "", "", "", "", "", ""];
+    gameOver = false;
+    statusEl.textContent = "Your move — you are X.";
+    paintBoard(null);
+  }
+  function paintDiff() {
+    var btns = document.querySelectorAll("[data-diff]");
+    for (var i = 0; i < btns.length; i++) btns[i].classList.toggle("active", btns[i].getAttribute("data-diff") === difficulty);
+  }
+  var diffBtns = document.querySelectorAll("[data-diff]");
+  for (var d = 0; d < diffBtns.length; d++) {
+    (function (btn) {
+      btn.addEventListener("click", function () {
+        difficulty = btn.getAttribute("data-diff");
+        try { localStorage.setItem("arcade.ttt.diff", difficulty); } catch (e) {}
+        paintDiff(); newTttGame();
+      });
+    })(diffBtns[d]);
+  }
+  document.getElementById("tttNewBtn").addEventListener("click", newTttGame);
+  document.getElementById("tttResetBtn").addEventListener("click", function () {
+    if (!confirm("Reset your tic tac toe record?")) return;
+    ttt = freshTtt(); saveJSON("arcade.ttt.v1", ttt); renderTttRecord();
+  });
+  renderTttRecord(); paintDiff(); newTttGame();
+
+  /* ---------- snake ---------- */
+  var CELL = 20, GRID = 20;
+  var canvas = document.getElementById("snakeCanvas");
+  var ctx = canvas.getContext("2d");
+  var snake, dir, nextDir, food, score, timer = null, speed;
+  var snakeStatus = document.getElementById("snakeStatus");
+  var snakeLine = document.getElementById("snakeScoreLine");
+  function snakeScores() { return loadJSON("arcade.snake.v1", []); }
+  function bestScore() { var s = snakeScores(); return s.length ? s[0].score : 0; }
+  function renderSnakeScores() {
+    var s = snakeScores();
+    var el = document.getElementById("snakeScores");
+    if (!s.length) { el.innerHTML = "<p class='score-line'>No scores yet — be the first.</p>"; return; }
+    var rows = "";
+    for (var i = 0; i < s.length; i++) rows += "<tr><td>" + (i + 1) + "</td><td><strong>" + s[i].score + "</strong></td><td>" + s[i].date + "</td></tr>";
+    el.innerHTML = "<table class='scores'><tr><th>#</th><th>Score</th><th>Date</th></tr>" + rows + "</table>";
+  }
+  function paintSnakeLine() {
+    snakeLine.innerHTML = "Score: <strong>" + (score || 0) + "</strong> · Best: <strong>" + bestScore() + "</strong>";
+  }
+  function drawSnake() {
+    ctx.fillStyle = "#111"; ctx.fillRect(0, 0, 400, 400);
+    ctx.fillStyle = "#e5484d";
+    ctx.fillRect(food.x * CELL + 2, food.y * CELL + 2, CELL - 4, CELL - 4);
+    for (var i = 0; i < snake.length; i++) {
+      ctx.fillStyle = i === 0 ? "#7ee787" : "#3fb950";
+      ctx.fillRect(snake[i].x * CELL + 1, snake[i].y * CELL + 1, CELL - 2, CELL - 2);
+    }
+  }
+  function placeFood() {
+    while (true) {
+      var f = { x: Math.floor(Math.random() * GRID), y: Math.floor(Math.random() * GRID) };
+      var hit = false;
+      for (var i = 0; i < snake.length; i++) if (snake[i].x === f.x && snake[i].y === f.y) { hit = true; break; }
+      if (!hit) { food = f; return; }
+    }
+  }
+  function stepSnake() {
+    dir = nextDir;
+    var head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+    if (head.x < 0 || head.y < 0 || head.x >= GRID || head.y >= GRID) return gameOverSnake();
+    for (var i = 0; i < snake.length; i++) if (snake[i].x === head.x && snake[i].y === head.y) return gameOverSnake();
+    snake.unshift(head);
+    if (head.x === food.x && head.y === food.y) {
+      score += 10;
+      placeFood();
+      if (score % 50 === 0 && speed > 70) { speed -= 10; restartTimer(); }
+    } else {
+      snake.pop();
+    }
+    paintSnakeLine();
+    drawSnake();
+  }
+  function restartTimer() { clearInterval(timer); timer = setInterval(stepSnake, speed); }
+  function gameOverSnake() {
+    snakeStop();
+    snakeStatus.textContent = "Game over — you scored " + score + ".";
+    if (score > 0) {
+      var s = snakeScores();
+      s.push({ score: score, date: new Date().toLocaleDateString("en-US") });
+      s.sort(function (a, b) { return b.score - a.score; });
+      saveJSON("arcade.snake.v1", s.slice(0, 5));
+    }
+    document.getElementById("snakeStartBtn").textContent = "Play again";
+    paintSnakeLine(); renderSnakeScores();
+  }
+  function snakeStop() { if (timer) { clearInterval(timer); timer = null; } }
+  function startSnake() {
+    snake = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
+    dir = { x: 1, y: 0 }; nextDir = dir;
+    score = 0; speed = 140;
+    placeFood();
+    paintSnakeLine(); drawSnake();
+    snakeStatus.textContent = "Go!";
+    document.getElementById("snakeStartBtn").textContent = "Restart";
+    restartTimer();
+  }
+  function setDir(x, y) {
+    if (!timer) return;
+    if (dir.x === -x && dir.y === -y) return; // no reversing
+    nextDir = { x: x, y: y };
+  }
+  document.getElementById("snakeStartBtn").addEventListener("click", startSnake);
+  document.getElementById("snakeResetBtn").addEventListener("click", function () {
+    if (!confirm("Reset snake high scores?")) return;
+    localStorage.removeItem("arcade.snake.v1");
+    paintSnakeLine(); renderSnakeScores();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (views.snake.classList.contains("hidden")) return;
+    var k = e.key.toLowerCase();
+    if (k === "arrowup" || k === "w") { setDir(0, -1); e.preventDefault(); }
+    else if (k === "arrowdown" || k === "s") { setDir(0, 1); e.preventDefault(); }
+    else if (k === "arrowleft" || k === "a") { setDir(-1, 0); e.preventDefault(); }
+    else if (k === "arrowright" || k === "d") { setDir(1, 0); e.preventDefault(); }
+    else if (k === " " && !timer) { startSnake(); e.preventDefault(); }
+  });
+  var padBtns = document.querySelectorAll("[data-dir]");
+  for (var p = 0; p < padBtns.length; p++) {
+    (function (btn) {
+      btn.addEventListener("click", function () {
+        var d = btn.getAttribute("data-dir");
+        if (d === "up") setDir(0, -1); else if (d === "down") setDir(0, 1);
+        else if (d === "left") setDir(-1, 0); else setDir(1, 0);
+      });
+    })(padBtns[p]);
+  }
+  var touchStart = null;
+  canvas.addEventListener("touchstart", function (e) {
+    touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, { passive: true });
+  canvas.addEventListener("touchmove", function (e) {
+    if (!touchStart) return;
+    var dx = e.touches[0].clientX - touchStart.x, dy = e.touches[0].clientY - touchStart.y;
+    if (Math.abs(dx) < 24 && Math.abs(dy) < 24) return;
+    if (Math.abs(dx) > Math.abs(dy)) setDir(dx > 0 ? 1 : -1, 0); else setDir(0, dy > 0 ? 1 : -1);
+    touchStart = null;
+    e.preventDefault();
+  }, { passive: false });
+  // idle board
+  snake = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
+  food = { x: 14, y: 10 }; score = 0;
+  paintSnakeLine(); drawSnake();
+
+  route();
+})();
+</script>
+</body>
+</html>
